@@ -1,0 +1,87 @@
+//infor-bar
+
+
+#info-bar {
+
+
+
+    padding-top: 20px;
+    display: flex;
+
+    align-items: center;
+
+    .info-border {
+        display: flex;
+        border: 1px solid #e5e5e5;
+
+    }
+
+
+    .info-bar-menu {
+        display: flex;
+        margin-top: 5px;
+        align-items: center;
+        // border-right: 1px solid red;
+        height: 100px;
+
+        gap: 20px;
+
+        padding-right: none !important;
+        padding-left: none !important;
+        padding-left: 15px;
+
+        i {
+            font-size: 30px;
+            color: #ef6c00;
+
+        }
+
+        .border-right-solid {
+            border: 1px solid #e5e5e5;
+            height: 80px;
+        }
+
+    }
+
+
+
+}
+
+
+
+
+.info-bar-free {
+
+    padding-right: 1px !important;
+    padding-left: 1px !important;
+
+}
+
+.info-bar-free-shoping {
+
+
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    // border: 5px solid #e5e5e5;
+    height: 100px;
+
+    gap: 20px;
+
+    padding-right: none !important;
+    padding-left: none !important;
+    padding-left: 15px;
+
+    .border-right-solid {
+        border: 1px solid #e5e5e5;
+        height: 80px;
+    }
+
+    i {
+        font-size: 30px;
+        color: #ef6c00;
+
+    }
+
+
+}

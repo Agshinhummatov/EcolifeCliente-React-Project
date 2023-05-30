@@ -1,0 +1,27 @@
+
+.baner-info{
+    overflow: hidden;
+}
+
+.baner-img{
+    width: 98%;
+    
+  
+}
+
+
+
+
+.banner-title{
+
+    position: absolute;
+    margin-top: 93px;
+    
+}
+
+.banner-description{
+
+    position: absolute;
+    margin-top: 132px;
+}
+
