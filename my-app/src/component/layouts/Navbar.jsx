@@ -3,28 +3,28 @@ import logo from '../../assets/img/logo.jpg'
 import '../../assets/css/layout.css'
 import Icon from '@mdi/react';
 import { mdiAccount, mdiHeartOutline,mdiBasketOutline  } from '@mdi/js';
+import { Link } from 'react-router-dom';
 
 
 
 
 
 
-
-function Header() {
+function Navbar() {
     return (
         <>
             <header>
 
                 <section id="header">
                     
-                    <a href="#"><img src={logo} class="logo" alt="" /></a>
+                    <Link to="/"><img src={logo} class="logo" alt="" /></Link>
                     <input type="text" placeholder='serach' />
                     <div className=''>
                         
                         <ul id="navbar">
-                            <li><a class="active" href="index.html">Home</a></li>
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="blog.html">Blog</a></li>
+                            <li><Link to="/" class="active" href="index.html">Home</Link></li>
+                            <li><Link to="/" >Shop</Link></li>
+                            <li><Link to="/blog">Blog</Link></li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="contact.html">Contact</a></li>
                             <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
@@ -54,4 +54,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Navbar

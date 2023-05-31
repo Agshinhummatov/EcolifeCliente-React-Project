@@ -1,14 +1,16 @@
 /* Header Start */
 
 #header {
+    position: fixed;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-   background-color: #01574A;
+    background-color: #01574A;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
-    position: sticky;
+    right: 0;
     top: 0;
     left: 0;
 }
@@ -26,17 +28,17 @@
 }
 
 #navbar .icon {
-  margin-left: 10px;
-   cursor: pointer;
+    margin-left: 10px;
+    cursor: pointer;
 
 }
 
-#header input{
+#header input {
     width: 400px;
     outline: none;
     border-radius: 6px;
     padding: 3px 20px;
-    
+
 
 }
 
@@ -74,4 +76,3 @@
 #close {
     display: none;
 }
-

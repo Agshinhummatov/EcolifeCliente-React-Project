@@ -3,12 +3,11 @@ import "../../assets/css/blog.css"
 import blogImageOne from '../../assets/img/blog1.jpg'
 import blogImageTwo from '../../assets/img/blog2.jpg'
 import blogImageThree from '../../assets/img/blog3.jpg'
+import { Link } from 'react-router-dom'
 
-
-function Blog() {
+function BlogCart() {
     return (
-        <div>
-
+        <>
             <section>
 
                 <div className='container'>
@@ -16,7 +15,7 @@ function Blog() {
                         <div className='col-4 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
-                                    <div className='blog-img'> 
+                                    <div className='blog-img'>
 
                                         <img src={blogImageOne} alt="" />
 
@@ -25,23 +24,48 @@ function Blog() {
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
                                     <div class="blog-meta">
-                                       <p>11/06/2023</p>
+                                        <p>11/06/2023</p>
                                     </div>
                                     <p class="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
                                         sed do eiusmod tempor incidio ut labore et dolore
                                         magna aliqua.
                                     </p>
-                                   
+
                                 </div>
-                               
+
                             </div>
                         </div>
 
                         <div className='col-4 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
-                                    <div className='blog-img'> 
+                                    <div className='blog-img'>
+
+                                       <Link to="/"><img src={blogImageTwo} alt="" /></Link> 
+
+                                    </div>
+                                    <h2 class="blog-title">
+                                        <a href="blog.html">The Moment You Need To Remove Garlic </a>
+                                    </h2>
+                                    <div class="blog-meta">
+                                        <p>11/06/2023</p>
+                                    </div>
+                                    <p class="blog-desc ">
+                                        Lorem ipsum dolor sit amet, consecteturl adipisl elit,
+                                        sed do eiusmod tempor incidio ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div className='col-4 mt-5'>
+                            <div class="blog-item">
+                                <div class="blog-content">
+                                    <div className='blog-img'>
 
                                         <img src={blogImageTwo} alt="" />
 
@@ -50,7 +74,7 @@ function Blog() {
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
                                     <div class="blog-meta">
-                                       <p>11/06/2023</p>
+                                        <p>11/06/2023</p>
                                     </div>
                                     <p class="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
@@ -58,23 +82,25 @@ function Blog() {
                                         magna aliqua.
                                     </p>
                                 </div>
-                               
+
                             </div>
                         </div>
+
+
 
                         <div className='col-4 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
-                                    <div className='blog-img'> 
+                                    <div className='blog-img'>
 
-                                        <img src={blogImageOne} alt="" />
+                                        <img src={blogImageTwo} alt="" />
 
                                     </div>
                                     <h2 class="blog-title">
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
                                     <div class="blog-meta">
-                                       <p>11/06/2023</p>
+                                        <p>11/06/2023</p>
                                     </div>
                                     <p class="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
@@ -82,14 +108,19 @@ function Blog() {
                                         magna aliqua.
                                     </p>
                                 </div>
-                               
+
                             </div>
                         </div>
+
+                    
+
+
                     </div>
                 </div>
             </section>
-        </div>
+
+        </>
     )
 }
 
-export default Blog
+export default BlogCart
