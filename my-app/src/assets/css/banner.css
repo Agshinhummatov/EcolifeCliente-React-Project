@@ -1,12 +1,20 @@
 
 .baner-info{
     overflow: hidden;
+    transition: transform 1s;
 }
 
 .baner-img{
     width: 98%;
-    
+    overflow: hidden;
+    transition: transform 1s;
   
+}
+
+.baner-img:hover {
+    -ms-transform: scale(1.3); /* IE 9 */
+    -webkit-transform: scale(1.3); /* Safari 3-8 */
+    transform: scale(1.3); 
 }
 
 
@@ -18,6 +26,8 @@
     margin-top: 93px;
     
 }
+
+
 
 .banner-description{
 

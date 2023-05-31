@@ -2,6 +2,8 @@
     margin-top: 80px;
     text-align: center;
     margin-bottom: 80px;
+    overflow: hidden;
+    transition: transform 1s;
 }
 
 .benfit-info{
@@ -12,4 +14,21 @@
 
 .benfit-des{
     text-align:  center;
+}
+
+/* .baner-info{
+    overflow: hidden;
+    transition: transform 1s;
+} */
+
+.benfit-img{
+    overflow: hidden;
+    transition: transform 1s;
+  
+}
+
+.benfit-img:hover {
+    -ms-transform: scale(1.3); /* IE 9 */
+    -webkit-transform: scale(1.3); /* Safari 3-8 */
+    transform: scale(1.3); 
 }

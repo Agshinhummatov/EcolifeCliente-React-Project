@@ -23,7 +23,7 @@ function Product(props) {
         
           <div className="pro-container">
             <div className="pro">
-              <img src={product1} alt="" />
+              <img  className='product-img' src={product1} alt="" />
               <div className="des">
                 <span>adidas</span>
                 <h5>Cartoon Astronaut T-Shirts</h5>

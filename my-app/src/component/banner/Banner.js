@@ -9,7 +9,7 @@ function Banner() {
             <div className='container'>
                 <div className='row mt-5'>
 
-                    <div className='col-6'>
+                    <div className='col-6 baner-info'>
                     
                         <h4 className='banner-title'>Green Tea Powder</h4>
                      

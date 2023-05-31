@@ -20,6 +20,7 @@
     margin: 15px 0;
     transition: 0.2s ease;
     position: relative;
+    
 }
 
 #product1 .pro:hover {
@@ -72,3 +73,4 @@
     bottom: 20px;
     right: 10px;
 }
+
