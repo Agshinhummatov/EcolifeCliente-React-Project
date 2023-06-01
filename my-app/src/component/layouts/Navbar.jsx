@@ -22,10 +22,10 @@ function Navbar() {
                     <div className=''>
                         
                         <ul id="navbar">
-                            <li><Link to="/" class="active" href="index.html">Home</Link></li>
-                            <li><Link to="/" >Shop</Link></li>
+                            <li><Link to="/" class="active" >Home</Link></li>
+                            <li><Link to="/shop" >Shop</Link></li>
                             <li><Link to="/blog">Blog</Link></li>
-                            <li><a href="about.html">About</a></li>
+                            <li><Link to="/about">About</Link></li>
                             <li><Link to="/contact" >Contact</Link></li>
                             <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>

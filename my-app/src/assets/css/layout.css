@@ -33,11 +33,12 @@
 
 }
 
-#header input {
+#header input{
     width: 400px;
     outline: none;
     border-radius: 6px;
     padding: 3px 20px;
+    border: none;
 
 
 }

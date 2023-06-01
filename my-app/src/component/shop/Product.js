@@ -19,7 +19,7 @@ function Product(props) {
 
 
         <section id="product1" className="section-p1">
-          <h2 className='mt-5'>New Arrivals</h2>
+          
         
           <div className="pro-container">
             <div className="pro">

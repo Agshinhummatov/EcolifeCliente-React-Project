@@ -1,0 +1,60 @@
+
+
+.brand-br{
+    margin-top: 30px;
+    background-color:#01574A ;
+    width: 250px;
+    height: 2px;
+    margin-bottom: 40px;
+}
+
+.brand-name li{
+   list-style: none;
+   margin-top: 5px;
+}
+
+.brand-name li:hover{
+    cursor: pointer;
+    color: #01574A;
+}
+ 
+
+.color-br{
+    margin-top: 30px;
+    background-color:#01574A ;
+    width: 250px;
+    height: 2px;
+    margin-bottom: 40px; 
+}
+
+.color-name li{
+    list-style: none;
+    margin-top: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
+}
+
+.color-name li:hover{
+    cursor: pointer;
+    color: #01574A;
+}
+
+
+.weight-br{
+    margin-top: 30px;
+    background-color:#01574A ;
+    width: 250px;
+    height: 2px;
+    margin-bottom: 40px;
+}
+
+
+.weight-name li{
+    list-style: none;
+    margin-top: 5px;
+}
+
+.weight-name li:hover{
+    cursor: pointer;
+    color: #01574A;
+}

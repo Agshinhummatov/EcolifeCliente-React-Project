@@ -3,7 +3,7 @@ import BlogCart from '../component/blog/BlogCart'
 import BlogRecent from '../component/blog/BlogRecent'
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import "../assets/css/blog.css"
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,7 +15,7 @@ function Blog() {
             <div className='backgroundBlog'>
                 <img src={backgroundPage} alt="" />
                 <h2>Blog</h2>
-                <h6><a href="">Home </a> / Blog</h6>
+                <h6><Link to="/">Home </Link> / Blog</h6>
             </div>
 
             <div className='container'>

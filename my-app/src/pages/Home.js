@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-import Product from '../component/product/Product'
+import Product from '../component/shop/Product'
 import Advertising from '../component/advertising/Advertising';
 import Slider from '../component/slider/Slider';
 import Banner from '../component/banner/Banner';
@@ -18,7 +18,8 @@ function Home() {
 
    <Slider/>
    <Advertising/>
-   <Product/>
+   <h2 className='mt-5 text-center'>New Arrivals</h2>
+   <Product/> 
    <Banner/>
    <Benefit/>
    <Category/>

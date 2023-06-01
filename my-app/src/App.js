@@ -9,6 +9,7 @@ import About from './pages/About';
 import Employee from './pages/Employees';
 import Blog from './pages/Blog';
 import Navbar from './component/layouts/Navbar';
+import Shop from './pages/Shop';
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/employee" element={<Employee />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/shop" element={<Shop />} />
           
 
         </Routes>
