@@ -58,3 +58,43 @@
     cursor: pointer;
     color: #01574A;
 }
+
+
+.post-widget .title h4 {
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.post-widget p {
+    font-size: 14.5px;
+    line-height: 25px;
+    font-weight: 400;
+}
+.post-widget ul li {
+    border-radius: 16px;
+}
+.post-widget ul li a {
+    text-decoration: none;
+   
+    display: block;
+    font-size: 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 6px 25px;
+    text-transform: uppercase;
+    color: #787878;
+    font-weight: 600;
+    transition: all 0.5s;
+}
+.post-widget .list {
+    gap: 10px;
+    margin-top: 20px;
+    display: flex;
+}
+.post-widget .list li:hover {
+    background-color: #01574A;
+}
+.post-widget .list li:hover a {
+    color: white;
+}

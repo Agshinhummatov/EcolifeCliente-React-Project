@@ -6,6 +6,7 @@ import Weight from '../component/shop/Weight'
 import Color from '../component/shop/Color'
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import { Link } from 'react-router-dom';
+import Tag from '../component/shop/Tag'
 
 function Shop() {
     return (
@@ -25,6 +26,7 @@ function Shop() {
                         <Brand />
                         <Weight />
                         <Color />
+                        <Tag/>
                     </div>
                     <div className='col-9'>
                         <Product />

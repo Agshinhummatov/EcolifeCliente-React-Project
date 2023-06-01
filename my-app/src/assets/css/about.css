@@ -1,0 +1,17 @@
+.about-info{
+    display: flex;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.about-info h3{
+    margin-top: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.about-info img{
+    width: 100%;
+
+}
+
