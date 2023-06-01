@@ -7,7 +7,6 @@ import Slider from '../component/slider/Slider';
 import Banner from '../component/banner/Banner';
 import Benefit from '../component/benefit/Benefit';
 import Category from '../component/category/Category';
-
 import BlogCart from '../component/blog/BlogCart';
 
 function Home() {

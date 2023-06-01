@@ -1,9 +1,17 @@
 
+
 .baner-info{
     overflow: hidden;
+    width: 98%;
     transition: transform 1s;
+    /* padding: 0; */
+    /* margin: 0; */
 }
 
+.aqsin{
+overflow: hidden;
+
+}
 .baner-img{
     width: 98%;
     overflow: hidden;
@@ -24,7 +32,7 @@
 
     position: absolute;
     margin-top: 93px;
-    
+    z-index: 10;
 }
 
 
@@ -33,5 +41,6 @@
 
     position: absolute;
     margin-top: 132px;
+    z-index: 10;
 }
 

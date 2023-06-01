@@ -1,0 +1,137 @@
+ #contact-us .map {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    height: 960.15px;
+    border-radius: 10px;
+    /* form starting stylings ------------------------------- */
+    /* LABEL ======================================= */
+    /* active state */
+    /* BOTTOM BARS ================================= */
+    /* active state */
+    /* HIGHLIGHTER ================================== */
+    /* active state */
+    /* ANIMATIONS ================ */
+  }
+   #contact-us .map .title {
+    margin-top: 20px;
+  }
+   #contact-us .map .title h3 {
+    font-size: 28px;
+    color: #383838;
+  }
+   #contact-us .map .icons ul {
+    padding: 0;
+  }
+   #contact-us .map .icons ul li {
+    border-bottom: 1px solid #e5e5e5;
+    list-style: none;
+  }
+   #contact-us .map .icons ul li i {
+    font-size: 33px;
+    color: #EF6C00;
+    margin-right: 7px;
+    line-height: 60px;
+  }
+   #contact-us .map .icons ul li h4 {
+    margin: 0;
+  }
+   #contact-us .map button {
+    background-color: #01574A;
+    color: white;
+    width: 95.66px;
+    height: 46px;
+    border-radius: 4px;
+    margin-top: -14px;
+  }
+   #contact-us .map h2 small {
+    font-weight: normal;
+    color: #888;
+    display: block;
+  }
+   #contact-us .map .footer {
+    text-align: center;
+  }
+   #contact-us .map .footer a {
+    color: red;
+  }
+   #contact-us .map .group {
+    position: relative;
+    margin-bottom: 45px;
+  }
+   #contact-us .map input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;
+  }
+   #contact-us .map input:focus {
+    outline: none;
+  }
+   #contact-us .map label {
+    color: #999;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+   #contact-us .map input:focus ~ label,
+   #contact-us .map input:valid ~ label {
+    top: -7px;
+    font-size: 12px;
+    color: red;
+  }
+   #contact-us .map .bar {
+    position: relative;
+    display: block;
+    width: 300px;
+  }
+   #contact-us .map .bar:before,
+   #contact-us .map .bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: red;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+   #contact-us .map .bar:before {
+    left: 50%;
+  }
+   #contact-us .map .bar:after {
+    right: 50%;
+  }
+   #contact-us .map input:focus ~ .bar:before,
+   #contact-us .map input:focus ~ .bar:after {
+    width: 0%;
+  }
+   #contact-us .map .highlight {
+    position: absolute;
+    height: 60%;
+    width: 80px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+   #contact-us .map input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+  }
+  @keyframes inputHighlighter {
+    from {
+      background: #5264AE;
+    }
+    to {
+      width: 0;
+      background: transparent;
+    }
+  }
