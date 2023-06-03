@@ -19,7 +19,8 @@
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
     margin: 15px 0;
     transition: 0.2s ease;
-    position: relative;
+
+  
     
 }
 
@@ -69,7 +70,7 @@
     font-weight: 500;
     color: #088178;
     border-color: 1px solid #cce7d0;
-    position: absolute;
+ 
     bottom: 20px;
     right: 10px;
 }

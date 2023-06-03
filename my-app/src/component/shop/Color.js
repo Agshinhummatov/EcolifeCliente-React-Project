@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Color() {
     return (
@@ -10,12 +11,10 @@ function Color() {
                 <div className='color-br'></div>
 
                 <ul className='color-name'>
-                    <li>100g<span>(1)</span></li>
-                    <li>200g<span>(1)</span></li>
-                    <li>300g<span>(1)</span></li>
-                    <li>400g<span>(1)</span></li>
-                    <li>500g<span>(1)</span></li>
-                    
+                   
+                    <li><button className='color-link'>Red<span>(1)</span></button></li>
+                    <li><button className='color-link'>Blue<span>(1)</span></button></li>
+                    <li><button className='color-link'>Black<span>(1)</span></button></li>
                 </ul>
 
                 

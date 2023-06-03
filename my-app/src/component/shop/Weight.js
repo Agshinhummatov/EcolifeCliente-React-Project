@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Weight() {
     return (
@@ -11,12 +12,12 @@ function Weight() {
                 <div className='weight-br'></div>
 
                 <ul className='weight-name'>
-                    <li>manufacturerfggfgg<span>(1)</span></li>
-                    <li>manufacturer<span>(1)</span></li>
-                    <li>manufacturer<span>(1)</span></li>
-                    <li>manufacturer<span>(1)</span></li>
-                    <li>manufacturer<span>(1)</span></li>
-                    
+
+                <li>
+                    <button className='brand-link'>100g<span>(1)</span></button></li>
+                    <li><button className='brand-link'>100g<span>(1)</span></button></li>
+                    <li><button className='brand-link'>100g<span>(1)</span></button></li>
+
                 </ul>
                 
              

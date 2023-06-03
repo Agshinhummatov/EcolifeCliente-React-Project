@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Contact() {
   return (
-    <div>
+    <>
       <div className='backgroundBlog'>
         <img src={backgroundPage} alt="" />
         <h2>Contact</h2>
@@ -13,7 +13,7 @@ function Contact() {
       </div>
       <ContactContent />
 
-    </div>
+    </>
   )
 }
 

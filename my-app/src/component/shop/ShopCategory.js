@@ -1,32 +1,36 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
-function Brand() {
+function ShopCategory() {
     return (
         <>
 
             <div className='col-3 mt-3 brand-body'>
 
-                
-                    <h2 className='text-center'>Brand</h2>
-                    <div className='brand-br'></div>
-                   
-                    <ul className='brand-name'>
+
+                <h2 className='text-center'>Category</h2>
+                <div className='category-br'></div>
+
+                <ul className='category-name'>
 
                     <li><button className='brand-link'>100g<span>(1)</span></button></li>
                     <li><button className='brand-link'>100g<span>(1)</span></button></li>
                     <li><button className='brand-link'>100g<span>(1)</span></button></li>
-                       
-                    </ul>
 
-                  
+                </ul>
+
+
 
             </div>
 
             <hr />
 
+
+
+
         </>
     )
 }
 
-export default Brand
+export default ShopCategory

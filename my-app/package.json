@@ -12,9 +12,11 @@
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
+    "react-carousel-minimal": "^1.4.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "reactstrap": "^9.1.10",
     "sass": "^1.62.1",
     "web-vitals": "^2.1.4"

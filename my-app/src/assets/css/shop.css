@@ -1,4 +1,36 @@
 
+.category-br{
+    margin-top: 30px;
+    background-color:#01574A ;
+    width: 250px;
+    height: 2px;
+    margin-bottom: 40px;
+}
+
+.category-name li{
+   list-style: none;
+   margin-top: 5px;
+}
+
+.category-name button{
+    border: none;
+    background-color: #048f7a;
+   border-radius: 10px;
+   color: white;
+   margin-top: 5px;
+   
+}
+
+
+.category-name button:hover{
+    background-color: #01574A;
+    
+}
+
+
+
+
+
 
 .brand-br{
     margin-top: 30px;
@@ -13,10 +45,21 @@
    margin-top: 5px;
 }
 
-.brand-name li:hover{
-    cursor: pointer;
-    color: #01574A;
+.brand-name button{
+    border: none;
+    background-color: #048f7a;
+   border-radius: 10px;
+   color: white;
+   margin-top: 5px;
+   
 }
+
+
+.brand-name button:hover{
+    background-color: #01574A;
+    
+}
+
  
 
 .color-br{
@@ -27,16 +70,33 @@
     margin-bottom: 40px; 
 }
 
-.color-name li{
-    list-style: none;
-    margin-top: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 
+.color-name {
+    list-style: none;
+    text-decoration: none;
+    margin-top: 5px;
+  
 }
 
-.color-name li:hover{
-    cursor: pointer;
-    color: #01574A;
+.color-name li {
+    list-style: none;
+    margin-top: 5px;
+}
+
+.color-name button{
+    border: none;
+    background-color: #048f7a;
+   border-radius: 10px;
+   color: white;
+   margin-top: 5px;
+   
+}
+
+
+
+.color-name button:hover{
+    background-color: #01574A;
+    
 }
 
 
@@ -54,9 +114,21 @@
     margin-top: 5px;
 }
 
-.weight-name li:hover{
-    cursor: pointer;
-    color: #01574A;
+
+.weight-name button{
+    border: none;
+    background-color: #048f7a;
+   border-radius: 10px;
+   color: white;
+   margin-top: 5px;
+   
+}
+
+
+
+.weight-name button:hover{
+    background-color: #01574A;
+    
 }
 
 
@@ -72,7 +144,11 @@
     font-weight: 400;
 }
 .post-widget ul li {
+    list-style: none;
     border-radius: 16px;
+    width: 60%;
+    margin-top: 10px;
+    
 }
 .post-widget ul li a {
     text-decoration: none;
@@ -90,7 +166,7 @@
 .post-widget .list {
     gap: 10px;
     margin-top: 20px;
-    display: flex;
+  
 }
 .post-widget .list li:hover {
     background-color: #01574A;
@@ -98,3 +174,91 @@
 .post-widget .list li:hover a {
     color: white;
 }
+
+
+
+
+.product-info .sale-text {
+    display: flex;
+    gap: 15px;
+}
+.product-info .sale-text .sale span {
+    font-weight: 600;
+    font-size: 18px;
+    color: #777;
+    text-decoration-line: line-through;
+}
+.product-info .sale-text .sale-info {
+    margin: -5px;
+    font-weight: 600;
+    font-size: 23px;
+    color: red;
+    padding-bottom: 20px;
+}
+.product-info .line-text {
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ddd;
+}
+.product-info .stock {
+    padding-top: 20px;
+}
+.product-info .stock h6 {
+    font-weight: 400;
+}
+.product-info .minus, .product-info .plus {
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    display: inline-block;
+    text-align: center;
+}
+.product-info *, .product-info *::before, .product-info *::after {
+    box-sizing: content-box;
+}
+.product-info input {
+    width: 48px;
+    text-align: center;
+    background-color: #fff;
+    height: 38px;
+    border: 1px solid #d9d9d9;
+    border-top: none;
+    border-bottom: none;
+}
+.product-info .number {
+    margin-bottom: 20px;
+}
+
+.product-info .gap{
+    display: flex;
+    gap: 20px;
+}
+
+.product-info .button-buy button{
+    background-color: #01574A !important;
+    color: white;
+    width: 128px;
+    height: 36px;
+    font-weight: 500;
+}
+
+.product-info .gap button:hover{
+    background-color: #048f7a !important;
+}
+
+
+.product-info .button-buy .buy-now {
+    width: 100px;
+    height: 36px;
+    font-weight: 500;
+}
+
+
+
+.nav-tabs{
+ background-color: #01574A;
+ color: #ffffff!important;
+}
+
+.nav-link {
+  color: #777!important;
+  }

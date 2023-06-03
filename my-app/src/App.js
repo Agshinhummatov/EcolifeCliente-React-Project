@@ -10,6 +10,8 @@ import Employee from './pages/Employees';
 import Blog from './pages/Blog';
 import Navbar from './component/layouts/Navbar';
 import Shop from './pages/Shop';
+import ShopDetail from './pages/ShopDetail';
+import BlogDetail from './pages/BlogDetail';
 
 
 
@@ -32,7 +34,8 @@ function App() {
           <Route path="/employee" element={<Employee />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/shop" element={<Shop />} />
-          
+          <Route path="/shopDetail" element={<ShopDetail />} />
+          <Route path="/blogDetail" element={<BlogDetail />} />
 
         </Routes>
 

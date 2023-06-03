@@ -7,7 +7,7 @@ function Banner() {
     return (
         <>
             <div className='container'>
-                <div className='row mt-5'>
+                <div className='d-flex mt-5'>
 
                     <div className='col-6 baner-info'>
 
