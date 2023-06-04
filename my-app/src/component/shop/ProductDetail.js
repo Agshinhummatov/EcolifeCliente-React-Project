@@ -2,6 +2,10 @@ import React from 'react'
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import payment from '../../assets/img/payment.png'
+import Icon from '@mdi/react';
+import { mdiStarOutline } from '@mdi/js';
+
 
 
 
@@ -14,7 +18,7 @@ function ProductDetail() {
         <div>
 
 
-            <div className='d-flex'>
+            <div className='d-flex mt-5'>
                 <div className='col-6'>
 
                 </div>
@@ -25,8 +29,15 @@ function ProductDetail() {
 
 
                         <h1>Almond Protein Superfoods</h1>
+                        <div className="star">
+                            <Icon path={mdiStarOutline} size={1} color="gold" />
+                            <Icon path={mdiStarOutline} size={1} color="gold" />
+                            <Icon path={mdiStarOutline} size={1} color="gold" />
+                            <Icon path={mdiStarOutline} size={1} color="gold" />
+                            <Icon path={mdiStarOutline} size={1} color="gold" />
+                        </div>
 
-                        <div class="sale-text">
+                        <div class="sale-text mt-3">
                             <div class="sale"><span>$160.00</span> </div>
 
                             <div class="sale-info"><span>50% Off</span></div>
@@ -70,6 +81,11 @@ function ProductDetail() {
 
                         </div>
 
+                        <div className='pro-payment mt-5'>
+                            <img src={payment} alt="" />
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -93,19 +109,19 @@ function ProductDetail() {
                         <ul className='mt-5'>
 
                             <li>
-                              <h4></h4>: Thailand
+                                <h4></h4>: Thailand
                             </li>
                             <li>
-                            Packing: 400g pack
+                                Packing: 400g pack
                             </li>
                             <li>
-                            Packing: 400g pack
+                                Packing: 400g pack
                             </li>
                             <li>
-                              Origin: Thailand
+                                Origin: Thailand
                             </li>
                             <li>
-                              Origin: Thailand
+                                Origin: Thailand
                             </li>
                         </ul>
 

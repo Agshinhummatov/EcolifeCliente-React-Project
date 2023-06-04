@@ -3,6 +3,8 @@ import backgroundPage from '../assets/img/backgroundPage.jpg'
 import ProductDetail from '../component/shop/ProductDetail'
 import { Link } from 'react-router-dom';
 import Advertising from '../component/advertising/Advertising';
+import Product from '../component/shop/Products';
+import Category from '../component/category/Category';
 
 function ShopDetail() {
     return (
@@ -19,7 +21,7 @@ function ShopDetail() {
             <div className='container'>
                 <div className='d-flex'>
 
-                   
+
                     <div className='col-12'>
 
                         <ProductDetail />
@@ -30,7 +32,26 @@ function ShopDetail() {
 
                 <div className='col-12'>
 
-                    <Advertising/>
+                    <Advertising />
+                </div>
+
+
+                <h2 className='text-center mt-5'>You Might Also Like</h2>
+                <div className='col-12'>
+
+                    <Product />
+                </div>
+
+                <h2 className='text-center mt-5'>16 Other Products In The Same Category:</h2>
+                <div className='col-12'>
+
+                    <Product />
+                </div>
+
+                <h2 className='text-center mt-5'>Shop By Categories:</h2>
+                <div className='col-12'>
+
+                    <Category />
                 </div>
 
             </div>

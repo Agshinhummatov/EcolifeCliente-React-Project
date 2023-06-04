@@ -19,48 +19,48 @@ function Benefit() {
                 <h3 className='benfit-title'> Superfood Benefits</h3>
                 <div className='row'>
 
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img className='benfit-img' src={benfitImageOne} alt="" />
                         <p className='benfit-des'>Stronger Immune System</p>
 
                     </div>
 
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img  className='benfit-img' src={benfitImageTwo} alt="" />
                         <p className='benfit-des'>Improved Digestion</p>
 
                     </div>
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img  className='benfit-img' src={benfitImageThree} alt="" />
                         <p className='benfit-des'>All Natural Detox</p>
 
                     </div>
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img   className='benfit-img'src={benfitImageFour} alt="" />
                         <p className='benfit-des'>Improved Energy Levels</p>
 
                     </div>
 
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img  className='benfit-img' src={benfitImageFive} alt="" />
                         <p className='benfit-des'>Stronger Immune System</p>
 
                     </div>
 
                     
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img  className='benfit-img' src={benfitImageSix} alt="" />
                         <p className='benfit-des'>Improved Digestion</p>
 
                     </div>
 
 
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img  className='benfit-img' src={benfitImageSeven} alt="" />
                         <p className='benfit-des'>All Natural Detox</p>
 
                     </div>
-                    <div className='col-3 benfit-info '>
+                    <div className='col-lg-3 col-md-6 col-sm-6 benfit-info '>
                         <img  className='benfit-img' src={benfitImageEight} alt="" />
                         <p className='benfit-des'>Improved Energy Levels</p>
 

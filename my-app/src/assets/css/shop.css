@@ -262,3 +262,19 @@
 .nav-link {
   color: #777!important;
   }
+
+.pro-payment {
+    padding: 20px;
+    background-color: #ddd3d342;
+    width: 92%;
+    height: 50px;
+    padding-top: 36px;
+}
+
+.nav-link.active,
+  .nav-item.show .nav-link {
+    color: white!important;
+    background-color: #91000042!important;
+    
+  }
+

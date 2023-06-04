@@ -11,7 +11,7 @@
     align-items: center;
 
     .info-border {
-        display: flex;
+        
         border: 1px solid #e5e5e5;
 
     }
@@ -28,7 +28,7 @@
 
         padding-right: none !important;
         padding-left: none !important;
-        padding-left: 15px;
+        padding-left: 45px;
 
         i {
             font-size: 30px;
@@ -51,7 +51,8 @@
 
 
 .info-bar-free {
-
+     display: flex;
+     justify-content: center;
     padding-right: 1px !important;
     padding-left: 1px !important;
 
@@ -81,6 +82,22 @@
         font-size: 30px;
         color: #ef6c00;
 
+    }
+
+
+}
+
+@media  (max-width:992px){
+    .solid-x{
+        display: none!important;
+    }
+
+
+}
+
+@media  (max-width:768px){
+    .solid-sm{
+        display: none!important;
     }
 
 

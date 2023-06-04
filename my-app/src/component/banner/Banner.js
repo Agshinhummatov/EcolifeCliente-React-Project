@@ -7,9 +7,9 @@ function Banner() {
     return (
         <>
             <div className='container'>
-                <div className='d-flex mt-5'>
+                <div className='row '>
 
-                    <div className='col-6 baner-info'>
+                    <div className='col-lg-6 col-md-12 col-sm-12 mt-5 baner-info'>
 
                           
                             <h4 className='banner-title'>Green Tea Powder</h4>
@@ -19,7 +19,7 @@ function Banner() {
                             
                     </div>
 
-                    <div className='col-6 baner-info'>
+                    <div className='col-lg-6 col-md-12 col-sm-12 mt-5 baner-info'>
                   
                         <h4 className='banner-title'>Crunchy Buckwheat
                         </h4>

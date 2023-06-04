@@ -22,6 +22,7 @@ function Home() {
    <Products/> 
    <Banner/>
    <Benefit/>
+   <h2 className='text-center mt-5'>Shop By Categories:</h2>
    <Category/>
    <BlogCart/>
 

@@ -12,7 +12,7 @@ function BlogCart() {
 
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-4 mt-5'>
+                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
                                     <div className='blog-img'>
@@ -37,7 +37,7 @@ function BlogCart() {
                             </div>
                         </div>
 
-                        <div className='col-4 mt-5'>
+                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
                                     <div className='blog-img'>
@@ -62,7 +62,7 @@ function BlogCart() {
                         </div>
 
 
-                        <div className='col-4 mt-5'>
+                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
                                     <div className='blog-img'>
@@ -88,7 +88,7 @@ function BlogCart() {
 
 
 
-                        <div className='col-4 mt-5'>
+                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
                             <div class="blog-item">
                                 <div class="blog-content">
                                     <div className='blog-img'>

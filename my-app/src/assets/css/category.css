@@ -14,3 +14,22 @@ margin-top: 5px;
     text-align: center;
 }
 
+@media  (max-width: 540px){
+
+    .category-img{
+        display: flex;
+        justify-content: center;
+        
+    }
+
+}
+
+@media  (max-width: 575px){
+
+    .category-img{
+        display: flex;
+        justify-content: center;
+        
+    }
+
+}
