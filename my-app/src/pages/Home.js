@@ -19,6 +19,8 @@ function Home() {
    <Slider/>
    <Advertising/>
    <h2 className='mt-5 text-center'>New Arrivals</h2>
+  
+  
    <Products/> 
    <Banner/>
    <Benefit/>

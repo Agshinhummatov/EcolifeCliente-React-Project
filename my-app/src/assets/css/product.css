@@ -75,3 +75,161 @@
     right: 10px;
 }
 
+
+
+
+
+
+
+.card-pr {
+    width: 100%;
+    background-color: #ffffff4d;
+    margin-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 10px;
+
+
+    position: relative;
+}
+.card-pr .imagesBx {
+    position: relative;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.card-pr .imagesBx img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.7s ease-in-out;
+}
+.card-pr .imagesBx .icon-shop {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 5%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+.card-pr .imagesBx .icon-shop .detail {
+    text-decoration: none;
+}
+.card-pr .imagesBx .icon-shop li {
+    list-style: none;
+    width: 45px;
+    height: 45px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    margin-left: 80%;
+    border-radius: 7px;
+    transition: 0.9s;
+    transition: transform 0.5s;
+    transform: translateX(70px);
+    cursor: pointer;
+}
+.card-pr .imagesBx .icon-shop li i {
+    font-size: 28px;
+    color: black;
+    transition: 0.5s;
+}
+.card-pr .imagesBx .icon-shop li span {
+    position: absolute;
+    right: 66px;
+    margin-top: 28px;
+    transform: translateY(-50%) translateX(-20px);
+    white-space: nowrap;
+    padding: 4px 6px;
+    background-color: #01574A;
+    color: #000;
+    font-weight: 200;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.5s;
+    color: white;
+}
+.card-pr .imagesBx .icon-shop li:hover {
+    transition: 0.8s;
+    background-color: #01574A;
+}
+.card-pr .imagesBx .icon-shop li:hover i {
+    transition: 0.5s;
+    color: #fff;
+}
+.card-pr .imagesBx .icon-shop li:hover span {
+    transform: translateY(-50%) translateX(0px);
+    opacity: 1;
+}
+.card-pr .imagesBx .icon-shop li:hover span ::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -4px;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    transform: rotateY(-50%) rotate(45deg);
+}
+.card-pr .productName {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+.card-pr .productName h4 {
+    font-size: 18px;
+    color: #01574A;
+}
+.card-pr .productName a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #000;
+    margin: 5px 0;
+    font-weight: 400;
+}
+.card-pr .productName a:hover {
+    color: #01574A;
+}
+.card-pr .price {
+    display: flex;
+   
+    gap: 5px;
+    justify-content: center;
+}
+.card-pr .price span {
+    font-size: 18px;
+    color: #171700;
+    font-weight: 600;
+    margin-left: 2px;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+.card-pr:hover .icon-shop li {
+    transform: translateX(0px);
+}
+
+.card-pr:hover .imagesBx img {
+    transition: 0.7s;
+    transform: scale(1.2);
+}
+
+.card-pr .imagesBx .rear-img{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease-out;
+}
+
+.card-pr:hover .imagesBx .rear-img{
+    opacity: 1;
+    z-index: 0;
+}

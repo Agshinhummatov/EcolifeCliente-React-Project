@@ -11,6 +11,7 @@ import Product from '../component/shop/Products'
 
 
 function Shop() {
+    
     return (
         <>
 
@@ -32,8 +33,11 @@ function Shop() {
                        
                        
                     </div>
-                    <div className='col-9'>
+                    <div className='col-9 product-shop'>
+                        <div className='col-12'>
                         <Products/>
+                        </div>
+                       
                     </div>
 
 

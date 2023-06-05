@@ -1,11 +1,12 @@
 import React from 'react'
 import Icon from '@mdi/react';
-import { mdiStarOutline } from '@mdi/js';
+import { mdiStarOutline, mdiShoppingOutline, mdiHeartOutline, mdiEyeOutline } from '@mdi/js';
 import '../../assets/css/product.css'
 import product1 from '../../assets/img/product1.jpg'
 import product2 from '../../assets/img/product2.jpg'
 import product3 from '../../assets/img/product3.jpg'
 import product4 from '../../assets/img/product4.jpg'
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,85 +18,251 @@ function Product(props) {
 
       <div className='container'>
 
+        <div className='row'>
+          <div className='col-lg-3 col-md-6 col-sm-6'>
+            <div class="card-pr" cart-id="1">
 
-        <section id="product1" className="section-p1">
+              <div class="imagesBx">
+                <img src={product1} alt="images" />
 
+                <img className='rear-img' src={product2} alt="images" />
+                <ul class="icon-shop">
+                  <li>
+                    <Icon path={mdiHeartOutline} size={1} />
+                    <span>Add to WishList</span>
+                  </li>
+                  <li>
+                    <Icon path={mdiShoppingOutline} size={1} />
+                    <span>Add to Cart</span>
 
-          <div className="pro-container">
-            <div className="pro">
-              <div className='product-images'>
-                <img className='product-img' src={product1} alt="" />
-              
+                  </li>
+
+                  <Link class="detail" href="product-detail.html">
+                    <li>
+                      <Icon path={mdiEyeOutline} size={1} color="black" />
+                      <span>View Details</span>
+                    </li>
+                  </Link>
+
+                </ul>
               </div>
-              <div className="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div className="star">
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                </div>
-                <h4>$78</h4>
+
+              <div class="productName">
+                <h4>Manufacturer </h4>
+                <Link href="">Almond Protein Superfoods</Link>
               </div>
-              <a href="#"><i className="ri-shopping-cart-2-line cart"></i></a>
-            </div>
-            <div className="pro">
-              <img src={product2} alt="" />
-              <div className="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div className="star">
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                </div>
-                <h4>$78</h4>
+              <div className="star text-center mt-3">
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
               </div>
-              <a href="#"><i className="ri-shopping-cart-2-line cart"></i></a>
-            </div>
-            <div className="pro">
-              <img src={product3} alt="" />
-              <div className="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div className="star">
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                </div>
-                <h4>$78</h4>
+              <div class="price text-center mt-3">
+                <span>25$</span>
+                <span><del>35$</del></span>
               </div>
-              <a href="#"><i className="ri-shopping-cart-2-line cart"></i></a>
-            </div>
-            <div className="pro">
-              <img src={product4} alt="" />
-              <div className="des">
-                <span>adidas</span>
-                <h5>Cartoon Astronaut T-Shirts</h5>
-                <div className="star">
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                  <Icon path={mdiStarOutline} size={1} color="gold" />
-                </div>
-                <h4>$78</h4>
-              </div>
-              <a href="#"><i className="ri-shopping-cart-2-line cart"></i></a>
+
             </div>
 
           </div>
-        </section>
+
+          <div className='col-lg-3 col-md-6 col-sm-6'>
+            <div class="card-pr" cart-id="1">
+
+              <div class="imagesBx">
+                <img src={product2} alt="images" />
+
+                <img className='rear-img' src={product1} alt="images" />
+                <ul class="icon-shop">
+                  <li>
+                    <Icon path={mdiHeartOutline} size={1} />
+                    <span>Add to WishList</span>
+                  </li>
+                  <li>
+                    <Icon path={mdiShoppingOutline} size={1} />
+                    <span>Add to Cart</span>
+
+                  </li>
+
+                  <Link class="detail" href="product-detail.html">
+                    <li>
+                      <Icon path={mdiEyeOutline} size={1} color="black" />
+                      <span>View Details</span>
+                    </li>
+                  </Link>
+
+                </ul>
+              </div>
+
+              <div class="productName">
+                <h4>Manufacturer </h4>
+                <Link href="">Almond Protein Superfoods</Link>
+              </div>
+              <div className="star text-center mt-3">
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+              </div>
+              <div class="price text-center mt-3">
+                <span>25$</span>
+                <span><del>35$</del></span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div className='col-lg-3 col-md-6 col-sm-6'>
+            <div class="card-pr" cart-id="1">
+
+              <div class="imagesBx">
+                <img src={product3} alt="images" />
+
+                <img className='rear-img' src={product4} alt="images" />
+                <ul class="icon-shop">
+                  <li>
+                    <Icon path={mdiHeartOutline} size={1} />
+                    <span>Add to WishList</span>
+                  </li>
+                  <li>
+                    <Icon path={mdiShoppingOutline} size={1} />
+                    <span>Add to Cart</span>
+
+                  </li>
+
+                  <Link class="detail" href="product-detail.html">
+                    <li>
+                      <Icon path={mdiEyeOutline} size={1} color="black" />
+                      <span>View Details</span>
+                    </li>
+                  </Link>
+
+                </ul>
+              </div>
+
+              <div class="productName">
+                <h4>Manufacturer </h4>
+                <Link href="">Almond Protein Superfoods</Link>
+              </div>
+              <div className="star text-center mt-3">
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+              </div>
+              <div class="price text-center mt-3">
+                <span>25$</span>
+                <span><del>35$</del></span>
+              </div>
+
+            </div>
+
+          </div>
 
 
 
+          <div className='col-lg-3 col-md-6 col-sm-6'>
+            <div class="card-pr" cart-id="1">
 
+              <div class="imagesBx">
+                <img src={product4} alt="images" />
+
+                <img className='rear-img' src={product2} alt="images" />
+                <ul class="icon-shop">
+                  <li>
+                    <Icon path={mdiHeartOutline} size={1} />
+                    <span>Add to WishList</span>
+                  </li>
+                  <li>
+                    <Icon path={mdiShoppingOutline} size={1} />
+                    <span>Add to Cart</span>
+
+                  </li>
+
+                  <Link class="detail" href="product-detail.html">
+                    <li>
+                      <Icon path={mdiEyeOutline} size={1} color="black" />
+                      <span>View Details</span>
+                    </li>
+                  </Link>
+
+                </ul>
+              </div>
+
+              <div class="productName">
+                <h4>Manufacturer </h4>
+                <Link href="">Almond Protein Superfoods</Link>
+              </div>
+              <div className="star text-center mt-3">
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+              </div>
+              <div class="price text-center mt-3">
+                <span>25$</span>
+                <span><del>35$</del></span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className='col-lg-3 col-md-6 col-sm-6'>
+            <div class="card-pr" cart-id="1">
+
+              <div class="imagesBx">
+                <img src={product4} alt="images" />
+
+                <img className='rear-img' src={product2} alt="images" />
+                <ul class="icon-shop">
+                  <li>
+                    <Icon path={mdiHeartOutline} size={1} />
+                    <span>Add to WishList</span>
+                  </li>
+                  <li>
+                    <Icon path={mdiShoppingOutline} size={1} />
+                    <span>Add to Cart</span>
+
+                  </li>
+
+                  <Link class="detail" href="product-detail.html">
+                    <li>
+                      <Icon path={mdiEyeOutline} size={1} color="black" />
+                      <span>View Details</span>
+                    </li>
+                  </Link>
+
+                </ul>
+              </div>
+
+              <div class="productName">
+                <h4>Manufacturer </h4>
+                <Link href="">Almond Protein Superfoods</Link>
+              </div>
+              <div className="star text-center mt-3">
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+                <Icon path={mdiStarOutline} size={1} color="gold" />
+              </div>
+              <div class="price text-center mt-3">
+                <span>25$</span>
+                <span><del>35$</del></span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
 
 

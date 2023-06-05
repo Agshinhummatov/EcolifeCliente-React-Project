@@ -275,6 +275,14 @@
   .nav-item.show .nav-link {
     color: white!important;
     background-color: #91000042!important;
-    
-  }
+}
 
+.product-icon{
+    display: flex;
+    justify-content: space-around;
+}
+
+.product-shop .col-lg-3 {
+    flex: 0 0 auto;
+    width: 33%!important;
+}
