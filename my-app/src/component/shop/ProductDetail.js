@@ -4,46 +4,42 @@ import Tabs from 'react-bootstrap/Tabs';
 import payment from '../../assets/img/payment.png'
 import Icon from '@mdi/react';
 import { mdiStarOutline } from '@mdi/js';
-import { Carousel } from "react-carousel-minimal";
+// import { Carousel } from "react-carousel-minimal";
 
-import product1 from '../../assets/img/product1.jpg'
-import product2 from '../../assets/img/product2.jpg'
-import product3 from '../../assets/img/product3.jpg'
-import product4 from '../../assets/img/product4.jpg'
 
 
 
 function ProductDetail() {
 
-    const data = [
-        {
-            image: product1,
+    // const data = [
+    //     {
+    //         image: product1,
 
-        },
-        {
-            image: product2,
+    //     },
+    //     {
+    //         image: product2,
 
-        },
-        {
-            image: product3,
+    //     },
+    //     {
+    //         image: product3,
 
-        },
-        {
-            image: product4,
+    //     },
+    //     {
+    //         image: product4,
 
-        }
+    //     }
 
-    ];
+    // ];
 
 
-    const captionStyle = {
-        fontSize: '2em',
-        fontWeight: 'bold',
-    }
-    const slideNumberStyle = {
-        fontSize: '20px',
-        fontWeight: 'bold',
-    }
+    // const captionStyle = {
+    //     fontSize: '2em',
+    //     fontWeight: 'bold',
+    // }
+    // const slideNumberStyle = {
+    //     fontSize: '20px',
+    //     fontWeight: 'bold',
+    // }
 
 
     return (
@@ -53,7 +49,7 @@ function ProductDetail() {
             <div className='d-flex mt-5'>
                 <div className='col-6'>
                     <div className="App">
-                        <div style={{ textAlign: "center" }}>
+                        {/* <div style={{ textAlign: "center" }}>
 
                             <div style={{
                                 padding: "0 20px"
@@ -84,7 +80,7 @@ function ProductDetail() {
                                     }}
                                 />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
