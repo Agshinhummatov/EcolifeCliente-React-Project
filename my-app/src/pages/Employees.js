@@ -53,6 +53,7 @@ function Employees() {
                 </td>
                 <td>
                   {item.address}
+                
                 </td>
                 <td>
                   <Button color="warning" outline>Detail</Button>

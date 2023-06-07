@@ -61,7 +61,7 @@ function Navbar() {
                     <div className='col-8'>
 
                         <ul id="navbar">
-                            <li><Link to="/" class="active" >Home</Link></li>
+                            <li><Link to="/"  >Home</Link></li>
                             <li><Link to="/shop" >Shop</Link></li>
                             <li><Link to="/blog">Blog</Link></li>
                             <li><Link to="/about">About</Link></li>

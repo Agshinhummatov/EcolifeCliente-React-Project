@@ -7,12 +7,13 @@ import Color from '../component/shop/Color'
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import { Link } from 'react-router-dom';
 import ShopCategory from '../component/shop/ShopCategory'
-import Product from '../component/shop/Products'
+
 
 
 function Shop() {
     
     return (
+
         <>
 
 
@@ -30,7 +31,7 @@ function Shop() {
                         <Brand />
                         <Weight />
                         <Color />
-                       
+                        
                        
                     </div>
                     <div className='col-9 product-shop'>
@@ -43,6 +44,7 @@ function Shop() {
 
                 </div>
             </div>
+
         </>
     )
 }

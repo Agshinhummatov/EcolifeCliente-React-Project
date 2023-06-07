@@ -6,12 +6,14 @@ import Advertising from '../component/advertising/Advertising';
 import Product from '../component/shop/Products';
 import Category from '../component/category/Category';
 
+
 function ShopDetail() {
     return (
         <>
 
             <div className='backgroundBlog'>
                 <img src={backgroundPage} alt="" />
+                
                 <h2>Shop Detail</h2>
                 <h6><Link to='/' href="">Home </Link> /Shop detail</h6>
             </div>
@@ -22,8 +24,10 @@ function ShopDetail() {
                 <div className='d-flex'>
 
 
-                    <div className='col-12'>
 
+                    <div className='col-12'>
+                        
+                       
                         <ProductDetail />
 
                     </div>

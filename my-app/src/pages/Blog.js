@@ -4,13 +4,14 @@ import BlogRecent from '../component/blog/BlogRecent'
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import "../assets/css/blog.css"
 import { Link } from 'react-router-dom';
+import Player from '../component/blog/Player'
 
 
 
 function Blog() {
     return (
         <div>
-            
+
 
             <div className='backgroundBlog'>
                 <img src={backgroundPage} alt="" />
@@ -20,22 +21,24 @@ function Blog() {
 
             <div className='container'>
 
-               
 
-                   <div className='d-flex'>
 
-                   <BlogCart />
-                   <div className='col-2 right'>
-                   <BlogRecent/>
-                   </div>
-                  
-                   </div>
+                <div className='d-flex'>
 
-                  
+                    <BlogCart />
+                    <div className='col-2 right'>
+                        <BlogRecent />
+                    </div>
 
+                </div>
                 
+
+
+
+
             </div>
-           
+
+            <div><Player/></div>
 
         </div>
     )
