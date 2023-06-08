@@ -25,7 +25,7 @@ function Navbar() {
                 <section id="header">
 
                     <div className='col-2 d-lg-none hamburger-menu'>
-
+                         
                         <Icon className='hamburger-menu-icon' path={mdiMenu} onClick={handleShow} size={1.5} color="white" />
 
                         <Offcanvas show={show} onHide={handleClose}>

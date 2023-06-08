@@ -10,9 +10,9 @@ function Footer() {
     <>
 
 
-      <footer class="text-center text-lg-start bg-black text-muted mt-5">
+      <footer className="text-center text-lg-start bg-black text-muted mt-5">
 
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 ">
+        <section className="d-flex justify-content-center justify-content-lg-between p-4 ">
 
 
 
@@ -24,35 +24,35 @@ function Footer() {
 
 
 
-        <section class="">
-          <div class="container text-center text-md-start mt-5">
+        <section className="">
+          <div className="container text-center text-md-start mt-5">
 
-            <div class="row mt-3">
-
-
+            <div className="row mt-3">
 
 
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                <h6 class="text-uppercase fw-bold mb-4">
+
+              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <h6 className="text-uppercase fw-bold mb-4">
                   Məlumat
                 </h6>
                 <p>
-                  <a class="text-reset ">Kampaniyalar</a>
+                  <a className="text-reset ">Kampaniyalar</a>
                 </p>
                 <p>
-                  <a href="#!" class="text-reset">Müştəri kartı</a>
+                  <a href="#!" className="text-reset">Müştəri kartı</a>
                 </p>
                 <p>
-                  <a href="#!" class="text-reset">Brendlər</a>
+                  <a href="#!" className="text-reset">Brendlər</a>
                 </p>
                 <p>
-                  <a href="#!" class="text-reset">Bloq</a>
+                  <a href="#!" className="text-reset">Bloq</a>
                 </p>
 
 
                 <p className='mt-5'>
-                  <a href="#!" class="text-reset">Ödəniş:</a>
+                  <a href="#!" className="text-reset">Ödəniş:</a>
 
                 </p>
                 <Icon path={mdiCashSync} size={2} />
@@ -61,30 +61,30 @@ function Footer() {
 
 
 
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                <h6 class="text-uppercase fw-bold mb-4">
+                <h6 className="text-uppercase fw-bold mb-4">
                   Şirkət
                 </h6>
 
                 <p>
-                  <a href="#!" class="text-reset ">Şirkət haqqında</a>
+                  <a href="#!" className="text-reset ">Şirkət haqqında</a>
                 </p>
                 <p>
-                  <a href="#!" class="text-reset">Mağazalar</a>
+                  <a href="#!" className="text-reset">Mağazalar</a>
                 </p>
                 <p>
-                  <a href="https://www.bakuelectronics.az/careers.html" class="text-reset">Vakansiyalar</a>
+                  <a href="https://www.bakuelectronics.az/careers.html" className="text-reset">Vakansiyalar</a>
 
                 </p>
 
                 <p>
-                  <a href="https://www.bakuelectronics.az/corporate-sales.html" class="text-reset">Korporativ satışlar</a>
+                  <a href="https://www.bakuelectronics.az/corporate-sales.html" className="text-reset">Korporativ satışlar</a>
 
                 </p>
 
                 <p>
-                  <a href="https://www.bakuelectronics.az/corporate-sales.html" class="text-reset">Bizə qoşulun:</a>
+                  <a href="https://www.bakuelectronics.az/corporate-sales.html" className="text-reset">Bizə qoşulun:</a>
 
                 </p>
                 <Icon path={mdiFacebook} size={1.5} color="blue" />
@@ -97,9 +97,9 @@ function Footer() {
 
 
 
-              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                <h6 class="text-uppercase fw-bold mb-4">Alıcılara</h6>
+                <h6 className="text-uppercase fw-bold mb-4">Alıcılara</h6>
                 <p>Çatdırılma və ödəniş</p>
                 <p>
 
@@ -114,17 +114,17 @@ function Footer() {
 
 
 
-              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                <h4 class="text-white fw-bold mb-4">Məlumat mərkəzi</h4>
-                <h6 class="text-white fw-bold mb-4">9:00 - 20:00 (hər gün)</h6>
+                <h4 className="text-white fw-bold mb-4">Məlumat mərkəzi</h4>
+                <h6 className="text-white fw-bold mb-4">9:00 - 20:00 (hər gün)</h6>
                 <p>
 
                   <Icon path={mdiPhone} size={1.5} /><b>143</b>
                 </p>
-                <h6 class="text-white fw-bold mb-4">info@bakuelectronics.az</h6>
-                <h6 class="text-white fw-bold mb-4">Saytın hazırlanması</h6>
-                <h5 class="text-white fw-bold mb-4">Турум-бурум</h5>
+                <h6 className="text-white fw-bold mb-4">info@bakuelectronics.az</h6>
+                <h6 className="text-white fw-bold mb-4">Saytın hazırlanması</h6>
+                <h5 className="text-white fw-bold mb-4">Турум-бурум</h5>
 
 
               </div>

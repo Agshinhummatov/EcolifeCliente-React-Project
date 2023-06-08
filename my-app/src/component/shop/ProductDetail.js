@@ -85,9 +85,9 @@ function ProductDetail() {
 
                 </div>
 
-                <div class="col-6">
+                <div className="col-6">
 
-                    <div class="product-info">
+                    <div className="product-info">
 
 
                         <h1>Almond Protein Superfoods</h1>
@@ -99,17 +99,17 @@ function ProductDetail() {
                             <Icon path={mdiStarOutline} size={1} color="gold" />
                         </div>
 
-                        <div class="sale-text mt-3">
-                            <div class="sale"><span>$160.00</span> </div>
+                        <div className="sale-text mt-3">
+                            <div className="sale"><span>$160.00</span> </div>
 
-                            <div class="sale-info"><span>50% Off</span></div>
+                            <div className="sale-info"><span>50% Off</span></div>
 
                         </div>
 
 
 
                         <h3>$175.00</h3>
-                        <div class="line-text">
+                        <div className="line-text">
 
                             <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                 Ipsum
@@ -121,25 +121,25 @@ function ProductDetail() {
 
 
 
-                        <div class="stock">
+                        <div className="stock">
 
                             <h6>Avalibility: In Stock</h6>
                             <h6>Quantity</h6>
                         </div>
 
 
-                        <div class="number">
-                            <span class="minus">-</span>
+                        <div className="number">
+                            <span className="minus">-</span>
                             <input type="text" value="1" />
-                            <span class="plus">+</span>
+                            <span className="plus">+</span>
                         </div>
 
 
-                        <div class="button-buy gap">
+                        <div className="button-buy gap">
 
-                            <button type="button" class="btn ">ADD TO CARD</button>
+                            <button type="button" className="btn ">ADD TO CARD</button>
 
-                            <button type="button" class="btn  buy-now">BUY NOW</button>
+                            <button type="button" className="btn  buy-now">BUY NOW</button>
 
                         </div>
 

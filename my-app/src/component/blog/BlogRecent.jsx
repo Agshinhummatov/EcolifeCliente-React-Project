@@ -11,40 +11,40 @@ function BlogRecent() {
     return (
 
         <div>
-            <div class="col-lg-12 col-md-4 col-sm-12 mt-5">
+            <div className="col-lg-12 col-md-4 col-sm-12 mt-5">
 
 
 
-                <div class="recent-post">
+                <div className="recent-post">
                     <h3>Recent Post</h3>
 
-                    <div class="recent-card">
-                        <div class="img-name">
+                    <div className="recent-card">
+                        <div className="img-name">
                             <img src={blogImageOne} alt="" />
-                            <div class="name-blog">
+                            <div className="name-blog">
                                 <h6>From life was you fish...</h6>
                                 <p>January 12, 2021</p>
                             </div>
                         </div>
 
-                        <div class="img-name">
+                        <div className="img-name">
                             <img src={blogImageThree} alt="" />
-                            <div class="name-blog">
+                            <div className="name-blog">
                                 <h6>The Amazing Hubble</h6>
                                 <p>January 12, 2021</p>
                             </div>
                         </div>
 
-                        <div class="img-name">
+                        <div className="img-name">
                             <img src={blogImageTwo} alt="" />
-                            <div class="name-blog">
+                            <div className="name-blog">
                                 <h6>Astronomy Or Astrology</h6>
                                 <p>January 12, 2021</p>
                             </div>
                         </div>
-                        <div class="img-name">
+                        <div className="img-name">
                             <img src="./assets/img/blog/post_4.png.webp" alt="" />
-                            <div class="name-blog">
+                            <div className="name-blog">
                                 <h6>Asteroids telescope.</h6>
                                 <p>January 12, 2021</p>
                             </div>

@@ -13,20 +13,20 @@ function BlogCart() {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div class="blog-item">
-                                <div class="blog-content">
+                            <div className="blog-item">
+                                <div className="blog-content">
                                     <div className='blog-img'>
 
                                         <img src={blogImageOne} alt="" />
 
                                     </div>
-                                    <h2 class="blog-title">
+                                    <h2 className="blog-title">
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
-                                    <div class="blog-meta">
+                                    <div className="blog-meta">
                                         <p>11/06/2023</p>
                                     </div>
-                                    <p class="blog-desc ">
+                                    <p className="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
                                         sed do eiusmod tempor incidio ut labore et dolore
                                         magna aliqua.
@@ -38,20 +38,20 @@ function BlogCart() {
                         </div>
 
                         <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div class="blog-item">
-                                <div class="blog-content">
+                            <div className="blog-item">
+                                <div className="blog-content">
                                     <div className='blog-img'>
 
                                        <Link to="/"><img src={blogImageTwo} alt="" /></Link> 
 
                                     </div>
-                                    <h2 class="blog-title">
+                                    <h2 className="blog-title">
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
-                                    <div class="blog-meta">
+                                    <div className="blog-meta">
                                         <p>11/06/2023</p>
                                     </div>
-                                    <p class="blog-desc ">
+                                    <p className="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
                                         sed do eiusmod tempor incidio ut labore et dolore
                                         magna aliqua.
@@ -63,20 +63,20 @@ function BlogCart() {
 
 
                         <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div class="blog-item">
-                                <div class="blog-content">
+                            <div className="blog-item">
+                                <div className="blog-content">
                                     <div className='blog-img'>
 
                                         <img src={blogImageTwo} alt="" />
 
                                     </div>
-                                    <h2 class="blog-title">
+                                    <h2 className="blog-title">
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
-                                    <div class="blog-meta">
+                                    <div className="blog-meta">
                                         <p>11/06/2023</p>
                                     </div>
-                                    <p class="blog-desc ">
+                                    <p className="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
                                         sed do eiusmod tempor incidio ut labore et dolore
                                         magna aliqua.
@@ -89,20 +89,20 @@ function BlogCart() {
 
 
                         <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div class="blog-item">
-                                <div class="blog-content">
+                            <div className="blog-item">
+                                <div className="blog-content">
                                     <div className='blog-img'>
 
                                         <img src={blogImageTwo} alt="" />
 
                                     </div>
-                                    <h2 class="blog-title">
+                                    <h2 className="blog-title">
                                         <a href="blog.html">The Moment You Need To Remove Garlic </a>
                                     </h2>
-                                    <div class="blog-meta">
+                                    <div className="blog-meta">
                                         <p>11/06/2023</p>
                                     </div>
-                                    <p class="blog-desc ">
+                                    <p className="blog-desc ">
                                         Lorem ipsum dolor sit amet, consecteturl adipisl elit,
                                         sed do eiusmod tempor incidio ut labore et dolore
                                         magna aliqua.

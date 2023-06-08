@@ -15,6 +15,8 @@ function Banner() {
             setBanner(response.data)
         })
     }, [])
+    
+    
 
 
     return (
