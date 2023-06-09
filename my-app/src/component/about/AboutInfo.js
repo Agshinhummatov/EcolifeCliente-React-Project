@@ -24,7 +24,7 @@ function AboutInfo() {
         <>
             <div className='container'>
                
-                {about ? about.map((item, i) => {
+                {about.map((item, i) => (
 
                     <div className='about-info' fade key={i}>
 
@@ -39,11 +39,9 @@ function AboutInfo() {
 
 
 
-                            <h3>{item.title}About Our Online Store</h3>
+                            <h3>{item.title}</h3>
 
-                            <p>{item.description}Our mission is to provide the best & safest products we can get and also products which are in harmony with nature. Nature has been enriched with amazing things.
-                                A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
-                                I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</p>
+                            <p>{item.description}</p>
 
                             <div className='d-flex '>
                                 <Icon path={mdiFacebook} size={1} />
@@ -56,7 +54,7 @@ function AboutInfo() {
                         </div>
 
                     </div>
-                }) : "" }
+                )) }
                 
             </div>
 
