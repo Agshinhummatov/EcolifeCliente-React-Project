@@ -1,0 +1,56 @@
+#clipboard {
+    position: relative;
+
+    .clipboard_background {
+        background-image: url(https://2022.code.edu.az/wp-content/uploads/2021/09/code-academy-bg.jpeg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 340px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .clipboard_text {
+            .clipboard_text_h2 {
+                color: white;
+                z-index: 5;
+            }
+
+            .counts {
+                display: flex;
+                justify-content: space-around;
+                z-index: 5;
+
+                span {
+                    color: white;
+                    font-size: 70px;
+                    font-weight: 800;
+                    text-transform: lowercase;
+                    line-height: 70px;
+                    letter-spacing: -1.2px;
+                }
+
+                p {
+                    color: white;
+                    font-size: 35px;
+                    font-weight: 300;
+                    text-transform: lowercase;
+                    line-height: .8em;
+                    letter-spacing: -1.5px;
+                }
+            }
+        }
+    }
+
+    .background-overlay {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: #000;
+        opacity: .5;
+
+    }
+}

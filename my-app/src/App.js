@@ -12,12 +12,14 @@ import Navbar from './component/layouts/Navbar';
 import Shop from './pages/Shop';
 import ShopDetail from './pages/ShopDetail';
 import BlogDetail from './pages/BlogDetail';
+import Login from './pages/Login';
 
 
 
 
 
 function App() {
+  
 
   return (
 
@@ -36,7 +38,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/shopDetail" element={<ShopDetail />} />
           <Route path="/blogDetail" element={<BlogDetail />} />
-
+          <Route path="/login" element={<Login />} />
         </Routes>
 
         <Footer />

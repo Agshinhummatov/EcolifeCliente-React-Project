@@ -1,5 +1,5 @@
-import React  from 'react'
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import Products from '../component/shop/Products'
 import Advertising from '../component/advertising/Advertising';
@@ -10,6 +10,28 @@ import Category from '../component/category/Category';
 import BlogCart from '../component/blog/BlogCart';
 
 function Home() {
+
+
+  const url = "https://localhost:7012";
+
+  const [basketcount, setbasketcount] = useState(0);
+
+  let token = JSON.parse(localStorage.getItem("token"));
+
+  const config = {
+    
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  async function getbasketcount() {
+    await axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+      setbasketcount(res.data);
+    });
+  }
+
+  useEffect(() => {
+    getbasketcount();
+  }, []);
  
   return (
    <>
@@ -21,7 +43,7 @@ function Home() {
    <h2 className='mt-5 text-center'>New Arrivals</h2>
   
   
-   <Products/> 
+   <Products setbasketcount={setbasketcount}/> 
    <Banner/>
    <Benefit/>
    <h2 className='text-center mt-5'>Shop By Categories:</h2>
