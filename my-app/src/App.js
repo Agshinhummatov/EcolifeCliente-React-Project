@@ -13,6 +13,7 @@ import Shop from './pages/Shop';
 import ShopDetail from './pages/ShopDetail';
 import BlogDetail from './pages/BlogDetail';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/shopDetail" element={<ShopDetail />} />
           <Route path="/blogDetail" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
 
         <Footer />

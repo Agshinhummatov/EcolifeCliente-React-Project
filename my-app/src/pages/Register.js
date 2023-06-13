@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import "../assets/css/Register/register.css"
+import "../assets/css/register.css";
 
 function Register() {
 
@@ -21,7 +21,7 @@ function Register() {
     e.preventDefault();
     await axios
       .post(
-        `${url}/api/Account/Register`,
+        `${url}/api/Account/SignUp`,
         {
           email: mail,
           password: password,
@@ -49,7 +49,7 @@ function Register() {
             timer: 1500,
           });
           console.log(response);
-          navigate("/");
+          navigate("/login");
         }      
       
        

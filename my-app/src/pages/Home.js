@@ -24,10 +24,11 @@ function Home() {
   };
 
   async function getbasketcount() {
+    if(token){
     await axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
       setbasketcount(res.data);
     });
-  }
+  }}
 
   useEffect(() => {
     getbasketcount();

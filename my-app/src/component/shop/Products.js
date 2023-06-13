@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router";
 import ReactPaginate from "react-paginate";
 import Swal from "sweetalert2";
 import "swiper/css";
@@ -22,15 +23,17 @@ function Product(props) {
   const url = "https://localhost:7012";
 
   const ref = useRef(null);
-  
+   const[token,setToken]=React.useState();
   //Get token of current user send backend by request header
-  let token = JSON.parse(localStorage.getItem("token"));
 
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  const navigate = useNavigate();
+  
+ 
+ 
+
 
   const [products, setProducts] = useState([]);
+  const[config,setConfig]=React.useState([]);
 
   //paginate items start
   const [currentItems, setCurrentItems] = useState([]);
@@ -40,9 +43,21 @@ function Product(props) {
   const itemsPerPage = 4;
 
   useEffect(() => {
+    setToken(JSON.parse(localStorage.getItem("token")));
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(products.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(products.length / itemsPerPage));
+    if(token){
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      setConfig(config);
+    }
+    else{
+      const config=null;
+      setConfig(config);
+    }
+
   }, [itemOffset, itemsPerPage, products]);
 
   const handlePageClick = (event) => {
@@ -88,7 +103,8 @@ function Product(props) {
 
   //Add products to basket method
   async function AddBasket(id) {
-    await axios
+    if(config!=null){
+      await axios
       .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
       .then((res) => {
         if (res.data.status === "success" || res.status === 200) {
@@ -101,19 +117,11 @@ function Product(props) {
           });
         }
       })
-      .catch((err) => {
-        if (err.response.status === 401 || err.response.data.status === 401) {
-          Reject.fire({
-            icon: "error",
-            title: "You need to login first to add products to basket",
-          });
-        } else {
-          Reject.fire({
-            icon: "error",
-            title: "Something went wrong!",
-          });
-        }
-      });
+      
+    }else{ navigate("/login");}
+   
+    
+      
     ref.current?.scrollIntoView();
   }
 
@@ -158,7 +166,7 @@ function Product(props) {
                   </div>
 
                   <div className="productName">
-                    <h4>Manufacturer </h4>
+                    <h4>{product.categoryName} </h4>
                     <Link href="">{product.name}</Link>
                   </div>
                   <div className="star text-center mt-3">

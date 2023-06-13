@@ -25,7 +25,7 @@ function Navbar() {
                 <section id="header">
 
                     <div className='col-2 d-lg-none hamburger-menu'>
-                         
+
                         <Icon className='hamburger-menu-icon' path={mdiMenu} onClick={handleShow} size={1.5} color="white" />
 
                         <Offcanvas show={show} onHide={handleClose}>
@@ -35,7 +35,7 @@ function Navbar() {
                             <Offcanvas.Body>
                                 <ul id="navbar-hamburger" >
                                     <input type="text" placeholder='search' className='search-input' />
-                                    <Icon path={mdiMagnify} size={1.3} color="red"  />
+                                    <Icon path={mdiMagnify} size={1.3} color="red" />
                                     <li className='mt-3'><Link to="/" class="active" >Home</Link></li>
                                     <li><Link to="/shop" >Shop</Link></li>
                                     <li><Link to="/blog">Blog</Link></li>
@@ -48,12 +48,12 @@ function Navbar() {
                     </div>
 
 
-                   
+
                     <div className='col-1  logo-eco'>
 
 
                         <Link to="/"><img className='logo-img' src={logo} class="logo" alt="" /></Link>
-                    </div> 
+                    </div>
                     <div className='col-2  d-flex search-input'>
                         <input type="text" placeholder='search' />
                         <Icon path={mdiMagnify} size={1.5} color="white" className="serach-icon" />
@@ -68,6 +68,25 @@ function Navbar() {
                             <li><Link to="/contact" >Contact</Link></li>
                             <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                            <div class="menu-wrap">
+                                <ul class="menu">
+                                    <li class="menu-item">
+                                        <a href="#"> <Icon path={mdiAccount} size={1} className='icon' color="white" /></a>
+                                        <ul class="drop-menu">
+                                            <li class="drop-menu-item">
+                                                <a href="#">Login</a>
+                                            </li>
+                                            <li class="drop-menu-item">
+                                                <a href="#">Register</a>
+                                            </li>
+                                            <li class="drop-menu-item">
+                                                <a href="#">Logout</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
                             <Icon path={mdiAccount} size={1} className='icon' color="white" />
                             <Icon path={mdiHeartOutline} size={1} className='icon' color="white" />
                             <Icon path={mdiBasketOutline} size={1} className='icon' color="white" />
