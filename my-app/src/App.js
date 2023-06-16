@@ -41,6 +41,7 @@ function App() {
           <Route path="/blogDetail" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          
         </Routes>
 
         <Footer />

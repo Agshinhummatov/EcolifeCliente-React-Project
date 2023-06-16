@@ -138,12 +138,13 @@ function Product(props) {
                 <div className="card-pr" cart-id="1">
 
                   <div className="imagesBx">
-                    <img
+                    {/* <img
                       src={`data:image/jpeg;base64,${product.image}`}
                       alt=""
-                    />
-
+                    /> */}
+                    <img src={product2} alt="" />
                     <img className='rear-img' src={product2} alt="images" />
+                   
                     <ul className="icon-shop">
                       <li>
                         <Icon path={mdiHeartOutline} size={1} />

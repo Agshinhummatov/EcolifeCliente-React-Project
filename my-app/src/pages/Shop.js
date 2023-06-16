@@ -18,6 +18,8 @@ function Shop() {
 
   const [basketcount, setbasketcount] = useState(0);
 
+ 
+
   let token = JSON.parse(localStorage.getItem("token"));
 
   const config = {
@@ -31,6 +33,9 @@ function Shop() {
       setbasketcount(res.data);
     });
   }}
+
+
+
 
   useEffect(() => {
     getbasketcount();

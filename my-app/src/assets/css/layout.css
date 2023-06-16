@@ -451,3 +451,138 @@
     display: block;
     z-index: 5;
 }
+
+
+
+
+
+
+
+
+
+.basket {
+    cursor: pointer;
+}
+.basket i {
+    font-size: 25px;
+    color: wheat;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+.basket i:hover {
+    color: #c05850;
+    transition: 0.5s;
+}
+.basket i sup {
+    padding: 4px 6px;
+    color: #505668;
+    background: wheat;
+    border-radius: 50%;
+    font-size: small;
+    top: -20px;
+    right: 5px;
+    transition: 0.5s;
+}
+.basket i sup:hover {
+    background: #c05850;
+    transition: 0.5s;
+}
+.heart {
+    cursor: pointer;
+}
+.heart i {
+    font-size: 25px;
+    color: wheat;
+    margin-top: 10px;
+    margin-left: 10px;
+    transition: 0.5s;
+}
+.heart i:hover {
+    color: #c05850;
+    transition: 0.5s;
+}
+.heart i sup {
+    padding: 4px 5px;
+    color: #505668;
+    background: wheat;
+    border-radius: 50%;
+    font-size: small;
+    top: -20px;
+    right: 5px;
+    transition: 0.5s;
+}
+.heart i sup:hover {
+    background: #c05850;
+    transition: 0.5s;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.dropdown .drop-content {
+    width: 114px !important;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown .dropbtn {
+    width: 26px;
+    color: #ffffff;
+    font-size: 15px;
+    height: 37px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding-top: 7px;
+    /* border: 1px solid wheat; */
+    
+}
+.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 100px;
+    border-radius: 3px;
+    z-index: 2;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.dropdown .dropdown-content a {
+    padding-top: 5px;
+    height: 36px;
+    /* width: 20px; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: #505668;
+    /* padding: 10px 38px; */
+    border-radius: 5px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+.dropdown .dropdown-content a:hover {
+    background-color: #505668;
+    color: wheat;
+    font-size: 17px;
+}
+
+.dropdown a{
+    text-decoration: none;
+}
+
+
+
+
+.dropdown .dropdown-content .user-name{
+     color: gold;
+     
+    font-size: 15px;
+    background-color: #505668;
+    text-align: center;
+    height: 10%;
+
+}
+

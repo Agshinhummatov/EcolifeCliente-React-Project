@@ -1,21 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import logo from '../../assets/img/logo.jpg'
 import '../../assets/css/layout.css'
 import Icon from '@mdi/react';
 import { mdiAccount, mdiHeartOutline, mdiBasketOutline, mdiMagnify, mdiMenu } from '@mdi/js';
-import { Link } from 'react-router-dom';
 
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 
 
-function Navbar() {
+function Navbar(props) {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const navigate = useNavigate();
+
+  
+
+    //Get currents users name from token
+    let currentToken = localStorage.getItem("token");
+    let currentUser;
+    if (currentToken != null) {
+        function parseJwt(token) {
+            var base64Url = token.split(".")[1];
+            var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+            var jsonPayload = decodeURIComponent(
+                atob(base64)
+                    .split("")
+                    .map(function (c) {
+                        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+                    })
+                    .join("")
+            );
+            return JSON.parse(jsonPayload);
+        }
+        currentUser =
+            parseJwt(currentToken)[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+            ];
+    }
+
+    //Logout function
+    function handleLogout() {
+        localStorage.removeItem("token");
+        sessionStorage.setItem(
+            "sweetAlertMessage",
+            "You signed out"
+        );
+        window.location.reload();
+    }
+
+    if (sessionStorage.getItem("sweetAlertMessage")) {
+        Swal.fire({
+            text: sessionStorage.getItem("sweetAlertMessage"),
+            icon: "success",
+            timer: 2000,
+        });
+        sessionStorage.removeItem("sweetAlertMessage");
+    }
 
 
     return (
@@ -68,10 +115,12 @@ function Navbar() {
                             <li><Link to="/contact" >Contact</Link></li>
                             <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-                            <div class="menu-wrap">
+
+                            {/* <div class="menu-wrap">
                                 <ul class="menu">
-                                    <li class="menu-item">
+                                    <li class="menu-item ">
                                         <a href="#"> <Icon path={mdiAccount} size={1} className='icon' color="white" /></a>
+
                                         <ul class="drop-menu">
                                             <li class="drop-menu-item">
                                                 <a href="#">Login</a>
@@ -85,17 +134,72 @@ function Navbar() {
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
 
-                            <Icon path={mdiAccount} size={1} className='icon' color="white" />
-                            <Icon path={mdiHeartOutline} size={1} className='icon' color="white" />
-                            <Icon path={mdiBasketOutline} size={1} className='icon' color="white" />
+
+                            </div>
+                            
+                            <Icon path={mdiHeartOutline} size={1} className='icon icon2' color="white" />
+                            <Icon path={mdiBasketOutline} size={1} className='icon icon2' color="white" /> */}
+
+
+                            <div className="dropdown">
+                                <a href="">
+                                    <div className="dropbtn">
+                                    <Icon path={mdiAccount} size={1} className='icon' color="white" />
+                                    </div>
+                                </a>
+                                <div className="dropdown-content drop-content">
+                                    <div className="user-name">
+                                    {" "}
+                                    {currentToken ? currentUser : ""} 
+                                    </div>
+                                   
+                                    {currentToken != null ? (
+
+                                        <a onClick={handleLogout} href="#">
+                                            Logout
+                                        </a>
+
+                                    ) : (
+
+                                        <Link to="/login">Login</Link>
+
+                                    )}
+
+
+                                    {currentToken != null ? (
+                                        ""
+                                    ) : (
+
+                                        <Link to="/register">Register</Link>
+
+                                    )}
+
+
+
+
+                                </div>
+                            </div>
+                            <div className="basket">
+                                <Link to={"/basket"}>
+                                    <Icon path={mdiBasketOutline} size={1} className='icon icon2' color="white" />
+                                    <sup>{props.basketcount}0</sup>
+
+                                </Link>
+                            </div>
+                            <div className="heart">
+                                <a href="heart.html">
+                                    <Icon path={mdiHeartOutline} size={1} className='icon icon2' color="white" />
+                                    <sup>0</sup>
+
+                                </a>
+                            </div>
                         </ul>
+
+
+
                     </div>
-                    <div id="mobile">
-                        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
-                        <i id="bar" class="fas fa-outdent"></i>
-                    </div>
+
 
 
 
@@ -107,6 +211,9 @@ function Navbar() {
 
 
             </header>
+
+
+
 
         </>
     )
