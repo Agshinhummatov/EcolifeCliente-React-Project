@@ -1,0 +1,74 @@
+#header-area {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  #header-area .head {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #header-area .head h1 {
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    letter-spacing: 8px;
+  }
+  
+  #table-area .my-btn {
+    background: #505668;
+    color: wheat;
+  }
+  #table-area .table .delete-icon,
+  #table-area .table .add-basket {
+    cursor: pointer;
+    color: wheat;
+    padding: 20px;
+    background: #505668;
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+  #table-area .table .delete-icon:hover,
+  #table-area .table .add-basket:hover {
+    background: black;
+    color: #c05850;
+    transition: 0.5s;
+  }
+  #table-area .table .table-color {
+    background: #505668;
+    color: wheat;
+  }
+  #table-area .table tr {
+    text-align: center;
+  }
+  #table-area .table tr th,
+  #table-area .table tr td {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  #table-area .table tr th button *,
+  #table-area .table tr td button * {
+    pointer-events: none;
+  }
+  #table-area .total-price {
+    width: 50%;
+    padding: 20px;
+    background-color: #505668;
+    border-radius: 3px;
+    margin-left: 12px;
+  }
+  #table-area .total-price h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: wheat;
+  }
+  #table-area .total-price p {
+    display: inline;
+    color: wheat;
+    font-size: 19px;
+    margin-right: 20px;
+  }
+  #table-area .total-price span {
+    color: wheat;
+  }

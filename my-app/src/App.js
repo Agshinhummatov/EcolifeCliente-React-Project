@@ -14,12 +14,15 @@ import ShopDetail from './pages/ShopDetail';
 import BlogDetail from './pages/BlogDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import BasketDetail from './pages/BasketDetail';
 
 
 
 
 
 function App() {
+  
+
   
 
   return (
@@ -41,6 +44,7 @@ function App() {
           <Route path="/blogDetail" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/basketDetail" element={<BasketDetail />} />
           
         </Routes>
 
