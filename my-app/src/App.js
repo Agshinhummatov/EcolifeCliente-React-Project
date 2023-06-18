@@ -8,7 +8,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Employee from './pages/Employees';
 import Blog from './pages/Blog';
-import Navbar from './component/layouts/Navbar';
+// import Navbar from './component/layouts/Navbar';
 import Shop from './pages/Shop';
 import ShopDetail from './pages/ShopDetail';
 import BlogDetail from './pages/BlogDetail';
@@ -31,7 +31,7 @@ function App() {
 
 
       <div className='app'>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
 
           <Route path="/" element={<Home />} />
@@ -40,7 +40,7 @@ function App() {
           <Route path="/employee" element={<Employee />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/shopDetail" element={<ShopDetail />} />
+          <Route path="/productDetail/:id" element={<ShopDetail />} />
           <Route path="/blogDetail" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

@@ -184,14 +184,14 @@ function BasketProducts(props) {
                             />
                           </td>
                           <td>{basket.product.name}</td>
-                          <td> <Icon path={mdiMinus} style={{cursor:'pointer'}}  size={1} onClick={() => DeleteItemBasket(basket.product.id)} /> {basket.quantity} <Icon path={mdiPlus} size={1} onClick={() => AddBasket(basket.product.id)}  /> </td>
+                          <td> <Icon path={mdiMinus} style={{cursor:'pointer'}}  size={1} onClick={() => DeleteItemBasket(basket.product.id)} /> {basket.quantity} <Icon path={mdiPlus} size={1} onClick={() => AddBasket(basket.product.id)} style={{cursor:'pointer'}}   /> </td>
                           <td>{(basket.product.price).toFixed(2)} $</td>
                           <td>{(basket.product.price * basket.quantity).toFixed(2)} $</td>
                           <td  style={{ display :"none" }} >
                           {(total += basket.product.price * basket.quantity )}
                           </td>
                           <td>
-                          <Icon path={mdiDelete} size={1}  onClick={() => DeleteBasket(basket.product.id)}/>
+                          <Icon path={mdiDelete} size={1}  onClick={() => DeleteBasket(basket.product.id)}  style={{cursor:'pointer'}}  />
                             {/* <i
                               className="fa fa-trash-o delete-icon"
                               onClick={() => DeleteBasket(basket.product.id)}

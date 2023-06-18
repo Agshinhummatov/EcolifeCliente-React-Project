@@ -1,15 +1,90 @@
-import React from 'react'
+import React from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import payment from '../../assets/img/payment.png'
 import Icon from '@mdi/react';
 import { mdiStarOutline } from '@mdi/js';
+import { useNavigate } from "react-router";
+// import ReactPaginate from "react-paginate";
 // import { Carousel } from "react-carousel-minimal";
 
 
 
 
-function ProductDetail() {
+function ProductDetail(props) {
+
+    const id = props.id;
+
+    const url = "https://localhost:7012";
+
+    const navigate = useNavigate();
+
+    let token = JSON.parse(localStorage.getItem("token"));
+
+    const config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
+
+
+    //sweet alert
+    const Success = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2400,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
+    const Reject = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2400,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
+
+
+
+    async function AddBasket(id) {
+        if (config != null) {
+            await axios
+                .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
+                .then((res) => {
+                    if (res.data.status === "success" || res.status === 200) {
+                        Success.fire({
+                            icon: "success",
+                            title: "Product successfully added",
+                        });
+                        axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+                            props.setbasketcount(res.data);
+                        });
+                    }
+                })
+
+        } else { navigate("/login"); }
+
+    }
+
+
+
+    //Get Sweet Alert from session storage after refresh
+    if (sessionStorage.getItem("sweetAlertMessage")) {
+        Success.fire({
+            text: sessionStorage.getItem("sweetAlertMessage"),
+            icon: "success",
+            timer: 2000,
+        });
+        sessionStorage.removeItem("sweetAlertMessage");
+    }
 
     // const data = [
     //     {
@@ -90,7 +165,7 @@ function ProductDetail() {
                     <div className="product-info">
 
 
-                        <h1>Almond Protein Superfoods</h1>
+                        <h1>{props?.product.name}</h1>
                         <div className="star">
                             <Icon path={mdiStarOutline} size={1} color="gold" />
                             <Icon path={mdiStarOutline} size={1} color="gold" />
@@ -108,14 +183,10 @@ function ProductDetail() {
 
 
 
-                        <h3>$175.00</h3>
+                        <h3>${props?.product.price}</h3>
                         <div className="line-text">
 
-                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum
-                                has been the industrys standard dummy text ever since the 1500s, when an unknown
-                                printer
-                                took a galley of type and scrambled it to make a type specimen book.</span>
+                            <span>{props?.product.Description}</span>
 
                         </div>
 
@@ -139,7 +210,7 @@ function ProductDetail() {
 
                             <button type="button" className="btn ">ADD TO CARD</button>
 
-                            <button type="button" className="btn  buy-now">BUY NOW</button>
+                            <button type="button" className="btn   buy-now"  onClick={() => AddBasket(id)}>BUY NOW</button>
 
                         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import ReactPaginate from "react-paginate";
@@ -144,10 +144,7 @@ function Product(props) {
                       alt=""
                     />
                    
-                   <img
-                      src={`data:image/jpeg;base64,${product.photo}`}
-                      alt=""
-                    />
+                  
                     <img className='rear-img' src={product2} alt="images" />
                    
                     <ul className="icon-shop">
@@ -161,12 +158,12 @@ function Product(props) {
 
                       </li>
 
-                      <Link className="detail" href="product-detail.html">
+                      <NavLink className="detail" to={`/productDetail/${product.id}`}>
                         <li>
                           <Icon path={mdiEyeOutline} size={1} color="black" />
                           <span>View Details</span>
                         </li>
-                      </Link>
+                      </NavLink>
 
                     </ul>
                   </div>

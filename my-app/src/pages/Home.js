@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import Products from '../component/shop/Products'
 import Advertising from '../component/advertising/Advertising';
 import Slider from '../component/slider/Slider';
@@ -8,6 +7,7 @@ import Banner from '../component/banner/Banner';
 import Benefit from '../component/benefit/Benefit';
 import Category from '../component/category/Category';
 import BlogCart from '../component/blog/BlogCart';
+import Navbar from "../component/layouts/Navbar";
 
 function Home() {
 
@@ -38,7 +38,7 @@ function Home() {
    <>
    
    
-
+   <Navbar basketcount={basketcount} />
    <Slider/>
    <Advertising/>
    <h2 className='mt-5 text-center'>New Arrivals</h2>
