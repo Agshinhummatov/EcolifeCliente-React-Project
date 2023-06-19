@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Tab from 'react-bootstrap/Tab';
@@ -19,14 +19,24 @@ function ProductDetail(props) {
 
     const url = "https://localhost:7012";
 
+    const ref = useRef(null);
+
     const navigate = useNavigate();
 
-    let token = JSON.parse(localStorage.getItem("token"));
+        
 
-    const config = {
-        headers: { Authorization: `Bearer ${token}` },
-    };
+    const [token, setToken] = React.useState();
 
+    const [config, setConfig] = React.useState([]);
+
+
+
+   //rating method
+    const totalStars = 5;
+    const rates = props?.product?.rates || 0;
+    const remainingStars = totalStars - rates;
+    
+   
 
     //sweet alert
     const Success = Swal.mixin({
@@ -85,6 +95,26 @@ function ProductDetail(props) {
         });
         sessionStorage.removeItem("sweetAlertMessage");
     }
+
+
+
+
+    useEffect(() => {
+        setToken(JSON.parse(localStorage.getItem("token")));
+
+        if (token) {
+            const config = {
+                headers: { Authorization: `Bearer ${token}` },
+            }
+            setConfig(config);
+        }
+        else {
+            const config = null;
+            setConfig(config);
+        }
+
+        // AddBasket(id);
+    },);
 
     // const data = [
     //     {
@@ -166,13 +196,19 @@ function ProductDetail(props) {
 
 
                         <h1>{props?.product.name}</h1>
+
+
                         <div className="star">
-                            <Icon path={mdiStarOutline} size={1} color="gold" />
-                            <Icon path={mdiStarOutline} size={1} color="gold" />
-                            <Icon path={mdiStarOutline} size={1} color="gold" />
-                            <Icon path={mdiStarOutline} size={1} color="gold" />
-                            <Icon path={mdiStarOutline} size={1} color="gold" />
+
+                            {Array(props?.product.rates).fill().map((_, i) => (
+                                <Icon key={i} path={mdiStarOutline} size={1} color="gold" />
+                            ))}
+
+                            {Array(remainingStars).fill().map((_, i) => (
+                                <Icon key={i} path={mdiStarOutline} size={1} color="grey" />
+                            ))}
                         </div>
+
 
                         <div className="sale-text mt-3">
                             <div className="sale"><span>$160.00</span> </div>
@@ -186,7 +222,7 @@ function ProductDetail(props) {
                         <h3>${props?.product.price}</h3>
                         <div className="line-text">
 
-                            <span>{props?.product.Description}</span>
+                            <span>{props?.product.description}</span>
 
                         </div>
 
@@ -210,7 +246,7 @@ function ProductDetail(props) {
 
                             <button type="button" className="btn ">ADD TO CARD</button>
 
-                            <button type="button" className="btn   buy-now"  onClick={() => AddBasket(id)}>BUY NOW</button>
+                            <button type="button" className="btn   buy-now" onClick={() => AddBasket(id)}>BUY NOW</button>
 
                         </div>
 

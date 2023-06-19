@@ -23,17 +23,18 @@ function Product(props) {
   const url = "https://localhost:7012";
 
   const ref = useRef(null);
-   const[token,setToken]=React.useState();
+  const [token, setToken] = React.useState();
   //Get token of current user send backend by request header
 
   const navigate = useNavigate();
-  
- 
- 
+
+  const totalStars = 5;
+
+
 
 
   const [products, setProducts] = useState([]);
-  const[config,setConfig]=React.useState([]);
+  const [config, setConfig] = React.useState([]);
 
   //paginate items start
   const [currentItems, setCurrentItems] = useState([]);
@@ -47,14 +48,14 @@ function Product(props) {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(products.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(products.length / itemsPerPage));
-    if(token){
+    if (token) {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       }
       setConfig(config);
     }
-    else{
-      const config=null;
+    else {
+      const config = null;
       setConfig(config);
     }
 
@@ -97,31 +98,37 @@ function Product(props) {
     });
   }
 
+
+
+
+
   useEffect(() => {
     GetProducts();
   }, []);
 
+
+
   //Add products to basket method
   async function AddBasket(id) {
-    if(config!=null){
+    if (config != null) {
       await axios
-      .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
-      .then((res) => {
-        if (res.data.status === "success" || res.status === 200) {
-          Success.fire({
-            icon: "success",
-            title: "Product successfully added",
-          });
-          axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
-            props.setbasketcount(res.data);
-          });
-        }
-      })
-      
-    }else{ navigate("/login");}
-   
-    
-      
+        .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
+        .then((res) => {
+          if (res.data.status === "success" || res.status === 200) {
+            Success.fire({
+              icon: "success",
+              title: "Product successfully added",
+            });
+            axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+              props.setbasketcount(res.data);
+            });
+          }
+        })
+
+    } else { navigate("/login"); }
+
+
+
     ref.current?.scrollIntoView();
   }
 
@@ -143,10 +150,10 @@ function Product(props) {
                       src={`data:image/jpeg;base64,${product.photo}`}
                       alt=""
                     />
-                   
-                  
+
+
                     <img className='rear-img' src={product2} alt="images" />
-                   
+
                     <ul className="icon-shop">
                       <li>
                         <Icon path={mdiHeartOutline} size={1} />
@@ -172,13 +179,20 @@ function Product(props) {
                     <h4>{product.categoryName} </h4>
                     <Link href="">{product.name}</Link>
                   </div>
-                  <div className="star text-center mt-3">
-                    <Icon path={mdiStarOutline} size={1} color="gold" />
-                    <Icon path={mdiStarOutline} size={1} color="gold" />
-                    <Icon path={mdiStarOutline} size={1} color="gold" />
-                    <Icon path={mdiStarOutline} size={1} color="gold" />
-                    <Icon path={mdiStarOutline} size={1} color="gold" />
+
+
+                  <div className="star text-center mt-3" >
+                    {Array(product.rates).fill().map((_, i) => (
+                      <Icon key={i} path={mdiStarOutline} size={1} color="gold" />
+                    ))}
+
+                    {Array(totalStars - product.rates).fill().map((_, i) => (
+                      <Icon key={i} path={mdiStarOutline} size={1} color="grey" />
+                    ))}
+
+
                   </div>
+
                   <div className="price text-center mt-3">
                     <span>{product.price}$</span>
                     <span><del>35$</del></span>
