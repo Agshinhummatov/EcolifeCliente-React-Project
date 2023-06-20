@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import ProductDetail from '../component/shop/ProductDetail'
-import { Link,useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Advertising from '../component/advertising/Advertising';
 import Product from '../component/shop/Products';
 import Category from '../component/category/Category';
@@ -18,12 +18,16 @@ function ShopDetail() {
 
     const [basketcount, setbasketcount] = useState(0);
 
+  
+
     let token = JSON.parse(localStorage.getItem("token"));
 
+    
     const config = {
 
         headers: { Authorization: `Bearer ${token}` },
     };
+
 
     async function getbasketcount() {
         if (token) {
@@ -42,16 +46,20 @@ function ShopDetail() {
     }
 
 
+    //basket count
+ 
+
     useEffect(() => {
         Getproduct();
         getbasketcount();
+      
     }, []);
 
 
     return (
 
         <>
-        <Navbar basketcount={basketcount}/>
+            <Navbar basketcount={basketcount} />
             <div className='backgroundBlog'>
                 <img src={backgroundPage} alt="" />
 
@@ -69,7 +77,7 @@ function ShopDetail() {
                     <div className='col-12'>
 
 
-                        <ProductDetail product={product} id={id}  setbasketcount={setbasketcount} />
+                        <ProductDetail product={product} id={id} setbasketcount={setbasketcount} />
 
                     </div>
 

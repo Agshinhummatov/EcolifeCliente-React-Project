@@ -30,6 +30,7 @@ function Home() {
     });
   }}
 
+  
   useEffect(() => {
     getbasketcount();
   }, []);

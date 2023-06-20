@@ -5,8 +5,10 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import payment from '../../assets/img/payment.png'
 import Icon from '@mdi/react';
-import { mdiStarOutline } from '@mdi/js';
+import { mdiStarOutline,mdiPlus, mdiMinus } from '@mdi/js';
 import { useNavigate } from "react-router";
+
+
 // import ReactPaginate from "react-paginate";
 // import { Carousel } from "react-carousel-minimal";
 
@@ -16,6 +18,8 @@ import { useNavigate } from "react-router";
 function ProductDetail(props) {
 
     const id = props.id;
+
+    
 
     const url = "https://localhost:7012";
 
@@ -29,14 +33,44 @@ function ProductDetail(props) {
 
     const [config, setConfig] = React.useState([]);
 
+    const [baskets, setBaskets] = useState([]);
+
+    const [basketItemCount, setBasketItemCount] = useState(0);
+
+    const [inputValue, setInputValue] = useState("1");
 
 
+   
+ 
+
+        
    //rating method
     const totalStars = 5;
     const rates = props?.product?.rates || 0;
     const remainingStars = totalStars - rates;
     
-   
+    useEffect(() => {
+
+        setToken(JSON.parse(localStorage.getItem("token")));
+
+        if (token) {
+            const config = {
+                headers: { Authorization: `Bearer ${token}` },
+            }
+            setConfig(config);
+        }
+        else {
+            const config = null;
+            setConfig(config);
+        }
+
+        getBasketItemCount(id);
+        // AddBasket(id);
+    }, [token, config, id] );
+
+    
+
+    
 
     //sweet alert
     const Success = Swal.mixin({
@@ -63,26 +97,41 @@ function ProductDetail(props) {
     });
 
 
-
-    async function AddBasket(id) {
+    const handleAddBasket = async (id) => {
+        if (props.product.count - basketItemCount < 1) {
+          // Stok sayısı 1'den az ise uyarı mesajı göster
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "There are no products in stock!",
+            
+          });
+          return;
+        }
+      
         if (config != null) {
-            await axios
-                .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
-                .then((res) => {
-                    if (res.data.status === "success" || res.status === 200) {
-                        Success.fire({
-                            icon: "success",
-                            title: "Product successfully added",
-                        });
-                        axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
-                            props.setbasketcount(res.data);
-                        });
-                    }
-                })
+          try {
+            const response = await axios.post(`${url}/api/Basket/AddBasket?id=${id}`, null, config);
+            if (response.data.status === "success" || response.status === 200) {
+              Success.fire({
+                icon: "success",
+                title: "Product successfully added",
+              });
+              axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+                props.setbasketcount(res.data);
+              });
+            }
+          } catch (error) {
+            console.error("Hata:", error);
+          }
+        } else {
+          navigate("/login");
+        }
+      };
 
-        } else { navigate("/login"); }
+    
 
-    }
+
 
 
 
@@ -97,25 +146,65 @@ function ProductDetail(props) {
     }
 
 
-
-
-    useEffect(() => {
-        setToken(JSON.parse(localStorage.getItem("token")));
-
-        if (token) {
-            const config = {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-            setConfig(config);
+    //Get Basket Item Count
+    const getBasketItemCount = async (id) => {
+        try {
+          const response = await axios.get(`${url}/api/Basket/GetBasketItemCount/${id}`, config);
+          const itemCount = response.data;
+          setBasketItemCount(itemCount);
+          setInputValue(String(itemCount));
+        } catch (error) {
+          console.error('Hata:', error);
         }
-        else {
-            const config = null;
-            setConfig(config);
-        }
+      };
 
-        // AddBasket(id);
-    },);
 
+
+
+
+
+   
+      
+
+
+    const DeleteItemBasket = async (id) => {
+        await axios
+          .delete(`${url}/api/Basket/DeleteBasketItemProduct?id=${id}`, config)
+          .then(function (response) {
+    
+            // Swal.fire("", "Deleted", "success");
+            axios.get(`${url}/api/Basket/Getbasketcount`, config)
+            .then((res) => {
+              props.setbasketcount(res.data);
+            });
+          })
+          .catch(function (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              footer: '<a href="">Why do I have this issue?</a>',
+            });
+            console.log(error);
+          });
+         
+       
+      };
+    
+
+
+      //Get Basket from Api
+//   async function GetBasket() {
+//     await axios
+//       .get(`${url}/api/Basket/GetBasketProducts`, config)
+//       .then((res) => {
+//         setBaskets(res.data);      
+//       });
+//   }
+
+
+ 
+    
     // const data = [
     //     {
     //         image: product1,
@@ -145,6 +234,8 @@ function ProductDetail(props) {
     //     fontSize: '20px',
     //     fontWeight: 'bold',
     // }
+
+
 
 
     return (
@@ -211,7 +302,8 @@ function ProductDetail(props) {
 
 
                         <div className="sale-text mt-3">
-                            <div className="sale"><span>$160.00</span> </div>
+
+                            <div className="sale"><span >$160.00</span> </div>
 
                             <div className="sale-info"><span>50% Off</span></div>
 
@@ -230,15 +322,18 @@ function ProductDetail(props) {
 
                         <div className="stock">
 
-                            <h6>Avalibility: In Stock</h6>
-                            <h6>Quantity</h6>
+                            <h6>Avalibility: In Stock : <span></span>{props?.product.count-basketItemCount}</h6>
+                            <h6></h6>
                         </div>
 
 
                         <div className="number">
-                            <span className="minus">-</span>
-                            <input type="text" value="1" />
-                            <span className="plus">+</span>
+                        <Icon path={mdiMinus} style={{cursor:'pointer'}}  size={1} onClick={() => DeleteItemBasket(id)} />
+                           
+                        <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+
+                        <Icon path={mdiPlus} size={1}  onClick={() => handleAddBasket(props.id)} style={{cursor:'pointer'}} />
+                           
                         </div>
 
 
@@ -246,7 +341,8 @@ function ProductDetail(props) {
 
                             <button type="button" className="btn ">ADD TO CARD</button>
 
-                            <button type="button" className="btn   buy-now" onClick={() => AddBasket(id)}>BUY NOW</button>
+                            <button type="button" className="btn   buy-now" onClick={() => handleAddBasket(props.id)}>BUY NOW</button>
+
 
                         </div>
 

@@ -182,6 +182,7 @@ function Product(props) {
 
 
                   <div className="star text-center mt-3" >
+                    
                     {Array(product.rates).fill().map((_, i) => (
                       <Icon key={i} path={mdiStarOutline} size={1} color="gold" />
                     ))}

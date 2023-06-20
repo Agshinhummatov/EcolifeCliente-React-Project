@@ -52,12 +52,15 @@ function BasketProducts(props) {
       .then((res) => {
         setBaskets(res.data);      
       });
+      
   }
   
 
   useEffect(() => {
     GetBasket();
   }, []);
+
+  
 
   //Delete Basket Product
   const DeleteBasket = async (id) => {

@@ -12,68 +12,68 @@ import Navbar from "../component/layouts/Navbar";
 
 function Blog() {
 
-    const url = "https://localhost:7012";
+  const url = "https://localhost:7012";
 
 
-    //Basket count 
-    const [basketcount, setbasketcount] = useState(0);
-  
-  
-    let token = JSON.parse(localStorage.getItem("token"));
-  
-    const config = {
-  
-      headers: { Authorization: `Bearer ${token}` },
-    };
-  
-    async function getbasketcount() {
-      if (token) {
-        await axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
-          setbasketcount(res.data);
-        });
-      }
+  //Basket count 
+  const [basketcount, setbasketcount] = useState(0);
+
+
+  let token = JSON.parse(localStorage.getItem("token"));
+
+  const config = {
+
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  async function getbasketcount() {
+    if (token) {
+      await axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+        setbasketcount(res.data);
+      });
     }
-  
-  
-    useEffect(() => {
-      getbasketcount();
-    }, []);
-  
+  }
 
 
-    return (
-        <>
-
-     <Navbar basketcount={basketcount} />
-            <div className='backgroundBlog'>
-                <img src={backgroundPage} alt="" />
-                <h2>Blog</h2>
-                <h6><Link to="/">Home </Link> / Blog</h6>
-            </div>
-
-            <div className='container'>
+  useEffect(() => {
+    getbasketcount();
+  }, []);
 
 
 
-                <div className='d-flex'>
+  return (
+    <>
 
-                    <BlogCart />
-                    <div className='col-2 right'>
-                        <BlogRecent />
-                    </div>
+      <Navbar basketcount={basketcount} />
+      <div className='backgroundBlog'>
+        <img src={backgroundPage} alt="" />
+        <h2>Blog</h2>
+        <h6><Link to="/">Home </Link> / Blog</h6>
+      </div>
 
-                </div>
-                
+      <div className='container'>
+
+
+
+        <div className='d-flex'>
+
+          <BlogCart />
+          <div className='col-2 right'>
+            <BlogRecent />
+          </div>
+
+        </div>
 
 
 
 
-            </div>
 
-            <div><Player/></div>
+      </div>
 
-        </>
-    )
+      <div><Player /></div>
+
+    </>
+  )
 }
 
 export default Blog
