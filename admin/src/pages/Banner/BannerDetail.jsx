@@ -82,7 +82,7 @@ function BannerDetail() {
                         <input
                             class="form-control"
                             type="text"
-                            value={moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss')}
+                            value={moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}
                             disabled />
 
 

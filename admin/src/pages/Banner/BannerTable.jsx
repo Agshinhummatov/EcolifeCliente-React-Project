@@ -106,7 +106,7 @@ function BannerTable() {
                                                 </td>
                                                 <td className="py-1" dangerouslySetInnerHTML={{ __html: banner.title }}></td>
                                                 <td>{moment(banner.createdAt).format('DD-MM-YYYY HH:mm:ss')}</td>
-                                                <td>{moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss')}</td>
+                                                <td>{moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}</td>
                                                 <td>
                                                    
 

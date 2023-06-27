@@ -15,9 +15,12 @@ function BannerCreate() {
     const [banner, setBanner] = useState([]);
     const [image, setImage] = useState();
     const [showImage, setShowImage] = useState(null);
-    const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+    const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
 
+    //Get All Banner API
     const getAllBanner = async () => {
         await axios.get(`${url}/api/Banner/GetAll`)
             .then((res) => {
@@ -35,8 +38,22 @@ function BannerCreate() {
         description: description
     };
 
+
+    //Create Banner
+
+
     const CreateBanner = async (e) => {
         e.preventDefault();
+
+        if (title.trim() === '') {
+            setIsTitleEmpty(true);
+            return;
+        }
+
+        if (description.trim() === '') {
+            setIsDescriptionEmpty(true);
+            return;
+        }
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(newBanner)) {
@@ -50,26 +67,28 @@ function BannerCreate() {
         })
             .then((res) => {
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'top-center',
                     icon: 'success',
                     title: 'Banner Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(res);
+                navigate('/banner');
             })
             .catch((err) => {
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'top-center',
                     icon: 'error',
                     title: 'Banner not Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
+                navigate('/bannerCreate');
             });
 
-        navigate('/banner');
+
     };
 
 
@@ -112,6 +131,7 @@ function BannerCreate() {
                                 }
                                 <Form.Control
                                     type="file"
+                                    required
                                     onChange={(e) => fileUploadHandler(e)}
                                 />
                             </Form.Group>
@@ -121,6 +141,7 @@ function BannerCreate() {
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter Title"
+                                    required
                                     onFocus={(e) => e.target.placeholder = ''}
                                     onBlur={(e) => e.target.placeholder = 'Enter Title'}
                                     onChange={(e) => setTitle(e.target.value)}
@@ -132,9 +153,11 @@ function BannerCreate() {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Enter Title"
+                                    placeholder="Enter Description"
+                                    required
                                     onFocus={(e) => e.target.placeholder = ''}
                                     onBlur={(e) => e.target.placeholder = 'Enter Description'}
+
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </Form.Group>
