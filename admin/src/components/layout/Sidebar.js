@@ -24,6 +24,10 @@ function Sidebar() {
             <Link to="/banner"> Banner</Link>
           </li>
           <li className="menu-item">
+            <i className="fa fa-user"></i>
+            <Link to="/advertising">Advertising</Link>
+          </li>
+          <li className="menu-item">
             <i className="fa fa-envelope"></i>
             <span>Mesajlar</span>
           </li>

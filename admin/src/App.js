@@ -10,6 +10,9 @@ import BannerTable from './pages/Banner/BannerTable';
 import BannerDetail from './pages/Banner/BannerDetail';
 import BannerCreate from './pages/Banner/BannerCreate';
 import BannerUpdate from './pages/Banner/BannerUpdate';
+import AdvertisingTable from './pages/advertising/AdvertisingTable';
+
+
 
 
 
@@ -21,11 +24,16 @@ function App() {
       
         </header>
         <Routes>
+
           <Route path="/dashborad" element={<Home />} />
+
           <Route path="/banner" element={<BannerTable />} />
           <Route path="/banner/detail/:id" element={<BannerDetail />} />
           <Route path="/bannerCreate" element={<BannerCreate />} />
           <Route path="//bannerUpdate/:id" element={<BannerUpdate />} />
+          <Route path="/advertising" element={<AdvertisingTable/>} />
+
+
           <Route path="/contact" element={<Contact/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/employee" element={<Employees/>} />

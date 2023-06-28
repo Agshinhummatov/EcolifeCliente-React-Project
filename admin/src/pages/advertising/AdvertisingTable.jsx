@@ -6,34 +6,31 @@ import moment from 'moment';
 import axios from 'axios';
 import Sidebar from '../../components/layout/Sidebar';
 
-
-
-function BannerTable() {
-
+function AdvertisingTable() {
 
     let count = 1;
 
     const url = 'https://localhost:7012';
 
-    const [banner, setBanner] = useState([]);
+    const [advertising, setAdvertising] = useState([]);
 
-    const getAllBanner = async () => {
-        await axios.get(`${url}/api/Banner/GetAll`)
+    const getAllAdvertising = async () => {
+        await axios.get(`${url}/api/advertising/GetAll`)
             .then((res) => {
-                setBanner(res.data);
+                setAdvertising(res.data);
             });
     }
 
     useEffect(() => {
-        getAllBanner();
+        getAllAdvertising();
     }, []);
 
-    const DeleteBanner = async (id) => {
-        await axios.delete(`${url}/api/Banner/Delete/${id}`)
+    const Deleteadvertising = async (id) => {
+        await axios.delete(`${url}/api/Advertising/Delete/${id}`)
             .then((res) => {
-                swal.fire("", "Deleted Banner", "success");
+                swal.fire("", "Deleted Advertising", "success");
                 console.log(res);
-                getAllBanner();
+                getAllAdvertising();
             })
             .catch((err) => {
                 swal.fire({
@@ -46,32 +43,30 @@ function BannerTable() {
     };
 
 
-
     return (
-
         <>
 
-            <div className='d-flex'>
 
+
+            <div className='d-flex'>
                 <div className='col-2'>
 
                     <Sidebar />
-
                 </div>
+
 
                 <div className='col-10'>
 
                     <h1 className='text-center mt-5'>
-                        Banner
-
+                        Advertising
 
                     </h1>
 
                     <div className="d-flex">
                         <div className="col-lg-12 grid-margin stretch-card my-5">
-                            <h2 className="mx-auto">Banner Table</h2>
+                            <h2 className="mx-auto">Advertising Table</h2>
                             <div className='d-flex justify-content-between'>
-                                <Link to="/BannerCreate">
+                                <Link to="/advertisingCreate">
                                     <button className="btn btn-success my-2" style={{ float: "right" }}>Create</button>
                                 </Link>
                                 <Link to="/">
@@ -91,7 +86,7 @@ function BannerTable() {
                                 </thead>
                                 <tbody>
                                     {
-                                        banner.map((banner, index) => (
+                                        advertising.map((advertising, index) => (
                                             <tr key={index} style={{ textAlign: "center", verticalAlign: "middle" }}>
                                                 <td>{count++}</td>
                                                 <td>
@@ -100,26 +95,26 @@ function BannerTable() {
                                                         height: "70px",
                                                         borderRadius: "unset",
                                                     }}
-                                                        src={`data:image/png;base64,${banner.image}`}
-                                                        alt="bannerimage"
+                                                        src={`data:image/png;base64,${advertising.image}`}
+                                                        alt="advertisingimage"
                                                     />
                                                 </td>
-                                                <td className="py-1" dangerouslySetInnerHTML={{ __html: banner.title }}></td>
-                                                <td>{moment(banner.createdAt).format('DD-MM-YYYY HH:mm:ss')}</td>
-                                                <td>{moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}</td>
+                                                <td className="py-1" dangerouslySetInnerHTML={{ __html: advertising.title }}></td>
+                                                <td>{moment(advertising.createdAt).format('DD-MM-YYYY HH:mm:ss')}</td>
+                                                <td>{moment(advertising.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(advertising.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}</td>
                                                 <td>
-                                                   
 
-                                                    <Link to={`/banner/detail/${banner.id}`}>
+
+                                                    <Link to={`/advertising/detail/${advertising.id}`}>
                                                         <button className="btn btn-outline-info" style={{ marginRight: "15px" }}>Detail</button>
 
                                                     </Link>
 
-                                                    <Link to={`/BannerUpdate/${banner.id}`}>
+                                                    <Link to={`/advertisingUpdate/${advertising.id}`}>
                                                         <button className="btn  btn-outline-primary" style={{ marginRight: "15px" }}>Update</button>
                                                     </Link>
                                                     <button
-                                                        onClick={() => DeleteBanner(banner.id)}
+                                                        onClick={() => Deleteadvertising(advertising.id)}
                                                         type="button"
                                                         className="btn btn-outline-danger"
                                                     >
@@ -139,8 +134,11 @@ function BannerTable() {
                 </div>
 
             </div>
+
+
+
         </>
     )
 }
 
-export default BannerTable
+export default AdvertisingTable
