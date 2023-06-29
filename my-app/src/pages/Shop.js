@@ -30,9 +30,13 @@ function Shop() {
 
   async function getbasketcount() {
     if (token) {
-      await axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
-        setbasketcount(res.data);
-      });
+      try {
+        const response = await axios.get(`${url}/api/Basket/Getbasketcount`, config);
+        setbasketcount(response.data);
+      } catch (error) {
+        console.error("Error retrieving basket count:", error);
+        // Handle the error, e.g., display an error message or take necessary actions
+      }
     }
   }
 

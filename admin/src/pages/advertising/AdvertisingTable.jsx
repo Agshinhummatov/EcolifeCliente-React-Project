@@ -65,13 +65,11 @@ function AdvertisingTable() {
                     <div className="d-flex">
                         <div className="col-lg-12 grid-margin stretch-card my-5">
                             <h2 className="mx-auto">Advertising Table</h2>
-                            <div className='d-flex justify-content-between'>
+                            <div >
                                 <Link to="/advertisingCreate">
                                     <button className="btn btn-success my-2" style={{ float: "right" }}>Create</button>
                                 </Link>
-                                <Link to="/">
-                                    <button className="btn btn-success my-2" style={{ float: "right" }}>Dashboard</button>
-                                </Link>
+                               
                             </div>
                             <Table striped bordered hover variant="dark" >
                                 <thead>

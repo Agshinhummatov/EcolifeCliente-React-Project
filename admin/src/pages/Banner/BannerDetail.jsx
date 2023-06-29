@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
-
 import axios from "axios";
 import Sidebar from '../../components/layout/Sidebar';
 import moment from 'moment';
@@ -11,6 +10,7 @@ function BannerDetail() {
     const { id } = useParams();
     const baseURL = "https://localhost:7012";
     const [banner, setBanner] = useState({})
+
 
     const getById = async (id) => {
         await axios.get(`${baseURL}/api/banner/GetById/${id}`).then((response) => {

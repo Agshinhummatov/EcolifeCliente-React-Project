@@ -11,7 +11,7 @@ function Sidebar() {
     <>
 
 
-      <div className="sidebar">
+      <div className="sidebar mt-5">
         <ul className="sidebar-menu">
           <li className="menu-item ">
             <i className="fa fa-home"></i>

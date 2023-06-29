@@ -8,6 +8,7 @@ import Sidebar from '../../components/layout/Sidebar';
 
 
 
+
 function BannerTable() {
 
 
@@ -51,6 +52,7 @@ function BannerTable() {
 
         <>
 
+    
             <div className='d-flex'>
 
                 <div className='col-2'>
@@ -59,24 +61,22 @@ function BannerTable() {
 
                 </div>
 
-                <div className='col-10'>
+                <div className='col-10 mt-5'>
 
-                    <h1 className='text-center mt-5'>
-                        Banner
+                    <h2 className='text-center mt-4'>
+                        Banner Table
 
 
-                    </h1>
+                    </h2>
 
                     <div className="d-flex">
                         <div className="col-lg-12 grid-margin stretch-card my-5">
-                            <h2 className="mx-auto">Banner Table</h2>
-                            <div className='d-flex justify-content-between'>
+                           
+                            <div >
                                 <Link to="/BannerCreate">
                                     <button className="btn btn-success my-2" style={{ float: "right" }}>Create</button>
                                 </Link>
-                                <Link to="/">
-                                    <button className="btn btn-success my-2" style={{ float: "right" }}>Dashboard</button>
-                                </Link>
+                               
                             </div>
                             <Table striped bordered hover variant="dark" >
                                 <thead>
@@ -86,7 +86,7 @@ function BannerTable() {
                                         <th>Title</th>
                                         <th>Create date</th>
                                         <th>Update date</th>
-                                        <th>Setting</th>
+                                        <th>Settings</th>
                                     </tr>
                                 </thead>
                                 <tbody>

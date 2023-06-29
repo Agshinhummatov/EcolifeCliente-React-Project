@@ -21,6 +21,15 @@ function BannerUpdate() {
   const [description, setDescription] = useState();
 
 
+  let token = JSON.parse(localStorage.getItem("token"));
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+
+
+  //Get Banner API
   const getBanner = async () => {
     await axios.get(`${url}/api/Banner/GetById/${id}`)
       .then((res) => {
@@ -50,7 +59,7 @@ function BannerUpdate() {
       formData.append(key, value);
     };
 
-    await axios.put(`${url}/api/Banner/Update/${id}`, formData, {
+    await axios.put(`${url}/api/Banner/Update/${id}`, formData,config, {
       headers: {
         Accept: "*/*"
       }
@@ -99,7 +108,7 @@ function BannerUpdate() {
 
         </div>
 
-        <div className='col-10'>
+        <div className='col-10 mt-5'>
         <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
             <h2 className='my-5' style={{ textAlign: "center" }}>Update Banner</h2>
             <Form onSubmit={(e) => UpdateBanner(e)}>
@@ -137,11 +146,11 @@ function BannerUpdate() {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control
                         type="text"
-                        name={title}
-                        placeholder={title}
+                        name={description}
+                        placeholder={description}
                         onFocus={(e) => e.target.placeholder = ''}
                         onBlur={(e) => e.target.placeholder = description}
                         onChange={(e) => setDescription(e.target.value)}

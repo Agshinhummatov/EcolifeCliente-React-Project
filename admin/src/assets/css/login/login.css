@@ -1,0 +1,120 @@
+#login-area {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+#login-area .main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#login-area .main .box {
+  position: relative;
+  width: 450px;
+  height: 500px;
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+}
+#login-area .main .box .form {
+  position: absolute;
+  inset: 4px;
+  border-radius: 3px;
+  z-index: 10;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  background: #f2efe0;
+}
+#login-area .main .box .form h2 {
+  color: #3b4152;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+#login-area .main .box .form .inputBox {
+  position: relative;
+  width: 365px;
+  margin-top: 35px;
+}
+#login-area .main .box .form .inputBox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: wheat;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+#login-area .main .box .form .inputBox input:valid ~ p, #login-area .main .box .form .inputBox input:focus ~ p {
+  color: #b7443c;
+  transform: translateX(0px) translateY(-34px);
+  font-size: 1em;
+}
+#login-area .main .box .form .inputBox input:valid ~ i, #login-area .main .box .form .inputBox input:focus ~ i {
+  height: 44px;
+}
+#login-area .main .box .form .inputBox p {
+  display: inline;
+  position: absolute;
+  left: 0;
+  padding: 20px 0px 10px;
+  font-size: 1em;
+  color: #505668;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+  transition: 0.5s;
+}
+#login-area .main .box .form .inputBox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #01574A;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+}
+#login-area .main .box .form .links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+#login-area .main .box .form .links a {
+  font-size: 14px;
+  color: #505668;
+  text-decoration: none;
+  transition: 0.5s;
+}
+#login-area .main .box .form .links a:hover {
+  color: #c05850;
+  transition: 0.5s;
+}
+#login-area .main .box .form .links .show input {
+  width: 20px;
+  height: 15px;
+}
+#login-area .main .box .form input[type=submit] {
+  border: none;
+  outline: none;
+  background: #01574A;
+  color: #ffffff;
+  padding: 11px 25px;
+  width: 100px;
+  margin-top: 30px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#login-area .main .box .form input[type=submit]:active {
+  opacity: 0.1;
+  transition: 0.5s;
+}/*# sourceMappingURL=login.css.map */

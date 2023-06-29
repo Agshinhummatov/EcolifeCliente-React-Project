@@ -5,14 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Sidebar from '../../components/layout/Sidebar'
-
-function BannerCreate() {
+function AdvertisingCreate() {
 
     const navigate = useNavigate();
-
     const url = 'https://localhost:7012';
 
-    const [banner, setBanner] = useState([]);
+    const [advertising, setAdvertising] = useState([]);
     const [image, setImage] = useState();
     const [showImage, setShowImage] = useState(null);
     const [title, setTitle] = useState('');
@@ -24,33 +22,30 @@ function BannerCreate() {
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
-      headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${token}` },
     };
-  
 
-    //Get All Banner API
-    const getAllBanner = async () => {
-        await axios.get(`${url}/api/Banner/GetAll`,config)
+    //Get All Advertising API
+    const getAllAdvertising = async () => {
+        await axios.get(`${url}/api/Advertising/GetAll`, config)
             .then((res) => {
-                setBanner(res.data);
+                setAdvertising(res.data);
             });
+
     };
 
     useEffect(() => {
-        getAllBanner();
+        getAllAdvertising();
     }, []);
 
-    const newBanner = {
+    const newAdvertising = {
         photo: image,
         title: title,
         description: description
     };
 
-
-    //Create Banner
-
-
-    const CreateBanner = async (e) => {
+    //Create Advertising
+    const CreateAdvertising = async (e) => {
         e.preventDefault();
 
         if (title.trim() === '') {
@@ -64,11 +59,11 @@ function BannerCreate() {
         }
 
         const formData = new FormData();
-        for (const [key, value] of Object.entries(newBanner)) {
+        for (const [key, value] of Object.entries(newAdvertising)) {
             formData.append(key, value);
         };
 
-        await axios.post(`${url}/api/Banner/Create`, formData, config, {
+        await axios.post(`${url}/api/Advertising/Create`, formData, config, {
             headers: {
                 Accept: "*/*"
             }
@@ -77,37 +72,40 @@ function BannerCreate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Banner Created',
+                    title: 'Advertising Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(res);
-                navigate('/banner');
+                navigate('/advertising');
             })
             .catch((err) => {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Banner not Created',
+                    title: 'Advertising not Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
-                navigate('/bannerCreate');
+                navigate('/advertisingCreate');
             });
 
 
     };
 
-
+    //Image Handler
     const fileUploadHandler = async (e) => {
         const files = e.target.files[0];
         setImage(files);
         setShowImage(URL.createObjectURL(files));
     };
 
+
+
     return (
         <>
+
             <div className='d-flex'>
 
                 <div className='col-2'>
@@ -117,11 +115,11 @@ function BannerCreate() {
                 </div>
 
 
-                <div className='col-10'>
+                <div className='col-10 mt-5'>
 
                     <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-                        <h2 className='my-5' style={{ textAlign: "center" }}>Create Banner</h2>
-                        <Form onSubmit={(e) => CreateBanner(e)}>
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Create Advertising</h2>
+                        <Form onSubmit={(e) => CreateAdvertising(e)}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <p>Image</p>
                                 {
@@ -173,7 +171,7 @@ function BannerCreate() {
                             <Button variant="outline-primary" type="submit">
                                 Create
                             </Button>
-                            <Link to="/banner">
+                            <Link to="/advertising">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>
@@ -190,9 +188,8 @@ function BannerCreate() {
 
 
 
-
         </>
     )
 }
 
-export default BannerCreate
+export default AdvertisingCreate
