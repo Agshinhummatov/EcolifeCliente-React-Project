@@ -17,7 +17,15 @@ function BannerTable() {
     const url = 'https://localhost:7012';
 
     const [banner, setBanner] = useState([]);
+    
+  //Setting Authorization Token in Request Headers using Bearer Authentication
+    let token = JSON.parse(localStorage.getItem("token"));
 
+    const config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
+
+  //Retrieves all banner data from the API.
     const getAllBanner = async () => {
         await axios.get(`${url}/api/Banner/GetAll`)
             .then((res) => {
@@ -29,8 +37,10 @@ function BannerTable() {
         getAllBanner();
     }, []);
 
+
+    //Deletes an banner from the API.
     const DeleteBanner = async (id) => {
-        await axios.delete(`${url}/api/Banner/Delete/${id}`)
+        await axios.delete(`${url}/api/Banner/Delete/${id}`,config,)
             .then((res) => {
                 swal.fire("", "Deleted Banner", "success");
                 console.log(res);

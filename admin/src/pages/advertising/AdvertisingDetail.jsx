@@ -35,7 +35,7 @@ function AdvertisingDetail() {
                 <div className='col-10  mt-5'>
 
                     <div className='container'>
-                        <h1 className='text-center mt-4'>Advertising Detail</h1>
+                        <h2 className='text-center mt-5'>Advertising Detail</h2>
 
                         <div className='mt-5'>
                             <h4>Image</h4>

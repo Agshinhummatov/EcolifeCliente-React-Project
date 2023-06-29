@@ -16,6 +16,11 @@ import Navbar from './components/layout/Navbar';
 import AdvertisingDetail from './pages/advertising/AdvertisingDetail';
 import AdvertisingCreate from './pages/advertising/AdvertisingCreate';
 import AdvertisingUpdate from './pages/advertising/AdvertisingUpdate';
+import BenefitTable from './pages/benefit/BenefitTable';
+import BenefitDetail from './pages/benefit/BenefitDetail';
+import BenefitCreate from './pages/benefit/BenefitCreate';
+import BenefitUpdate from './pages/benefit/BenefitUpdate';
+import SliderTable from './pages/slider/SliderTable';
 
 
 
@@ -44,6 +49,13 @@ function App() {
           <Route path="/advertisingCreate" element={<AdvertisingCreate />} />
           <Route path="/advertisingUpdate/:id" element={<AdvertisingUpdate />} />
 
+
+          <Route path="/slider" element={<SliderTable />} />
+
+          <Route path="/benefit" element={<BenefitTable />} />
+          <Route path="/benefit/detail/:id" element={<BenefitDetail />} />
+          <Route path="/benefitCreate" element={<BenefitCreate />} />
+          <Route path="/benefitUpdate/:id" element={<BenefitUpdate />} />
           <Route path="/adminLogin" element={<Login/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/about" element={<About/>} />

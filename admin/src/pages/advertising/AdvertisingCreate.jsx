@@ -18,7 +18,7 @@ function AdvertisingCreate() {
     const [isTitleEmpty, setIsTitleEmpty] = useState(false);
     const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
 
-
+    //Setting Authorization Token in Request Headers using Bearer Authentication
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
@@ -94,7 +94,7 @@ function AdvertisingCreate() {
 
     };
 
-    //Image Handler
+    //File Upload Handler: Setting Image and Displaying Preview
     const fileUploadHandler = async (e) => {
         const files = e.target.files[0];
         setImage(files);

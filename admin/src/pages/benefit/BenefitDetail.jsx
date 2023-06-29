@@ -4,17 +4,15 @@ import axios from "axios";
 import Sidebar from '../../components/layout/Sidebar';
 import moment from 'moment';
 
-
-function BannerDetail() {
+function BenefitDetail() {
 
     const { id } = useParams();
     const baseURL = "https://localhost:7012";
-    const [banner, setBanner] = useState({})
-
+    const [benefit, setBenefit] = useState({})
 
     const getById = async (id) => {
-        await axios.get(`${baseURL}/api/banner/GetById/${id}`).then((response) => {
-            setBanner(response.data);
+        await axios.get(`${baseURL}/api/benefit/GetById/${id}`).then((response) => {
+            setBenefit(response.data);
         });
     }
 
@@ -27,7 +25,8 @@ function BannerDetail() {
 
     return (
 
-        <>
+        <div>
+
             <div className='d-flex'>
                 <div className='col-2'>
 
@@ -37,8 +36,8 @@ function BannerDetail() {
 
 
                 <div className='col-10  mt-5'>
-
-                    <h2 className='text-center mt-5'>Banner Detail</h2>
+                    <div className='container'>
+                    <h2 className='text-center mt-5'>Benefit Detail</h2>
 
                     <div className='mt-5'>
                         <h4>Image</h4>
@@ -47,8 +46,8 @@ function BannerDetail() {
                             height: "200px",
                             borderRadius: "unset",
                         }}
-                            src={`data:image/png;base64,${banner.image}`}
-                            alt="bannerimage"
+                            src={`data:image/png;base64,${benefit.image}`}
+                            alt="benefitimage"
                         />
                     </div>
 
@@ -57,23 +56,17 @@ function BannerDetail() {
                         <h5 className='mt-3'>Title</h5>
                         <input class="form-control"
                             type="text"
-                            defaultValue={banner.title}
+                            defaultValue={benefit.title}
                             disabled
                         />
 
-                        <h5 className='mt-3'>Description</h5>
-                        <input
-                            class="form-control"
-                            type="text"
-                            defaultValue={banner.description}
-                            disabled />
-
+                       
 
                         <h5 className='mt-3'>Create date</h5>
                         <input
                             className="form-control"
                             type="text"
-                            value={moment(banner.createdAt).format('DD-MM-YYYY HH:mm:ss')}
+                            value={moment(benefit.createdAt).format('DD-MM-YYYY HH:mm:ss')}
                             disabled
                         />
 
@@ -82,7 +75,7 @@ function BannerDetail() {
                         <input
                             class="form-control"
                             type="text"
-                            value={moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(banner.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}
+                            value={moment(benefit.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(benefit.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}
                             disabled />
 
 
@@ -91,17 +84,15 @@ function BannerDetail() {
                     </div>
 
 
-                    <Link to="/banner">
+                    <Link to="/benefit">
                         <button className="btn btn-secondary mt-3 my-2" style={{ float: "left" }}>Back</button>
                     </Link>
-
+                    </div>
                 </div>
 
             </div>
-
-
-        </>
+        </div>
     )
 }
 
-export default BannerDetail
+export default BenefitDetail

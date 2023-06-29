@@ -20,7 +20,7 @@ function BannerUpdate() {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
 
-
+ //Setting Authorization Token in Request Headers using Bearer Authentication
   let token = JSON.parse(localStorage.getItem("token"));
 
   const config = {
@@ -89,6 +89,7 @@ function BannerUpdate() {
   };
 
 
+  //File Upload Handler: Setting Image and Displaying Preview
   const fileUploadHandler = (e) => {
     const file = e.target.files[0];
     setImage(file);

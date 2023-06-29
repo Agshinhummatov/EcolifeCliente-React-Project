@@ -24,8 +24,19 @@ function Sidebar() {
             <Link to="/banner"> Banner</Link>
           </li>
           <li className="menu-item">
-            <i className="fa fa-user"></i>
+          <i class="fa-regular fa-clipboard"></i>
             <Link to="/advertising">Advertising</Link>
+          </li>
+
+          
+          <li className="menu-item">
+          <i class="fa-solid fa-chart-line"></i>
+            <Link to="/benefit">Benefit</Link>
+          </li>
+
+          <li className="menu-item">
+          <i class="fa-solid fa-chart-line"></i>
+            <Link to="/slider">Slider</Link>
           </li>
           <li className="menu-item">
             <i className="fa fa-envelope"></i>

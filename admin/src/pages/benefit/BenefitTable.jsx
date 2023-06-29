@@ -6,42 +6,41 @@ import moment from 'moment';
 import axios from 'axios';
 import Sidebar from '../../components/layout/Sidebar';
 
-function AdvertisingTable() {
+function BenefitTable() {
 
     let count = 1;
-
     const url = 'https://localhost:7012';
 
-    const [advertising, setAdvertising] = useState([]);
+    const [benefit, setBenefit] = useState([]);
 
-    //Setting Authorization Token in Request Headers using Bearer Authentication
-    let token = JSON.parse(localStorage.getItem("token"));
+      //Setting Authorization Token in Request Headers using Bearer Authentication
+      let token = JSON.parse(localStorage.getItem("token"));
 
-    const config = {
-        headers: { Authorization: `Bearer ${token}` },
-    };
+      const config = {
+          headers: { Authorization: `Bearer ${token}` },
+      };
+  
 
-
-    //Retrieves all advertising data from the API.
-    const getAllAdvertising = async () => {
-        await axios.get(`${url}/api/advertising/GetAll`)
+      //Retrieves all Benefit data from the API.
+    const getAllBenefit = async () => {
+        await axios.get(`${url}/api/Benefit/GetAll`)
             .then((res) => {
-                setAdvertising(res.data);
+                setBenefit(res.data);
             });
     }
 
     useEffect(() => {
-        getAllAdvertising();
+        getAllBenefit();
     }, []);
 
-    
-    //Deletes an advertising from the API.
-    const DeleteAdvertising = async (id) => {
-        await axios.delete(`${url}/api/Advertising/Delete/${id}`,config,)
+
+     //Deletes an Benefit from the API.
+    const DeleteBenefit = async (id) => {
+        await axios.delete(`${url}/api/Benefit/Delete/${id}`,config,)
             .then((res) => {
-                swal.fire("", "Deleted Advertising", "success");
+                swal.fire("", "Deleted Benefit", "success");
                 console.log(res);
-                getAllAdvertising();
+                getAllBenefit();
             })
             .catch((err) => {
                 swal.fire({
@@ -54,22 +53,23 @@ function AdvertisingTable() {
     };
 
 
+
     return (
         <>
 
-
-
             <div className='d-flex'>
+
                 <div className='col-2'>
 
                     <Sidebar />
-                </div>
 
+                </div>
 
                 <div className='col-10 mt-5'>
 
-                    <h2 className='text-center mt-5'>
-                        Advertising Table
+                    <h2 className='text-center mt-4'>
+                        Benefit Table
+
 
                     </h2>
 
@@ -77,7 +77,7 @@ function AdvertisingTable() {
                         <div className="col-lg-12 grid-margin stretch-card my-5">
 
                             <div >
-                                <Link to="/advertisingCreate">
+                                <Link to="/benefitCreate">
                                     <button className="btn btn-success my-2" style={{ float: "right" }}>Create</button>
                                 </Link>
 
@@ -95,7 +95,7 @@ function AdvertisingTable() {
                                 </thead>
                                 <tbody>
                                     {
-                                        advertising.map((advertising, index) => (
+                                        benefit.map((benefit, index) => (
                                             <tr key={index} style={{ textAlign: "center", verticalAlign: "middle" }}>
                                                 <td>{count++}</td>
                                                 <td>
@@ -104,26 +104,26 @@ function AdvertisingTable() {
                                                         height: "70px",
                                                         borderRadius: "unset",
                                                     }}
-                                                        src={`data:image/png;base64,${advertising.image}`}
-                                                        alt="advertisingimage"
+                                                        src={`data:image/png;base64,${benefit.image}`}
+                                                        alt="Benefitimage"
                                                     />
                                                 </td>
-                                                <td className="py-1" dangerouslySetInnerHTML={{ __html: advertising.title }}></td>
-                                                <td>{moment(advertising.createdAt).format('DD-MM-YYYY HH:mm:ss')}</td>
-                                                <td>{moment(advertising.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(advertising.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}</td>
+                                                <td className="py-1" dangerouslySetInnerHTML={{ __html: benefit.title }}></td>
+                                                <td>{moment(benefit.createdAt).format('DD-MM-YYYY HH:mm:ss')}</td>
+                                                <td>{moment(benefit.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(benefit.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}</td>
                                                 <td>
 
 
-                                                    <Link to={`/advertising/detail/${advertising.id}`}>
+                                                    <Link to={`/benefit/detail/${benefit.id}`}>
                                                         <button className="btn btn-outline-info" style={{ marginRight: "15px" }}>Detail</button>
 
                                                     </Link>
 
-                                                    <Link to={`/advertisingUpdate/${advertising.id}`}>
+                                                    <Link to={`/benefitUpdate/${benefit.id}`}>
                                                         <button className="btn  btn-outline-primary" style={{ marginRight: "15px" }}>Update</button>
                                                     </Link>
                                                     <button
-                                                        onClick={() => DeleteAdvertising(advertising.id)}
+                                                        onClick={() => DeleteBenefit(benefit.id)}
                                                         type="button"
                                                         className="btn btn-outline-danger"
                                                     >
@@ -144,10 +144,8 @@ function AdvertisingTable() {
 
             </div>
 
-
-
         </>
     )
 }
 
-export default AdvertisingTable
+export default BenefitTable

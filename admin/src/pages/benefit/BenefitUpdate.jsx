@@ -5,19 +5,18 @@ import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Sidebar from '../../components/layout/Sidebar';
-function AdvertisingUpdate() {
+function BenefitUpdate() {
+
 
     const { id } = useParams();
-
     const navigate = useNavigate();
 
     const url = 'https://localhost:7012';
 
-    const [advertising, setAdvertising] = useState([]);
+    const [Benefit, setBenefit] = useState([]);
     const [image, setImage] = useState();
     const [showImage, setShowImage] = useState(null);
     const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
 
     //Setting Authorization Token in Request Headers using Bearer Authentication
     let token = JSON.parse(localStorage.getItem("token"));
@@ -26,36 +25,36 @@ function AdvertisingUpdate() {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    //Get Advertising API
-    const getAdvertising = async () => {
-        await axios.get(`${url}/api/Advertising/GetById/${id}`)
+    //Get Benefit API
+    const getBenefit = async () => {
+        await axios.get(`${url}/api/Benefit/GetById/${id}`,config,)
             .then((res) => {
-                setAdvertising(res.data);
+                setBenefit(res.data);
                 setImage(res.data.image);
                 setTitle(res.data.title);
-                setDescription(res.data.description);
+
             });
     };
 
     useEffect(() => {
-        getAdvertising();
+        getBenefit();
     }, []);
 
-    const newAdvertising = {
+    const newBenefit = {
         photo: image,
         title: title,
-        description: description
+
     };
 
-    const UpdateAdvertising = async (e) => {
+    const UpdateBenefit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
-        for (const [key, value] of Object.entries(newAdvertising)) {
+        for (const [key, value] of Object.entries(newBenefit)) {
             formData.append(key, value);
         };
 
-        await axios.put(`${url}/api/Advertising/Update/${id}`, formData, config, {
+        await axios.put(`${url}/api/Benefit/Update/${id}`, formData, config, {
             headers: {
                 Accept: "*/*"
             }
@@ -64,7 +63,7 @@ function AdvertisingUpdate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Advertising Updated',
+                    title: 'Benefit Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -74,15 +73,16 @@ function AdvertisingUpdate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Advertising not Updated',
+                    title: 'Benefit not Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
             });
 
-        navigate('/advertising');
+        navigate('/benefit');
     };
+
 
     //File Upload Handler: Setting Image and Displaying Preview
     const fileUploadHandler = (e) => {
@@ -90,6 +90,8 @@ function AdvertisingUpdate() {
         setImage(file);
         setShowImage(URL.createObjectURL(file));
     };
+
+
 
     return (
 
@@ -106,8 +108,8 @@ function AdvertisingUpdate() {
 
                 <div className='col-10 mt-5'>
                     <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Advertising</h2>
-                        <Form onSubmit={(e) => UpdateAdvertising(e)}>
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Benefit</h2>
+                        <Form onSubmit={(e) => UpdateBenefit(e)}>
                             <p>Image</p>
                             {
                                 image !== null ?
@@ -141,22 +143,12 @@ function AdvertisingUpdate() {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name={description}
-                                    placeholder={description}
-                                    onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </Form.Group>
+
 
                             <Button variant="outline-primary" type="submit">
                                 Update
                             </Button>
-                            <Link to="/advertising">
+                            <Link to="/benefit">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>
@@ -168,8 +160,9 @@ function AdvertisingUpdate() {
                 </div>
             </div>
 
+
         </>
     )
 }
 
-export default AdvertisingUpdate
+export default BenefitUpdate
