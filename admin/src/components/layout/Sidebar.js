@@ -28,10 +28,21 @@ function Sidebar() {
             <Link to="/advertising">Advertising</Link>
           </li>
 
+          <li className="menu-item">
+          <i class="fa-brands fa-slideshare"></i>
+            <Link to="/aboutInfo">About</Link>
+          </li>
+
           
           <li className="menu-item">
           <i class="fa-solid fa-chart-line"></i>
             <Link to="/benefit">Benefit</Link>
+          </li>
+
+           
+          <li className="menu-item">
+          <i class="fa-solid fa-chart-line"></i>
+            <Link to="/categoryTable">Category</Link>
           </li>
 
           <li className="menu-item">

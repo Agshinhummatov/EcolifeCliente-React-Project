@@ -10,12 +10,23 @@ function BenefitDetail() {
     const baseURL = "https://localhost:7012";
     const [benefit, setBenefit] = useState({})
 
-    const getById = async (id) => {
-        await axios.get(`${baseURL}/api/benefit/GetById/${id}`).then((response) => {
-            setBenefit(response.data);
-        });
-    }
 
+    
+    const getById = async (id) => {
+        try {
+          const response = await axios.get(`${baseURL}/api/benefit/GetById/${id}`);
+          setBenefit(response.data);
+        } catch (error) {
+          if (error.response && error.response.status === 404) {
+            // Benefit not found, perform redirect to the 404 page here.
+            window.location.href = '/404'; // Replace with the URL of your 404 page
+          } else {
+            // Handle other error conditions here
+            console.error(error);
+          }
+        }
+      };
+      
 
     useEffect(() => {
         getById(id)

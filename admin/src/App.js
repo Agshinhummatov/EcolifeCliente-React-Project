@@ -24,6 +24,13 @@ import SliderTable from './pages/slider/SliderTable';
 import SliderDetail from './pages/slider/SliderDetail';
 import SliderCreate from './pages/slider/SliderCreate';
 import SliderUpdate from './pages/slider/SliderUpdate';
+import AboutInfoTable from './pages/aboutInfo/AboutInfoTable';
+import AboutInfoDetail from './pages/aboutInfo/AboutInfoDetail';
+import AboutInfoCreate from './pages/aboutInfo/AboutInfoCreate';
+import AboutInfoUpdate from './pages/aboutInfo/AboutInfoUpdate';
+import CategoryTable from './pages/category/CategoryTable';
+import CategoryDetail from './pages/category/CategoryDetail';
+import NotFound404 from './pages/notFound/NotFound404';
 
 
 
@@ -40,6 +47,9 @@ function App() {
 
         <Routes>
 
+
+          <Route path="*" element={<NotFound404 />} />
+          <Route path="/404" element={<NotFound404 />} />
           <Route path="/dashborad" element={<Home />} />
 
           <Route path="/banner" element={<BannerTable />} />
@@ -51,12 +61,20 @@ function App() {
           <Route path="/advertising/detail/:id" element={<AdvertisingDetail/>} />
           <Route path="/advertisingCreate" element={<AdvertisingCreate />} />
           <Route path="/advertisingUpdate/:id" element={<AdvertisingUpdate />} />
-
+          
 
           <Route path="/slider" element={<SliderTable />} />
           <Route path="/slider/detail/:id" element={<SliderDetail/>} />
           <Route path="/sliderCreate" element={<SliderCreate />} />
           <Route path="/sliderUpdate/:id" element={<SliderUpdate />} />
+
+          <Route path="/aboutInfo" element={<AboutInfoTable/>} />
+          <Route path="/about/detail/:id" element={<AboutInfoDetail/>} />
+          <Route path="/AboutCreate" element={<AboutInfoCreate />} />
+          <Route path="/aboutUpdate/:id" element={<AboutInfoUpdate />} />
+
+          <Route path="/categoryTable" element={<CategoryTable/>} />
+          <Route path="/categoryTable/detail/:id" element={<CategoryDetail/>} />
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />
