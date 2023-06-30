@@ -66,7 +66,7 @@ function SliderTable() {
                 <div className='col-10 mt-5'>
 
                     <h2 className='text-center mt-4'>
-                        slider Table
+                        Slider Table
 
 
                     </h2>

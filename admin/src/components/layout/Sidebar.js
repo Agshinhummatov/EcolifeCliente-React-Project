@@ -20,7 +20,7 @@ function Sidebar() {
           
           </li>
           <li className="menu-item">
-            <i className="fa fa-user"></i>
+          <i class="fa-solid fa-dice-d6"></i>
             <Link to="/banner"> Banner</Link>
           </li>
           <li className="menu-item">
@@ -35,7 +35,7 @@ function Sidebar() {
           </li>
 
           <li className="menu-item">
-          <i class="fa-solid fa-chart-line"></i>
+          <i class="fa-brands fa-slideshare"></i>
             <Link to="/slider">Slider</Link>
           </li>
           <li className="menu-item">

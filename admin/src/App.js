@@ -21,6 +21,9 @@ import BenefitDetail from './pages/benefit/BenefitDetail';
 import BenefitCreate from './pages/benefit/BenefitCreate';
 import BenefitUpdate from './pages/benefit/BenefitUpdate';
 import SliderTable from './pages/slider/SliderTable';
+import SliderDetail from './pages/slider/SliderDetail';
+import SliderCreate from './pages/slider/SliderCreate';
+import SliderUpdate from './pages/slider/SliderUpdate';
 
 
 
@@ -51,6 +54,9 @@ function App() {
 
 
           <Route path="/slider" element={<SliderTable />} />
+          <Route path="/slider/detail/:id" element={<SliderDetail/>} />
+          <Route path="/sliderCreate" element={<SliderCreate />} />
+          <Route path="/sliderUpdate/:id" element={<SliderUpdate />} />
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />
