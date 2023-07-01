@@ -5,7 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Sidebar from '../../components/layout/Sidebar';
-function BenefitUpdate() {
+
+function CategoryUpdate() {
 
 
     const { id } = useParams();
@@ -13,10 +14,10 @@ function BenefitUpdate() {
 
     const url = 'https://localhost:7012';
 
-    const [Benefit, setBenefit] = useState([]);
-    const [image, setImage] = useState();
+    const [category, setCategory] = useState([]);
+    const [categoryImage, setCategoryImage] = useState();
     const [showImage, setShowImage] = useState(null);
-    const [title, setTitle] = useState();
+    const [name, setName] = useState();
 
     //Setting Authorization Token in Request Headers using Bearer Authentication
     let token = JSON.parse(localStorage.getItem("token"));
@@ -26,17 +27,13 @@ function BenefitUpdate() {
     };
 
 
-
-
-
-
-    //Get  by id Benefit  from API
-    const getBenefit = async () => {
+     //Get  by id Category  from API
+     const getCategory = async () => {
         try {
-            const response = await axios.get(`${url}/api/Benefit/GetById/${id}`);
-            setBenefit(response.data);
-            setImage(response.data.image);
-            setTitle(response.data.title);
+            const response = await axios.get(`${url}/api/category/GetById/${id}`);
+            setCategory(response.data);
+            setCategoryImage(response.data.categoryImage);
+            setName(response.data.name);
             
         } catch (error) {
             if (error.response) {
@@ -54,24 +51,24 @@ function BenefitUpdate() {
 
 
     useEffect(() => {
-        getBenefit();
+        getCategory();
     }, []);
 
-    const newBenefit = {
-        photo: image,
-        title: title,
+    const newCategory = {
+        photo: categoryImage,
+        name: name,
 
     };
 
-    const UpdateBenefit = async (e) => {
+    const UpdateCategory = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
-        for (const [key, value] of Object.entries(newBenefit)) {
+        for (const [key, value] of Object.entries(newCategory)) {
             formData.append(key, value);
         };
 
-        await axios.put(`${url}/api/Benefit/Update/${id}`, formData, config, {
+        await axios.put(`${url}/api/Category/Update/${id}`, formData, config, {
             headers: {
                 Accept: "*/*"
             }
@@ -80,7 +77,7 @@ function BenefitUpdate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Benefit Updated',
+                    name: 'Category Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -90,24 +87,23 @@ function BenefitUpdate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Benefit not Updated',
+                    name: 'Category not Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
             });
 
-        navigate('/benefit');
+        navigate('/categoryTable');
     };
 
 
     //File Upload Handler: Setting Image and Displaying Preview
     const fileUploadHandler = (e) => {
         const file = e.target.files[0];
-        setImage(file);
+        setCategoryImage(file);
         setShowImage(URL.createObjectURL(file));
     };
-
 
 
     return (
@@ -125,11 +121,11 @@ function BenefitUpdate() {
 
                 <div className='col-10 mt-5'>
                     <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Benefit</h2>
-                        <Form onSubmit={(e) => UpdateBenefit(e)}>
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Category</h2>
+                        <Form onSubmit={(e) => UpdateCategory(e)}>
                             <p>Image</p>
                             {
-                                image !== null ?
+                                categoryImage !== null ?
                                     <img
                                         style={{
                                             width: "200px",
@@ -137,7 +133,7 @@ function BenefitUpdate() {
                                             marginBottom: "10px",
                                             borderRadius: "unset",
                                         }}
-                                        src={showImage || `data:image/jpg;base64,${image}`}
+                                        src={showImage || `data:image/jpg;base64,${categoryImage}`}
                                         alt=""
                                     /> : null
                             }
@@ -149,14 +145,14 @@ function BenefitUpdate() {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Title</Form.Label>
+                                <Form.Label>Tame</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name={title}
-                                    placeholder={title}
+                                    name={name}
+                                    placeholder={name}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    onBlur={(e) => e.target.placeholder = name}
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                             </Form.Group>
 
@@ -165,7 +161,7 @@ function BenefitUpdate() {
                             <Button variant="outline-primary" type="submit">
                                 Update
                             </Button>
-                            <Link to="/benefit">
+                            <Link to="/categoryTable">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>
@@ -178,8 +174,9 @@ function BenefitUpdate() {
             </div>
 
 
+
         </>
     )
 }
 
-export default BenefitUpdate
+export default CategoryUpdate

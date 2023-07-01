@@ -22,12 +22,15 @@ function SliderTable() {
 
 
     //Retrieves all Slider data from the API.
+
     const getAllSlider = async () => {
-        await axios.get(`${url}/api/Slider/GetAll`)
-            .then((res) => {
-                setSlider(res.data);
-            });
-    }
+        try {
+          const response = await axios.get(`${url}/api/slider/GetAll`);
+          setSlider(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
     useEffect(() => {
         getAllSlider();

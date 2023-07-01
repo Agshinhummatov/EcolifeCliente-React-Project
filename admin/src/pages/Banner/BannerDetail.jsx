@@ -12,12 +12,23 @@ function BannerDetail() {
     const [banner, setBanner] = useState({})
 
 
+    //Get By Id Banner API
     const getById = async (id) => {
-        await axios.get(`${baseURL}/api/banner/GetById/${id}`).then((response) => {
+        try {
+            const response = await axios.get(`${baseURL}/api/banner/GetById/${id}`);
             setBanner(response.data);
-        });
-    }
-
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
+        }
+    };
 
     useEffect(() => {
         getById(id)

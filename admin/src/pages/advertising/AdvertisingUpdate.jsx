@@ -19,23 +19,37 @@ function AdvertisingUpdate() {
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
 
-    //Setting Authorization Token in Request Headers using Bearer Authentication
+    //Setting Authorization Token in Request Headers using Bearer AuthenticagetAdvertisingtion
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    //Get Advertising API
+
+
+    //Get  by id Advertising  from API
+
     const getAdvertising = async () => {
-        await axios.get(`${url}/api/Advertising/GetById/${id}`)
-            .then((res) => {
-                setAdvertising(res.data);
-                setImage(res.data.image);
-                setTitle(res.data.title);
-                setDescription(res.data.description);
-            });
+        try {
+            const response = await axios.get(`${url}/api/advertising/GetById/${id}`);
+            setAdvertising(response.data);
+            setImage(response.data.image);
+            setTitle(response.data.title);
+            setDescription(response.data.description);
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
+        }
     };
+
 
     useEffect(() => {
         getAdvertising();
@@ -118,7 +132,7 @@ function AdvertisingUpdate() {
                                             marginBottom: "10px",
                                             borderRadius: "unset",
                                         }}
-                                        src={`data:image/jpg;base64,${image}`}
+                                        src={showImage || `data:image/jpg;base64,${image}`}
                                         alt=""
                                     /> : null
                             }

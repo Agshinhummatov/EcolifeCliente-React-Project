@@ -25,11 +25,13 @@ function AboutInfoTable() {
 
     //Retrieves all About data from the API.
     const getAllAbout = async () => {
-        await axios.get(`${url}/api/about/GetAll`)
-            .then((res) => {
-                setAbout(res.data);
-            });
-    }
+        try {
+            const response = await axios.get(`${url}/api/About/GetAll`);
+            setAbout(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
         getAllAbout();

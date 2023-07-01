@@ -22,22 +22,25 @@ function AdvertisingTable() {
     };
 
 
-    //Retrieves all advertising data from the API.
+  
+    //Retrieves all Advertising data from the API.
     const getAllAdvertising = async () => {
-        await axios.get(`${url}/api/advertising/GetAll`)
-            .then((res) => {
-                setAdvertising(res.data);
-            });
-    }
+        try {
+            const response = await axios.get(`${url}/api/advertising/GetAll`);
+            setAdvertising(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
         getAllAdvertising();
     }, []);
 
-    
+
     //Deletes an advertising from the API.
     const DeleteAdvertising = async (id) => {
-        await axios.delete(`${url}/api/Advertising/Delete/${id}`,config,)
+        await axios.delete(`${url}/api/Advertising/Delete/${id}`, config,)
             .then((res) => {
                 swal.fire("", "Deleted Advertising", "success");
                 console.log(res);

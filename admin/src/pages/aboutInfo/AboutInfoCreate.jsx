@@ -18,92 +18,94 @@ function AboutInfoCreate() {
     const [isTitleEmpty, setIsTitleEmpty] = useState(false);
     const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
 
-      //Setting Authorization Token in Request Headers using Bearer Authentication
-      let token = JSON.parse(localStorage.getItem("token"));
+    //Setting Authorization Token in Request Headers using Bearer Authentication
+    let token = JSON.parse(localStorage.getItem("token"));
 
-      const config = {
-          headers: { Authorization: `Bearer ${token}` },
-      };
-  
-      //Get All About API
-      const getAllAbout = async () => {
-          await axios.get(`${url}/api/About/GetAll`, config)
-              .then((res) => {
-                  setAbout(res.data);
-              });
-  
-      };
-  
-      useEffect(() => {
-          getAllAbout();
-      }, []);
-  
-      const newAbout = {
-          photo: image,
-          title: title,
-          description: description
-      };
-  
-      //Create About
-      const CreateAbout = async (e) => {
-          e.preventDefault();
-  
-          if (title.trim() === '') {
-              setIsTitleEmpty(true);
-              return;
-          }
-  
-          if (description.trim() === '') {
-              setIsDescriptionEmpty(true);
-              return;
-          }
-  
-          const formData = new FormData();
-          for (const [key, value] of Object.entries(newAbout)) {
-              formData.append(key, value);
-          };
-  
-          await axios.post(`${url}/api/About/Create`, formData, config, {
-              headers: {
-                  Accept: "*/*"
-              }
-          })
-              .then((res) => {
-                  Swal.fire({
-                      position: 'top-center',
-                      icon: 'success',
-                      title: 'About Created',
-                      showConfirmButton: false,
-                      timer: 1500
-                  });
-                  console.log(res);
-                  navigate('/aboutInfo');
-              })
-              .catch((err) => {
-                  Swal.fire({
-                      position: 'top-center',
-                      icon: 'error',
-                      title: 'About not Created',
-                      showConfirmButton: false,
-                      timer: 1500
-                  });
-                  console.log(err);
-                  navigate('/aboutCreate');
-              });
-  
-  
-      };
-  
-      //File Upload Handler: Setting Image and Displaying Preview
-      const fileUploadHandler = async (e) => {
-          const files = e.target.files[0];
-          setImage(files);
-          setShowImage(URL.createObjectURL(files));
-      };
-    
-  return (
+    const config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
 
-    <>
+
+    //Retrieves all About data from the API.
+    const getAllAbout = async () => {
+        try {
+            const response = await axios.get(`${url}/api/About/GetAll`);
+            setAbout(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getAllAbout();
+    }, []);
+
+    const newAbout = {
+        photo: image,
+        title: title,
+        description: description
+    };
+
+    //Create About
+    const CreateAbout = async (e) => {
+        e.preventDefault();
+
+        if (title.trim() === '') {
+            setIsTitleEmpty(true);
+            return;
+        }
+
+        if (description.trim() === '') {
+            setIsDescriptionEmpty(true);
+            return;
+        }
+
+        const formData = new FormData();
+        for (const [key, value] of Object.entries(newAbout)) {
+            formData.append(key, value);
+        };
+
+        await axios.post(`${url}/api/About/Create`, formData, config, {
+            headers: {
+                Accept: "*/*"
+            }
+        })
+            .then((res) => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'About Created',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                console.log(res);
+                navigate('/aboutInfo');
+            })
+            .catch((err) => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: 'About not Created',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                console.log(err);
+                navigate('/aboutCreate');
+            });
+
+
+    };
+
+    //File Upload Handler: Setting Image and Displaying Preview
+    const fileUploadHandler = async (e) => {
+        const files = e.target.files[0];
+        setImage(files);
+        setShowImage(URL.createObjectURL(files));
+    };
+
+    return (
+
+        <>
             <div className='d-flex'>
 
                 <div className='col-2'>
@@ -186,8 +188,8 @@ function AboutInfoCreate() {
 
 
 
-    </>
-  )
+        </>
+    )
 }
 
 export default AboutInfoCreate

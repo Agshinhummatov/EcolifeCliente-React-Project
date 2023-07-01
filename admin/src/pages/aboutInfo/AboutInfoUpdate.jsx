@@ -27,16 +27,27 @@ function AboutInfoUpdate() {
     headers: { Authorization: `Bearer ${token}` },
   };
 
-  //Get About API
+  //Get By Id About API
   const getAbout = async () => {
-    await axios.get(`${url}/api/About/GetById/${id}`)
-      .then((res) => {
-        setAbout(res.data);
-        setImage(res.data.image);
-        setTitle(res.data.title);
-        setDescription(res.data.description);
-      });
+    try {
+      const response = await axios.get(`${url}/api/About/GetById/${id}`);
+      setAbout(response.data);
+      setImage(response.data.image);
+      setTitle(response.data.title);
+      setDescription(response.data.description);
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 404) {
+          window.location.href = '/404';
+        } else if (error.response.status === 400) {
+          window.location.href = '/400';
+        }
+      } else {
+        console.error(error);
+      }
+    }
   };
+
 
   useEffect(() => {
     getAbout();
@@ -120,7 +131,7 @@ function AboutInfoUpdate() {
                       marginBottom: "10px",
                       borderRadius: "unset",
                     }}
-                    src={`data:image/jpg;base64,${image}`}
+                    src={showImage || `data:image/jpg;base64,${image}`}
                     alt=""
                   /> : null
               }

@@ -27,16 +27,28 @@ function SliderUpdate() {
     };
 
 
-    //Get Slider API
+    //Get  by id Slider  from API
     const getSlider = async () => {
-        await axios.get(`${url}/api/Slider/GetById/${id}`)
-            .then((res) => {
-                setSlider(res.data);
-                setImage(res.data.image);
-                setTitle(res.data.title);
-                setDescription(res.data.description);
-            });
+        try {
+            const response = await axios.get(`${url}/api/slider/GetById/${id}`);
+            setSlider(response.data);
+            setImage(response.data.image);
+            setTitle(response.data.title);
+            
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
+        }
     };
+
+
 
     useEffect(() => {
         getSlider();
@@ -110,17 +122,17 @@ function SliderUpdate() {
                         <Form onSubmit={(e) => UpdateSlider(e)}>
                             <p>Image</p>
                             {
-                                image !== null ?
-                                    <img
-                                        style={{
-                                            width: "200px",
-                                            height: "100px",
-                                            marginBottom: "10px",
-                                            borderRadius: "unset",
-                                        }}
-                                        src={`data:image/jpg;base64,${image}`}
-                                        alt=""
-                                    /> : null
+                                 image !== null ?
+                                 <img
+                                     style={{
+                                         width: "200px",
+                                         height: "100px",
+                                         marginBottom: "10px",
+                                         borderRadius: "unset",
+                                     }}
+                                     src={showImage || `data:image/jpg;base64,${image}`}
+                                     alt=""
+                                 /> : null
                             }
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control

@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import Sidebar from '../../components/layout/Sidebar';
-function BenefitUpdate() {
+import Sidebar from '../../components/layout/Sidebar'
 
+function CategoryCreate() {
 
-    const { id } = useParams();
     const navigate = useNavigate();
-
     const url = 'https://localhost:7012';
 
-    const [Benefit, setBenefit] = useState([]);
-    const [image, setImage] = useState();
+    const [category, setCategory] = useState([]);
+    const [categoryImage, setCategoryImage] = useState();
     const [showImage, setShowImage] = useState(null);
-    const [title, setTitle] = useState();
+    const [name, setName] = useState('');
+    const [isNameEmpty, setIsNameEmpty] = useState(false);
 
     //Setting Authorization Token in Request Headers using Bearer Authentication
     let token = JSON.parse(localStorage.getItem("token"));
@@ -25,53 +24,47 @@ function BenefitUpdate() {
         headers: { Authorization: `Bearer ${token}` },
     };
 
+    //Get All Category API
 
-
-
-
-
-    //Get  by id Benefit  from API
-    const getBenefit = async () => {
+    const getAllCategory = async () => {
         try {
-            const response = await axios.get(`${url}/api/Benefit/GetById/${id}`);
-            setBenefit(response.data);
-            setImage(response.data.image);
-            setTitle(response.data.title);
-            
+            const response = await axios.get(`${url}/api/category/GetAll`, config);
+            setCategory(response.data);
         } catch (error) {
-            if (error.response) {
-                if (error.response.status === 404) {
-                    window.location.href = '/404';
-                } else if (error.response.status === 400) {
-                    window.location.href = '/400';
-                }
-            } else {
-                console.error(error);
-            }
+            console.error(error);
         }
     };
 
-
-
     useEffect(() => {
-        getBenefit();
+        getAllCategory();
     }, []);
 
-    const newBenefit = {
-        photo: image,
-        title: title,
 
+    const newCategory = {
+        photo: categoryImage,
+        name: name,
     };
 
-    const UpdateBenefit = async (e) => {
+
+    //Create Category
+
+
+    const CreateCategory = async (e) => {
         e.preventDefault();
 
+        if (name.trim() === '') {
+            setIsNameEmpty(true);
+            return;
+        }
+
+
+
         const formData = new FormData();
-        for (const [key, value] of Object.entries(newBenefit)) {
+        for (const [key, value] of Object.entries(newCategory)) {
             formData.append(key, value);
         };
 
-        await axios.put(`${url}/api/Benefit/Update/${id}`, formData, config, {
+        await axios.post(`${url}/api/Category/Create`, formData, config, {
             headers: {
                 Accept: "*/*"
             }
@@ -80,33 +73,35 @@ function BenefitUpdate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Benefit Updated',
+                    title: 'Category Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(res);
+                navigate('/categoryTable');
             })
             .catch((err) => {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Benefit not Updated',
+                    title: 'Category not Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
+                navigate('/CategoryCreate');
             });
 
-        navigate('/benefit');
-    };
 
+    };
 
     //File Upload Handler: Setting Image and Displaying Preview
-    const fileUploadHandler = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-        setShowImage(URL.createObjectURL(file));
+    const fileUploadHandler = async (e) => {
+        const files = e.target.files[0];
+        setCategoryImage(files);
+        setShowImage(URL.createObjectURL(files));
     };
+
 
 
 
@@ -116,56 +111,59 @@ function BenefitUpdate() {
 
             <div className='d-flex'>
 
-
                 <div className='col-2'>
 
                     <Sidebar />
 
                 </div>
 
+
                 <div className='col-10 mt-5'>
+
                     <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Benefit</h2>
-                        <Form onSubmit={(e) => UpdateBenefit(e)}>
-                            <p>Image</p>
-                            {
-                                image !== null ?
-                                    <img
-                                        style={{
-                                            width: "200px",
-                                            height: "100px",
-                                            marginBottom: "10px",
-                                            borderRadius: "unset",
-                                        }}
-                                        src={showImage || `data:image/jpg;base64,${image}`}
-                                        alt=""
-                                    /> : null
-                            }
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Create Category</h2>
+                        <Form onSubmit={(e) => CreateCategory(e)}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <p>Image</p>
+                                {
+                                    showImage !== null ?
+                                        <img
+                                            style={{
+                                                width: "200px",
+                                                height: "100px",
+                                                marginBottom: "10px",
+                                                borderRadius: "unset",
+                                            }}
+                                            src={showImage}
+                                            alt="header image"
+                                        /> : null
+                                }
                                 <Form.Control
                                     type="file"
+                                    required
                                     onChange={(e) => fileUploadHandler(e)}
                                 />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Title</Form.Label>
+                                <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name={title}
-                                    placeholder={title}
+                                    placeholder="Enter Name"
+                                    required
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    onBlur={(e) => e.target.placeholder = 'Enter Name'}
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                             </Form.Group>
 
 
 
+
                             <Button variant="outline-primary" type="submit">
-                                Update
+                                Create
                             </Button>
-                            <Link to="/benefit">
+                            <Link to="/categoryTable">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>
@@ -174,12 +172,16 @@ function BenefitUpdate() {
                     </div>
 
 
+
                 </div>
+
+
             </div>
+
 
 
         </>
     )
 }
 
-export default BenefitUpdate
+export default CategoryCreate

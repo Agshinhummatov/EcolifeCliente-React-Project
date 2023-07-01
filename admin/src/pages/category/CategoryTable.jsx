@@ -21,13 +21,27 @@ function CategoryTable() {
     };
 
 
+
     //Retrieves all Category data from the API.
+    // const getAllCategory = async () => {
+    //     await axios.get(`${url}/api/Category/GetAll`)
+    //         .then((res) => {
+    //             setCategory(res.data);
+    //         });
+    // }
+    
+
     const getAllCategory = async () => {
-        await axios.get(`${url}/api/Category/GetAll`)
-            .then((res) => {
-                setCategory(res.data);
-            });
-    }
+        try {
+          const response = await axios.get(`${url}/api/Category/GetAll`);
+          setCategory(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+
+      
 
     useEffect(() => {
         getAllCategory();

@@ -25,14 +25,17 @@ function AdvertisingCreate() {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    //Get All Advertising API
-    const getAllAdvertising = async () => {
-        await axios.get(`${url}/api/Advertising/GetAll`, config)
-            .then((res) => {
-                setAdvertising(res.data);
-            });
 
+    //Retrieves all Advertising data from the API.
+    const getAllAdvertising = async () => {
+        try {
+            const response = await axios.get(`${url}/api/advertising/GetAll`);
+            setAdvertising(response.data);
+        } catch (error) {
+            console.error(error);
+        }
     };
+    
 
     useEffect(() => {
         getAllAdvertising();

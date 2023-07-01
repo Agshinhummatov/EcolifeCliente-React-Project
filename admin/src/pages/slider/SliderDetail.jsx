@@ -12,11 +12,22 @@ function SliderDetail() {
 
 
     const getById = async (id) => {
-        await axios.get(`${baseURL}/api/Slider/GetById/${id}`).then((response) => {
+        try {
+            const response = await axios.get(`${baseURL}/api/slider/GetById/${id}`);
             setSlider(response.data);
-        });
-    }
-
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
+        }
+    };
+      
 
     useEffect(() => {
         getById(id)

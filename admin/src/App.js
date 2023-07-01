@@ -31,6 +31,9 @@ import AboutInfoUpdate from './pages/aboutInfo/AboutInfoUpdate';
 import CategoryTable from './pages/category/CategoryTable';
 import CategoryDetail from './pages/category/CategoryDetail';
 import NotFound404 from './pages/notFound/NotFound404';
+import CategoryCreate from './pages/category/CategoryCreate';
+import CategoryUpdate from './pages/category/CategoryUpdate';
+import BadRequset400 from './pages/notFound/BadRequset400';
 
 
 
@@ -50,6 +53,8 @@ function App() {
 
           <Route path="*" element={<NotFound404 />} />
           <Route path="/404" element={<NotFound404 />} />
+          <Route path="/400" element={<BadRequset400 />} />
+
           <Route path="/dashborad" element={<Home />} />
 
           <Route path="/banner" element={<BannerTable />} />
@@ -70,11 +75,14 @@ function App() {
 
           <Route path="/aboutInfo" element={<AboutInfoTable/>} />
           <Route path="/about/detail/:id" element={<AboutInfoDetail/>} />
-          <Route path="/AboutCreate" element={<AboutInfoCreate />} />
+          <Route path="/aboutCreate" element={<AboutInfoCreate />} />
           <Route path="/aboutUpdate/:id" element={<AboutInfoUpdate />} />
+
 
           <Route path="/categoryTable" element={<CategoryTable/>} />
           <Route path="/categoryTable/detail/:id" element={<CategoryDetail/>} />
+          <Route path="/categoryCreate" element={<CategoryCreate />} />
+          <Route path="/categoryUpdate/:id" element={<CategoryUpdate />} />
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />

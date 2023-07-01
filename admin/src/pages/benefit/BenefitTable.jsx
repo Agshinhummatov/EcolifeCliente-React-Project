@@ -22,12 +22,15 @@ function BenefitTable() {
   
 
       //Retrieves all Benefit data from the API.
-    const getAllBenefit = async () => {
-        await axios.get(`${url}/api/Benefit/GetAll`)
-            .then((res) => {
-                setBenefit(res.data);
-            });
-    }
+      const getAllBenefit = async () => {
+        try {
+          const response = await axios.get(`${url}/api/benefit/GetAll`);
+          setBenefit(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
 
     useEffect(() => {
         getAllBenefit();

@@ -24,13 +24,15 @@ function BenefitCreate() {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    //Get All Benefit API
-    const getAllBenefit = async () => {
-        await axios.get(`${url}/api/Benefit/GetAll`, config)
-            .then((res) => {
-                setBenefit(res.data);
-            });
-    };
+       //Retrieves all Benefit data from the API.
+       const getAllBenefit = async () => {
+        try {
+          const response = await axios.get(`${url}/api/benefit/GetAll`);
+          setBenefit(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
     useEffect(() => {
         getAllBenefit();
@@ -43,10 +45,10 @@ function BenefitCreate() {
     };
 
 
-     //Create Benefit
+    //Create Benefit
 
 
-     const CreateBenefit = async (e) => {
+    const CreateBenefit = async (e) => {
         e.preventDefault();
 
         if (title.trim() === '') {
@@ -54,7 +56,7 @@ function BenefitCreate() {
             return;
         }
 
-       
+
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(newBenefit)) {
@@ -92,7 +94,7 @@ function BenefitCreate() {
 
     };
 
-   //File Upload Handler: Setting Image and Displaying Preview
+    //File Upload Handler: Setting Image and Displaying Preview
     const fileUploadHandler = async (e) => {
         const files = e.target.files[0];
         setImage(files);
@@ -104,74 +106,74 @@ function BenefitCreate() {
 
         <>
 
-<div className='d-flex'>
+            <div className='d-flex'>
 
-<div className='col-2'>
+                <div className='col-2'>
 
-    <Sidebar />
+                    <Sidebar />
 
-</div>
-
-
-<div className='col-10 mt-5'>
-
-    <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-        <h2 className='my-5' style={{ textAlign: "center" }}>Create Benefit</h2>
-        <Form onSubmit={(e) => CreateBenefit(e)}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <p>Image</p>
-                {
-                    showImage !== null ?
-                        <img
-                            style={{
-                                width: "200px",
-                                height: "100px",
-                                marginBottom: "10px",
-                                borderRadius: "unset",
-                            }}
-                            src={showImage}
-                            alt="header image"
-                        /> : null
-                }
-                <Form.Control
-                    type="file"
-                    required
-                    onChange={(e) => fileUploadHandler(e)}
-                />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter Title"
-                    required
-                    onFocus={(e) => e.target.placeholder = ''}
-                    onBlur={(e) => e.target.placeholder = 'Enter Title'}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-            </Form.Group>
+                </div>
 
 
-           
+                <div className='col-10 mt-5'>
 
-            <Button variant="outline-primary" type="submit">
-                Create
-            </Button>
-            <Link to="/benefit">
-                <Button variant="outline-dark" type="submit" className='mx-2'>
-                    Cancel
-                </Button>
-            </Link>
-        </Form>
-    </div>
+                    <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Create Benefit</h2>
+                        <Form onSubmit={(e) => CreateBenefit(e)}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <p>Image</p>
+                                {
+                                    showImage !== null ?
+                                        <img
+                                            style={{
+                                                width: "200px",
+                                                height: "100px",
+                                                marginBottom: "10px",
+                                                borderRadius: "unset",
+                                            }}
+                                            src={showImage}
+                                            alt="header image"
+                                        /> : null
+                                }
+                                <Form.Control
+                                    type="file"
+                                    required
+                                    onChange={(e) => fileUploadHandler(e)}
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter Title"
+                                    required
+                                    onFocus={(e) => e.target.placeholder = ''}
+                                    onBlur={(e) => e.target.placeholder = 'Enter Title'}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
+                            </Form.Group>
 
 
 
-</div>
+
+                            <Button variant="outline-primary" type="submit">
+                                Create
+                            </Button>
+                            <Link to="/benefit">
+                                <Button variant="outline-dark" type="submit" className='mx-2'>
+                                    Cancel
+                                </Button>
+                            </Link>
+                        </Form>
+                    </div>
 
 
-</div>
+
+                </div>
+
+
+            </div>
 
         </>
     )

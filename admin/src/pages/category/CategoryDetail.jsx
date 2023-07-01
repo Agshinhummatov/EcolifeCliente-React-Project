@@ -14,19 +14,20 @@ function CategoryDetail() {
 
     const getById = async (id) => {
         try {
-          const response = await axios.get(`${baseURL}/api/category/GetById/${id}`);
-          setCategory(response.data);
+            const response = await axios.get(`${baseURL}/api/category/GetById/${id}`);
+            setCategory(response.data);
         } catch (error) {
-          if (error.response && error.response.status === 404) {
-            // Category not found, perform redirect to the 404 page here.
-            window.location.href = '/404'; // Replace with the URL of your 404 page
-          } else {
-            // Handle other error conditions here
-            console.error(error);
-          }
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
         }
-      };
-      
+    };
 
     useEffect(() => {
         getById(id)

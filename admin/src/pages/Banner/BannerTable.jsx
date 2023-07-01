@@ -25,13 +25,16 @@ function BannerTable() {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-  //Retrieves all banner data from the API.
+    //Retrieves all banner data from the API.
     const getAllBanner = async () => {
-        await axios.get(`${url}/api/Banner/GetAll`)
-            .then((res) => {
-                setBanner(res.data);
-            });
-    }
+        try {
+            const response = await axios.get(`${url}/api/banner/GetAll`);
+            setBanner(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     useEffect(() => {
         getAllBanner();

@@ -11,12 +11,25 @@ function AdvertisingDetail() {
     const baseURL = "https://localhost:7012";
     const [advertising, setAdvertising] = useState({})
 
-    const getById = async (id) => {
-        await axios.get(`${baseURL}/api/advertising/GetById/${id}`).then((response) => {
-            setAdvertising(response.data);
-        });
-    }
 
+
+    //Get By Id Advertising API
+    const getById = async (id) => {
+        try {
+            const response = await axios.get(`${baseURL}/api/advertising/GetById/${id}`);
+            setAdvertising(response.data);
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
+        }
+    };
 
     useEffect(() => {
         getById(id)
