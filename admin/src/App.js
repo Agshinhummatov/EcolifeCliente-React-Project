@@ -34,12 +34,19 @@ import NotFound404 from './pages/notFound/NotFound404';
 import CategoryCreate from './pages/category/CategoryCreate';
 import CategoryUpdate from './pages/category/CategoryUpdate';
 import BadRequset400 from './pages/notFound/BadRequset400';
+import BlogTable from './pages/blog/BlogTable';
+import BlogCreate from './pages/blog/BlogCreate';
+import BlogDetail from './pages/blog/BlogDetail';
+import BlogUpdate from './pages/blog/BlogUpdate';
 
 
 
 
 
 function App() {
+
+
+
   return (
 
   
@@ -83,6 +90,12 @@ function App() {
           <Route path="/categoryTable/detail/:id" element={<CategoryDetail/>} />
           <Route path="/categoryCreate" element={<CategoryCreate />} />
           <Route path="/categoryUpdate/:id" element={<CategoryUpdate />} />
+
+          <Route path="/blogTable" element={<BlogTable/>} />
+          <Route path="/blogTable/detail/:id" element={<BlogDetail/>} />
+          <Route path="/blogCreate" element={<BlogCreate />} />
+          <Route path="/blogUpdate/:id" element={<BlogUpdate />} />
+
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />
