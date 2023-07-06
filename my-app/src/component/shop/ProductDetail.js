@@ -645,6 +645,7 @@ function ProductDetail(props) {
                                         <Form.Group className="mb-3 mt-3" controlId="exampleForm.ControlTextarea1">
                                             <Form.Label>Add Comment</Form.Label>
                                             <Form.Control
+                                                style={{ outline: 'none' }}
                                                 type="text"
                                                 as="textarea"
                                                 rows={3}

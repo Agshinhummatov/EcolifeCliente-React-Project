@@ -183,7 +183,7 @@ function BasketProducts(props) {
                                 borderRadius: "unset",
                                
                               }}
-                              src={`data:image/jpeg;base64,${basket.product.photo}`}
+                              src={`data:image/jpeg;base64,${basket.product.image}`}
                               alt=""
                             />
                           </td>

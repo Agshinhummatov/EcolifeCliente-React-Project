@@ -57,6 +57,11 @@ function Sidebar() {
 
 
           <li className="menu-item">
+            <i class="fa-brands fa-slideshare"></i>
+            <Link to="/productTable">Product</Link>
+          </li>
+
+          <li className="menu-item">
             <i className="fa fa-envelope"></i>
             <span>Mesajlar</span>
           </li>

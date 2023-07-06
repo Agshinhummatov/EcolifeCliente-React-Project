@@ -38,6 +38,8 @@ import BlogTable from './pages/blog/BlogTable';
 import BlogCreate from './pages/blog/BlogCreate';
 import BlogDetail from './pages/blog/BlogDetail';
 import BlogUpdate from './pages/blog/BlogUpdate';
+import ProductTable from './pages/product/ProductTable';
+import ProductCreate from './pages/product/ProductCreate';
 
 
 
@@ -96,6 +98,9 @@ function App() {
           <Route path="/blogCreate" element={<BlogCreate />} />
           <Route path="/blogUpdate/:id" element={<BlogUpdate />} />
 
+
+          <Route path="/productTable" element={<ProductTable/>} />
+          <Route path="/porductCreate" element={<ProductCreate />} />
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />

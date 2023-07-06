@@ -1,0 +1,31 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      a {
+        display: block;
+        font-size: 14px;
+        color: #c2c2c2;
+        font-weight: 600;
+        padding: 10px 20px;
+        border: 1.5px solid #c2c2c2;
+      }
+      &.disabled {
+        a {
+          &:hover {
+            cursor: auto;
+            background-color: transparent;
+            transition: none;
+          }
+        }
+      }
+    }
+  }
+  .pagination li.selected a,
+  .pagination li a:hover {
+    color: #c2c2c2;
+    border-color: #393e4c;
+    background: #393e4c;
+  }

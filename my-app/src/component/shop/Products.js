@@ -147,12 +147,13 @@ function Product(props) {
                   <div className="imagesBx">
 
                     <img
-                      src={`data:image/jpeg;base64,${product.photo}`}
+                      src={`data:image/jpeg;base64,${product.image}`}
                       alt=""
                     />
 
 
-                    <img className='rear-img' src={product2} alt="images" />
+                    <img className='rear-img'  src={`data:image/jpeg;base64,${product.hoverImage}`}
+                      alt=""  />
 
                     <ul className="icon-shop">
                       <li>
