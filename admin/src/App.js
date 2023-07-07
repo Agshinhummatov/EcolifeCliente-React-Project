@@ -40,6 +40,8 @@ import BlogDetail from './pages/blog/BlogDetail';
 import BlogUpdate from './pages/blog/BlogUpdate';
 import ProductTable from './pages/product/ProductTable';
 import ProductCreate from './pages/product/ProductCreate';
+import ProductUpdate from './pages/product/ProductUpdate';
+import ProductDetail from './pages/product/ProductDetail';
 
 
 
@@ -59,8 +61,8 @@ function App() {
 
         <Routes>
 
-
           <Route path="*" element={<NotFound404 />} />
+
           <Route path="/404" element={<NotFound404 />} />
           <Route path="/400" element={<BadRequset400 />} />
 
@@ -100,7 +102,9 @@ function App() {
 
 
           <Route path="/productTable" element={<ProductTable/>} />
-          <Route path="/porductCreate" element={<ProductCreate />} />
+          <Route path="/productCreate" element={<ProductCreate />} />
+          <Route path="/productUpdate/:id" element={<ProductUpdate />} />
+          <Route path="/productTable/detail/:id" element={<ProductDetail/>} />
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />

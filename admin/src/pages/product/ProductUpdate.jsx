@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import Sidebar from '../../components/layout/Sidebar'
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Sidebar from '../../components/layout/Sidebar';
 
-function ProductCreate() {
+
+function ProductUpdate() {
+
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
@@ -20,19 +21,16 @@ function ProductCreate() {
     const [showHoverImage, setShowHoverImage] = useState(null);
     const [hoverImage, setHoverImage] = useState();
 
-    const [description, setDescription] = useState('');
-    const [name, setName] = useState('');
-    const [count, setCount] = useState('');
-    const [price, setPrice] = useState('');
-    const [rates, setRates] = useState('');
-
-    const [isTitleEmpty, setIsTitleEmpty] = useState(false);
-    const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
-    const [categoryInput, setCategoryInput] = useState();
-
     const [categories, setCategories] = useState([]);
+    const [categoryInput, setCategoryInput] = useState();
+    const [description, setDescription] = useState();
+    const [name, setName] = useState();
+    const [count, setCount] = useState();
+    const [price, setPrice] = useState();
+    const [rates, setRates] = useState();
 
-    //Setting Authorization Token in Request Headers using Bearer Authentication
+
+    //Setting Authorization Token in Request Headers using Bearer AuthenticagetProducttion
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
@@ -40,17 +38,38 @@ function ProductCreate() {
     };
 
 
-
-    //Retrieves all Product data from the API.
-    const getAllProduct = async () => {
+    //Get  by id Product  from API
+    const getProduct = async () => {
         try {
-            const response = await axios.get(`${url}/api/Product/GetAll`);
+            const response = await axios.get(`${url}/api/Product/GetById/${id}`);
             setProduct(response.data);
+            setImage(response.data.image);
+            setName(response.data.name);
+            setDescription(response.data.description);
+            setHoverImage(response.data.hoverImage);
+            setCount(response.data.count);
+            setPrice(response.data.price);
+            setRates(response.data.rates);
+            setCategoryInput(response.data.categoryId);
+
         } catch (error) {
-            console.error(error);
+            if (error.response) {
+                if (error.response.status === 404) {
+                    window.location.href = '/404';
+                } else if (error.response.status === 400) {
+                    window.location.href = '/400';
+                }
+            } else {
+                console.error(error);
+            }
         }
     };
 
+
+    useEffect(() => {
+        getProduct();
+        getAllCategory();
+    }, []);
 
     const getAllCategory = async () => {
         try {
@@ -60,6 +79,12 @@ function ProductCreate() {
             console.error(error);
         }
     };
+
+
+
+
+
+
 
     const newProduct = {
         photo: image,
@@ -73,26 +98,15 @@ function ProductCreate() {
     };
 
 
-    useEffect(() => {
-        getAllCategory();
-        getAllProduct();
-    }, []);
-
-    //Create Product
-
-
-    const CreateProduct = async (e) => {
-
+    const UpdateProduct = async (e) => {
         e.preventDefault();
-
-
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(newProduct)) {
             formData.append(key, value);
         };
 
-        await axios.post(`${url}/api/Product/Create`, formData, config, {
+        await axios.put(`${url}/api/Product/Update/${id}`, formData, config, {
             headers: {
                 Accept: "*/*"
             }
@@ -101,50 +115,55 @@ function ProductCreate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Product Created',
+                    title: 'Product Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(res);
-                navigate('/Product');
             })
             .catch((err) => {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Product not Created',
+                    title: 'Product not Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
-                navigate('/ProductCreate');
             });
 
-
+        navigate('/productTable');
     };
+
 
     //File Upload Handler: Setting Image and Displaying Preview
-    const fileUploadHandler = async (e) => {
-        const files = e.target.files[0];
-        setImage(files);
-
-        setShowImage(URL.createObjectURL(files));
-
+    const fileUploadHandler = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        setShowImage(URL.createObjectURL(file));
     };
+
 
     //File Upload Handler: Setting Image and Displaying Preview
     const fileUploadHandlers = async (e) => {
         const files = e.target.files[0];
 
         setHoverImage(files);
-
         setShowHoverImage(URL.createObjectURL(files));
     };
 
 
+
+
+
+
+
     return (
-        <div>
+
+        <>
+
             <div className='d-flex'>
+
 
                 <div className='col-2'>
 
@@ -152,53 +171,52 @@ function ProductCreate() {
 
                 </div>
 
-
                 <div className='col-10 mt-5'>
-
                     <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-                        <h2 className='my-5' style={{ textAlign: "center" }}>Create Product</h2>
-                        <Form onSubmit={(e) => CreateProduct(e)}>
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Product</h2>
+                        <Form onSubmit={(e) => UpdateProduct(e)}>
+                            <p>Image</p>
+                            {
+                                image !== null ?
+                                    <img
+                                        style={{
+                                            width: "200px",
+                                            height: "100px",
+                                            marginBottom: "10px",
+                                            borderRadius: "unset",
+                                        }}
+                                        src={showImage || `data:image/jpg;base64,${image}`}
+                                        alt=""
+                                    /> : null
+                            }
+
+
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <p>Image</p>
-                                {
-                                    showImage !== null ?
-                                        <img
-                                            style={{
-                                                width: "200px",
-                                                height: "100px",
-                                                marginBottom: "10px",
-                                                borderRadius: "unset",
-                                            }}
-                                            src={showImage}
-                                            alt="header image"
-                                        /> : null
-                                }
                                 <Form.Control
                                     type="file"
-                                    required
                                     onChange={(e) => fileUploadHandler(e)}
                                 />
                             </Form.Group>
 
+                            <p>Hover Image</p>
+                            {
+                                hoverImage !== null ?
+
+                                    <img
+                                        style={{
+                                            width: "200px",
+                                            height: "100px",
+                                            marginBottom: "10px",
+                                            borderRadius: "unset",
+                                        }}
+                                        src={showHoverImage || `data:image/jpg;base64,${hoverImage}`}
+                                        alt=""
+                                    /> : null
+                            }
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <p> Hover Image</p>
-                                {
-                                    showHoverImage !== null ?
-                                        <img
-                                            style={{
-                                                width: "200px",
-                                                height: "100px",
-                                                marginBottom: "10px",
-                                                borderRadius: "unset",
-                                            }}
-                                            src={showHoverImage}
-                                            alt="header image"
-                                        /> : null
-                                }
                                 <Form.Control
                                     type="file"
-                                    required
                                     onChange={(e) => fileUploadHandlers(e)}
                                 />
                             </Form.Group>
@@ -207,85 +225,77 @@ function ProductCreate() {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Enter Title"
-                                    required
+                                    name={name}
+                                    placeholder={name}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = 'Enter Name'}
+                                    onBlur={(e) => e.target.placeholder = name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </Form.Group>
-
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Enter Description"
-                                    required
+                                    name={description}
+                                    placeholder={description}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = 'Enter Description'}
+                                    onBlur={(e) => e.target.placeholder = description}
                                     onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </Form.Group>
-
-
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Count</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Enter Description"
-                                    required
-                                    onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = 'Enter Count'}
-
-                                    onChange={(e) => setCount(e.target.value)}
                                 />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Price</Form.Label>
                                 <Form.Control
-                                    type="text"
-                                    placeholder="Enter Description"
-                                    required
+                                    type="number"
+                                    name={price}
+                                    placeholder={price}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = 'Enter Price'}
+                                    onBlur={(e) => e.target.placeholder = price}
                                     onChange={(e) => setPrice(e.target.value)}
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Count</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    name={count}
+                                    placeholder={count}
+                                    onFocus={(e) => e.target.placeholder = ''}
+                                    onBlur={(e) => e.target.placeholder = count}
+                                    onChange={(e) => setCount(e.target.value)}
                                 />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Rates</Form.Label>
                                 <Form.Control
-                                    type="text"
-                                    placeholder="Enter Description"
-                                    required
+                                    type="number"
+                                    name={rates}
+                                    placeholder={rates}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = 'Enter Rates'}
+                                    onBlur={(e) => e.target.placeholder = rates}
                                     onChange={(e) => setRates(e.target.value)}
                                 />
                             </Form.Group>
-
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Category</Form.Label>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={categoryInput}
-                                    label="category"
+                                <Form.Select
+                                    aria-label="Product Category"
+                                    value={categoryInput} // Set the selected category ID as the value
                                     onChange={(e) => setCategoryInput(e.target.value)}
-                                    defaultValue=""
                                 >
-                                    {categories.map((res) => (
-                                        <MenuItem key={res.id} value={res.id}>
-                                            {res.name}
-                                        </MenuItem>
+                                    {categories.map((category) => (
+                                        <option key={category.id} value={category.id}>
+                                            {category.name}
+                                        </option>
                                     ))}
-                                </Select>
+                                </Form.Select>
                             </Form.Group>
 
                             <Button variant="outline-primary" type="submit">
-                                Create
+                                Update
                             </Button>
                             <Link to="/Product">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
@@ -296,14 +306,12 @@ function ProductCreate() {
                     </div>
 
 
-
                 </div>
-
-
             </div>
 
-        </div>
+
+        </>
     )
 }
 
-export default ProductCreate
+export default ProductUpdate

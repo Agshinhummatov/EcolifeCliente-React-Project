@@ -141,7 +141,7 @@ function ProductTable() {
                         <div className="col-lg-12 grid-margin stretch-card my-5">
 
                             <div >
-                                <Link to="/porductCreate">
+                                <Link to="/productCreate">
                                     <button className="btn btn-success my-2" style={{ float: "right" }}>Create</button>
                                 </Link>
 
@@ -172,13 +172,13 @@ function ProductTable() {
                                                         alt="productimage"
                                                     />
                                                 </td>
-                                                <td className="py-1" dangerouslySetInnerHTML={{ __html: product.title }}></td>
+                                                <td className="py-1" dangerouslySetInnerHTML={{ __html: product.name }}></td>
                                                 <td>{moment(product.createdAt).format('DD-MM-YYYY HH:mm:ss')}</td>
                                                 <td>{moment(product.updateDate).format('DD-MM-YYYY HH:mm:ss') !== '01-01-0001 00:00:00' ? moment(product.updateDate).format('DD-MM-YYYY HH:mm:ss') : 'Not updated'}</td>
                                                 <td>
 
 
-                                                    <Link to={`/product/detail/${product.id}`}>
+                                                    <Link to={`/productTable/detail/${product.id}`}>
                                                         <button className="btn btn-outline-info" style={{ marginRight: "15px" }}>Detail</button>
 
                                                     </Link>
