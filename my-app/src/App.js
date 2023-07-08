@@ -15,6 +15,9 @@ import BlogDetail from './pages/BlogDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import BasketDetail from './pages/BasketDetail';
+import BadRequset400 from './pages/BadRequset400';
+import NotFound404 from './pages/NotFound404';
+// import BlogInfo from './component/blog/BlogInfo';
 
 
 
@@ -34,6 +37,9 @@ function App() {
         {/* <Navbar /> */}
         <Routes>
 
+           <Route path="*" element={<NotFound404 />} />
+          <Route path="/404" element={<NotFound404 />} />
+          <Route path="/400" element={<BadRequset400 />} />
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
@@ -41,10 +47,12 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/productDetail/:id" element={<ShopDetail />} />
-          <Route path="/blogDetail" element={<BlogDetail />} />
+          <Route path="/blogDetail/:id" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/basketDetail" element={<BasketDetail />} />
+
+          {/* <Route path="/blogDetail/:id" element={<BlogInfo />} /> */}
           
         </Routes>
 

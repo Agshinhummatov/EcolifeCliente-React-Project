@@ -6,6 +6,7 @@ function BadRequset400() {
     return (
 
         <>
+        
             <div className='d-flex'>
 
                 <div className='col-2'>

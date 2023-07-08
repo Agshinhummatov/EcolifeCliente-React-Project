@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Products from '../component/shop/Products'
+
 import Advertising from '../component/advertising/Advertising';
 import Slider from '../component/slider/Slider';
 import Banner from '../component/banner/Banner';
 import Benefit from '../component/benefit/Benefit';
 import Category from '../component/category/Category';
-import BlogCart from '../component/blog/BlogCart';
+
 import Navbar from "../component/layouts/Navbar";
+import FiltredBlog from "../component/blog/FiltredBlog";
+import FiltredProduct from "../component/shop/FiltredProduct";
+import TheBestProductFiltred from "../component/shop/TheBestProductFiltred";
 
 function Home() {
 
@@ -50,12 +53,16 @@ function Home() {
    <h2 className='mt-5 text-center'>New Arrivals</h2>
   
   
-   <Products setbasketcount={setbasketcount}/> 
+  
+   <FiltredProduct  setbasketcount={setbasketcount}/>
    <Banner/>
    <Benefit/>
    <h2 className='text-center mt-5'>Shop By Categories:</h2>
    <Category/>
-   <BlogCart/>
+   <h2 className='text-center mt-5'>The Best Products</h2>
+   <TheBestProductFiltred  setbasketcount={setbasketcount}/>
+   <h2 className='text-center mt-5'>New Blogs</h2>
+   <FiltredBlog/>
 
 
 
