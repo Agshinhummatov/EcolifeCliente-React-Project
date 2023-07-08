@@ -20,6 +20,8 @@ function FiltredProduct(props) {
     const navigate = useNavigate();
     const totalStars = 5;
     const [products, setProducts] = useState([]);
+
+    const [wishlist, setWishlist] = useState([]);
     const [config, setConfig] = React.useState([]);
 
 
@@ -105,6 +107,32 @@ function FiltredProduct(props) {
 
     }
 
+
+
+
+    async function AddWishlsit(id) {
+        if (config != null) {
+            await axios
+                .post(`${url}/api/Wishlist/AddWishlist?id=${id}`, null, config)
+                .then((res) => {
+                    if (res.data.status === "success" || res.status === 200) {
+                        Success.fire({
+                            icon: "success",
+                            title: "Wishlsit successfully added",
+                        });
+                        // axios.get(`${url}/api/Wishlist/Getwishlistcount`, config).then((res) => {
+                        //     props.setwishlistcount(res.data);
+                        // });
+                    }
+                })
+
+        } else { navigate("/login"); }
+
+
+
+
+    }
+
     return (
         <div>
 
@@ -128,7 +156,7 @@ function FiltredProduct(props) {
                                             alt="" />
 
                                         <ul className="icon-shop">
-                                            <li>
+                                            <li onClick={() => AddWishlsit(product.id)}> 
                                                 <Icon path={mdiHeartOutline} size={1} />
                                                 <span>Add to WishList</span>
                                             </li>

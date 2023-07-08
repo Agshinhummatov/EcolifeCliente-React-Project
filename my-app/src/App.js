@@ -17,6 +17,7 @@ import Register from './pages/Register';
 import BasketDetail from './pages/BasketDetail';
 import BadRequset400 from './pages/BadRequset400';
 import NotFound404 from './pages/NotFound404';
+import WishlistProduct from './component/shop/WishlistProduct';
 // import BlogInfo from './component/blog/BlogInfo';
 
 
@@ -51,7 +52,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/basketDetail" element={<BasketDetail />} />
-
+          <Route path="/wishlistDetail" element={<WishlistProduct />} />
+          
           {/* <Route path="/blogDetail/:id" element={<BlogInfo />} /> */}
           
         </Routes>

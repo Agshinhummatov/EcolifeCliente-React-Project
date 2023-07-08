@@ -18,6 +18,7 @@ function Home() {
   const url = "https://localhost:7012";
 
   const [basketcount, setbasketcount] = useState(0);
+  
 
   let token = JSON.parse(localStorage.getItem("token"));
 
