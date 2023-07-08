@@ -1,11 +1,124 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 import "../../assets/css/contact.css"
 import Icon from '@mdi/react';
-import { mdiMapMarkerOutline,mdiPhone,mdiAt } from '@mdi/js';
+import { mdiMapMarkerOutline, mdiPhone, mdiAt } from '@mdi/js';
 
 function ContactContent() {
+
+    const navigate = useNavigate();
+    const url = 'https://localhost:7012';
+
+    const [contact, setContact] = useState([]);
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [content, setContent] = useState('');
+    const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+    const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
+
+    //Setting Authorization Token in Request Headers using Bearer Authentication
+    let token = JSON.parse(localStorage.getItem("token"));
+
+    const config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
+
+
+    //Retrieves all Contact data from the API.
+    const getAllContact = async () => {
+        try {
+            const response = await axios.get(`${url}/api/Contact/GetAll`);
+            setContact(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
+    useEffect(() => {
+        getAllContact();
+    }, []);
+
+
+    //Handles the submit button click event.
+
+    const newContact = {
+        name: name,
+        email: email,
+        subject: subject,
+        content: content
+
+
+    };
+
+    //Create Contact
+    const CreateContact = async (e) => {
+        e.preventDefault();
+
+        // if (title.trim() === '') {
+        //     setIsTitleEmpty(true);
+        //     return;
+        // }
+
+        // if (description.trim() === '') {
+        //     setIsDescriptionEmpty(true);
+        //     return;
+        // }
+
+        const formData = new FormData();
+        for (const [key, value] of Object.entries(newContact)) {
+            formData.append(key, value);
+        };
+
+        await axios.post(`${url}/api/Contact/Create`, formData, config, {
+            headers: {
+                Accept: "*/*"
+            }
+        })
+            .then((res) => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Your message has been sent successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                console.log(res);
+                setContact([]);
+                setName('');
+                setEmail('');
+                setSubject('');
+                setContent('');
+                navigate('/Contact');
+            })
+            .catch((err) => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: 'Your message was not sent successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                console.log(err);
+                navigate('/ContactCreate');
+            });
+
+
+    };
+
+
+
     return (
-        <div>        <section id="contact-us">
+        
+        <div>     
+            
+               <section id="contact-us">
 
             <div className="container">
 
@@ -32,7 +145,7 @@ function ContactContent() {
                                 <ul className='mt-3'>
 
                                     <li className='mt-5'>
-                                       
+
                                         <h4>  <Icon path={mdiMapMarkerOutline} size={1.5} color="gray" />Address</h4>
                                         <p>Ecolife Responsive Prestashop Theme
                                             United States</p>
@@ -40,13 +153,13 @@ function ContactContent() {
                                     </li>
 
                                     <li className='mt-5'>
-                                    
+
                                         <h4>   <Icon path={mdiPhone} size={1.5} color="gray" /> Phone</h4>
                                         <p>Call us: +800345678</p>
                                     </li>
 
                                     <li className='mt-5'>
-                                        
+
                                         <h4> <Icon path={mdiAt} size={1.5} color="gray" /> Email</h4>
                                         <p>Email us: demo@posthemes.com</p>
                                     </li>
@@ -66,28 +179,34 @@ function ContactContent() {
                             </div>
 
 
-                            <form>
+                            <form onSubmit={(e) => CreateContact(e)}>
 
                                 <div className="group">
-                                    <input type="text" required />
+                                    <input type="text" required 
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                   />
                                     <span className="bar"></span>
                                     <label>Your Name (required)</label>
                                 </div>
 
                                 <div className="group">
-                                    <input type="text" required />
+                                    <input type="email" required  value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
                                     <span className="bar"></span>
                                     <label>Your Email (required)</label>
                                 </div>
 
                                 <div className="group">
-                                    <input type="text" required />
+                                    <input type="text" required value={subject}
+                                    onChange={(e) => setSubject(e.target.value)} />
                                     <span className="bar"></span>
                                     <label>Subject*</label>
                                 </div>
 
                                 <div className="group">
-                                    <input type="text" required />
+                                    <input type="text" required value={content}
+                                    onChange={(e) => setContent(e.target.value)} />
                                     <span className="bar"></span>
                                     <label>Post content*</label>
                                 </div>

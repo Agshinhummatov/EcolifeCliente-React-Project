@@ -42,6 +42,8 @@ import ProductTable from './pages/product/ProductTable';
 import ProductCreate from './pages/product/ProductCreate';
 import ProductUpdate from './pages/product/ProductUpdate';
 import ProductDetail from './pages/product/ProductDetail';
+import ContactTable from './pages/contact/ContactTable';
+import ContactDetail from './pages/contact/ContactDetail';
 
 
 
@@ -105,6 +107,9 @@ function App() {
           <Route path="/productCreate" element={<ProductCreate />} />
           <Route path="/productUpdate/:id" element={<ProductUpdate />} />
           <Route path="/productTable/detail/:id" element={<ProductDetail/>} />
+
+          <Route path="/contactTable" element={<ContactTable/>} />
+          <Route path="/contact/detail/:id" element={<ContactDetail/>} />
 
           <Route path="/benefit" element={<BenefitTable />} />
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />
