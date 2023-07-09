@@ -371,13 +371,13 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: white;
     transition: 0.3s ease;
 }
 
 #navbar li a:hover,
 #navbar li a.active {
-    color: #fdfdfd;
+    color: #bbb4b4;
 }
 
 #navbar li a.active::after,
@@ -385,7 +385,7 @@
     content: "";
     width: 30%;
     height: 2px;
-    background: #ffffff;
+    background: rgb(243, 238, 238);
     position: absolute;
     bottom: -4px;
     left: 20px;
@@ -586,3 +586,37 @@
 
 }
 
+
+.footer-organic{
+    font-size: 18px;
+    color: #01574A;
+}
+
+
+.footer-bg{
+
+    background-color: rgb(243, 238, 238) !important;
+}
+
+
+.footer-info{
+    color: black;
+    text-decoration:none
+}
+
+
+.icon-design{
+
+    color: white;
+    font-size: 16px;
+}
+
+
+.heart a{
+
+    text-decoration: none;
+}
+
+.basket a{
+    text-decoration: none;
+}

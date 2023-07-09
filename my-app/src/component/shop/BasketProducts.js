@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Icon from '@mdi/react';
 import { mdiDelete,mdiPlus, mdiMinus } from '@mdi/js';
 
@@ -164,42 +164,41 @@ function BasketProducts(props) {
                   >
                     <thead className="table-color">
                       <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Price of Product</th>
-                        <th>Total</th>
-                        <th>Setting</th>
+                        <th className="text-center" >Image</th>
+                        <th className="text-center" >Name</th>
+                        <th className="text-center">Quantity</th>
+                        <th className="text-center" >Price of Product</th>
+                        <th className="text-center" >Total</th>
+                        <th className="text-center" >Setting</th>
                       </tr>
                     </thead>
                     <tbody className="table-body">
                       {baskets.map((basket, i) => (
                         <tr key={i}>
-                          <td>
+                          <td className="text-center">
+                          <NavLink  to={`/productDetail/${basket.product.id}`}> 
                             <img
                               style={{
                                 width: "100px",
-                                height: "70px",
+                                height: "90px",
                                 borderRadius: "unset",
                                
                               }}
                               src={`data:image/jpeg;base64,${basket.product.image}`}
                               alt=""
                             />
+                            </NavLink>
                           </td>
-                          <td>{basket.product.name}</td>
-                          <td> <Icon path={mdiMinus} style={{cursor:'pointer'}}  size={1} onClick={() => DeleteItemBasket(basket.product.id)} /> {basket.quantity} <Icon path={mdiPlus} size={1} onClick={() => AddBasket(basket.product.id)} style={{cursor:'pointer'}}   /> </td>
-                          <td>{(basket.product.price).toFixed(2)} $</td>
-                          <td>{(basket.product.price * basket.quantity).toFixed(2)} $</td>
-                          <td  style={{ display :"none" }} >
+                          <td className="text-center">{basket.product.name}</td>
+                          <td className="text-center"> <Icon path={mdiMinus} style={{cursor:'pointer'}}  size={1} onClick={() => DeleteItemBasket(basket.product.id)} /> {basket.quantity} <Icon path={mdiPlus} size={1} onClick={() => AddBasket(basket.product.id)} style={{cursor:'pointer'}}   /> </td>
+                          <td className="text-center">{(basket.product.price).toFixed(2)} $</td>
+                          <td className="text-center" >{(basket.product.price * basket.quantity).toFixed(2)} $</td>
+                          <td className="text-center" style={{ display :"none" }} >
                           {(total += basket.product.price * basket.quantity )}
                           </td>
-                          <td>
-                          <Icon path={mdiDelete} size={1}  onClick={() => DeleteBasket(basket.product.id)}  style={{cursor:'pointer'}}  />
-                            {/* <i
-                              className="fa fa-trash-o delete-icon"
-                              onClick={() => DeleteBasket(basket.product.id)}
-                            ></i> */}
+                          <td style={{  textAlign: "center"}}>
+                          <Icon path={mdiDelete} size={1}  color={"red"}  onClick={() => DeleteBasket(basket.product.id)}  style={{cursor:'pointer'}}  />
+                            
                           </td>
                          
                         </tr>                        
@@ -211,9 +210,9 @@ function BasketProducts(props) {
               </div>
             </div>
             <div className="total-price">
-              <h4>Payment :</h4>
-              <p>Total-Price :</p>
-              <span>{total.toFixed(2)} $</span>
+             
+              <b>Total-Price :</b>
+              <b> {total.toFixed(2)} $</b>
             </div>
           </div>
         </div>

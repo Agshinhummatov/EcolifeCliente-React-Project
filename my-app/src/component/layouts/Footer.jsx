@@ -1,16 +1,17 @@
 import React from 'react'
 import Icon from '@mdi/react';
 import { mdiCashSync, mdiCreditCardOutline, mdiFacebook, mdiInstagram, mdiYoutube, mdiPhone } from '@mdi/js';
-
+import '../../assets/css/layout.css'
 
 
 function Footer() {
+
   return (
 
     <>
 
 
-      <footer className="text-center text-lg-start bg-black text-muted mt-5">
+      <footer className="text-center text-lg-start footer-bg text-muted mt-5">
 
         <section className="d-flex justify-content-center justify-content-lg-between p-4 ">
 
@@ -34,62 +35,62 @@ function Footer() {
 
               <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                <h6 className="text-uppercase fw-bold mb-4">
-                  Məlumat
+                <h6 className="text-uppercase fw-bold footer-info mb-4">
+                INFORMATION
                 </h6>
                 <p>
-                  <a className="text-reset ">Kampaniyalar</a>
+                  <a className="footer-info">Delivery</a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">Müştəri kartı</a>
+                  <a href="#!" className="footer-info">About us </a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">Brendlər</a>
+                  <a href="#!" className="footer-info"> Sitemap</a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">Bloq</a>
+                  <a href="#!" className="footer-info">Contact us</a>
                 </p>
 
 
                 <p className='mt-5'>
-                  <a href="#!" className="text-reset">Ödəniş:</a>
+                  <a href="#!" className="footer-info">Secure payment:</a>
 
                 </p>
-                <Icon path={mdiCashSync} size={2} />
-                <Icon path={mdiCreditCardOutline} size={2} />
+                <Icon path={mdiCashSync} size={1} />
+                <Icon path={mdiCreditCardOutline} size={1} />
               </div>
 
 
 
               <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                <h6 className="text-uppercase fw-bold mb-4">
-                  Şirkət
+                <h6 className="footer-info text-uppercase fw-bold mb-4">
+                  Company
                 </h6>
 
                 <p>
-                  <a href="#!" className="text-reset ">Şirkət haqqında</a>
+                  <a href="#!" className="footer-info ">Stores</a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">Mağazalar</a>
+                  <a href="#!" className="footer-info">Legal Notice</a>
                 </p>
                 <p>
-                  <a href="https://www.bakuelectronics.az/careers.html" className="text-reset">Vakansiyalar</a>
-
-                </p>
-
-                <p>
-                  <a href="https://www.bakuelectronics.az/corporate-sales.html" className="text-reset">Korporativ satışlar</a>
+                  <a href="https://www.bakuelectronics.az/careers.html" className="footer-info">Prices drop</a>
 
                 </p>
 
                 <p>
-                  <a href="https://www.bakuelectronics.az/corporate-sales.html" className="text-reset">Bizə qoşulun:</a>
+                  <a href="https://www.bakuelectronics.az/corporate-sales.html" className="footer-info">New products</a>
 
                 </p>
-                <Icon path={mdiFacebook} size={1.5} color="blue" />
-                <Icon path={mdiInstagram} size={1.5} color="magenta" />
-                <Icon path={mdiYoutube} size={1.5} color="red" />
+
+                <p>
+                  <a href="https://www.bakuelectronics.az/corporate-sales.html" className="footer-info"> Best sales</a>
+
+                </p>
+                <Icon path={mdiFacebook} size={1} color="blue" />
+                <Icon path={mdiInstagram} size={1} color="magenta" />
+                <Icon path={mdiYoutube} size={1} color="red" />
 
 
 
@@ -99,16 +100,16 @@ function Footer() {
 
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                <h6 className="text-uppercase fw-bold mb-4">Alıcılara</h6>
-                <p>Çatdırılma və ödəniş</p>
-                <p>
+                <h6 className="text-uppercase footer-info fw-bold mb-4">Buyers</h6>
+                <p className='footer-info'>Delivery and payment</p>
+                <p className='footer-info'>
 
-                  Zәmanәt
+                Warranty
                 </p>
-                <p> Servis mərkəzləri</p>
-                <p>  Nisyə alış</p>
-                <p className='mt-5'>© 2018 - 2023 bakuelectronics.az</p>
-                <p > Məxfilik siyasəti</p>
+                <p> </p>
+                <p className='footer-info'>  Buy something</p>
+                <p className='mt-5 footer-info'>© 2018 - 2023 Copyright © Posthemes. All Rights Reserved.</p>
+                <p className='footer-info'> Privacy policy</p>
 
               </div>
 
@@ -116,15 +117,15 @@ function Footer() {
 
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                <h4 className="text-white fw-bold mb-4">Məlumat mərkəzi</h4>
-                <h6 className="text-white fw-bold mb-4">9:00 - 20:00 (hər gün)</h6>
-                <p>
+                <h4 className=" fw-bold mb-4 footer-organic">100% Organic & Cruelty Free</h4>
+                <h6 className="footer-info fw-bold mb-4">Find a location nearest you. See Our Stores</h6>
+                <p className='footer-info'>
 
-                  <Icon path={mdiPhone} size={1.5} /><b>143</b>
+                  <Icon path={mdiPhone} size={1} /><b>143</b>
                 </p>
-                <h6 className="text-white fw-bold mb-4">info@bakuelectronics.az</h6>
-                <h6 className="text-white fw-bold mb-4">Saytın hazırlanması</h6>
-                <h5 className="text-white fw-bold mb-4">Турум-бурум</h5>
+                <h6 className="footer-info fw-bold mb-4">Email: support@ecolife.com</h6>
+                <h6 className="footer-info fw-bold mb-4">Site Preparation</h6>
+                <h5 className="footer-info fw-bold mb-4">Ecolife</h5>
 
 
               </div>

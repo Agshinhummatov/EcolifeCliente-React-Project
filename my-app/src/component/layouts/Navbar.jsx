@@ -183,14 +183,14 @@ function Navbar(props) {
                             <div className="basket">
                                 <Link to={"/basket"}>
                                     <Icon path={mdiBasketOutline} size={1} className='icon icon2' color="white" />
-                                    <sup>{props.basketcount}</sup>
+                                    <sup className="icon-design">{props.basketcount}</sup>
 
                                 </Link>
                             </div>
                             <div className="heart">
                                 <a href="heart.html">
                                     <Icon path={mdiHeartOutline} size={1} className='icon icon2' color="white" />
-                                    <sup>0</sup>
+                                    <sup className='icon-design'>0</sup>
 
                                 </a>
                             </div>
