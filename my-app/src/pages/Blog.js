@@ -5,7 +5,6 @@ import BlogRecent from '../component/blog/BlogRecent'
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import "../assets/css/blog.css"
 import { Link } from 'react-router-dom';
-import Player from '../component/blog/Player'
 import Navbar from "../component/layouts/Navbar";
 
 
@@ -74,7 +73,7 @@ function Blog() {
 
       </div>
 
-      <div><Player /></div>
+    
 
     </>
   )

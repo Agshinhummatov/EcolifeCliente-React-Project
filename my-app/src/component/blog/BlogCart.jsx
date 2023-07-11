@@ -51,7 +51,7 @@ function BlogCart() {
                 <div className='container'>
                     <div className='row'>
                     {blog.map((item, i) => (
-                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5' fade key = {i}>
+                        <div className='col-lg-4 col-md-6 col-sm-6 mt-2' fade key = {i}>
                             <div className="blog-item">
                                 <div className="blog-content">
                                 <NavLink className="detail" to={`/blogDetail/${item.id}`}>
@@ -95,81 +95,9 @@ function BlogCart() {
                                 nextLinkClassName="page-num"
                                 activeLinkClassName="active"
                             />
-                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div className="blog-item">
-                                <div className="blog-content">
-                                    <div className='blog-img'>
-
-                                       <Link to="/"><img src={blogImageTwo} alt="" /></Link> 
-
-                                    </div>
-                                    <h2 className="blog-title">
-                                        <a href="blog.html">The Moment You Need To Remove Garlic </a>
-                                    </h2>
-                                    <div className="blog-meta">
-                                        <p>11/06/2023</p>
-                                    </div>
-                                    <p className="blog-desc ">
-                                        Lorem ipsum dolor sit amet, consecteturl adipisl elit,
-                                        sed do eiusmod tempor incidio ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
 
 
-                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div className="blog-item">
-                                <div className="blog-content">
-                                    <div className='blog-img'>
-
-                                        <img src={blogImageTwo} alt="" />
-
-                                    </div>
-                                    <h2 className="blog-title">
-                                        <a href="blog.html">The Moment You Need To Remove Garlic </a>
-                                    </h2>
-                                    <div className="blog-meta">
-                                        <p>11/06/2023</p>
-                                    </div>
-                                    <p className="blog-desc ">
-                                        Lorem ipsum dolor sit amet, consecteturl adipisl elit,
-                                        sed do eiusmod tempor incidio ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
-                        <div className='col-lg-4 col-md-6 col-sm-6 mt-5'>
-                            <div className="blog-item">
-                                <div className="blog-content">
-                                    <div className='blog-img'>
-
-                                        <img src={blogImageTwo} alt="" />
-
-                                    </div>
-                                    <h2 className="blog-title">
-                                        <a href="blog.html">The Moment You Need To Remove Garlic </a>
-                                    </h2>
-                                    <div className="blog-meta">
-                                        <p>11/06/2023</p>
-                                    </div>
-                                    <p className="blog-desc ">
-                                        Lorem ipsum dolor sit amet, consecteturl adipisl elit,
-                                        sed do eiusmod tempor incidio ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
+ 
                     
 
 

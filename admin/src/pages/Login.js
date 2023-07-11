@@ -103,7 +103,7 @@ function Login() {
       >
         <div className="container">
           <div className="row">
-            <div className="col-lg-12 col-sm-12">
+            <div className="col-lg-12 col-sm-12 mt-5">
               <div className="main">
                 <div className="box">
                   <div className="form">

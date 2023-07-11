@@ -175,11 +175,12 @@ function FiltredProduct(props) {
 
                                         </ul>
                                     </div>
-
+                                    
                                     <div className="productName">
-                                        <h4>{product.categoryName} </h4>
-                                        <Link href="">{product.name}</Link>
-                                    </div>
+                    <Link style={{ fontSize: "15px", color: "#999999" }} href="">{product.categoryName}</Link>
+                    <h4 style={{ fontSize: "20px" }} className="mt-1">{product.name} </h4>
+
+                  </div>
 
 
                                     <div className="star text-center mt-3" >

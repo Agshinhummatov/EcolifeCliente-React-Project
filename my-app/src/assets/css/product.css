@@ -260,3 +260,14 @@
     border-color: #393e4c;
     background: #393e4c;
 }
+
+.slider-detail .carousel-control-prev-icon{
+    background-color: #00000096!important;
+    
+}
+
+
+.slider-detail .carousel-control-next-icon{
+    background-color: #00000096!important;
+   
+}

@@ -44,6 +44,7 @@ import ProductUpdate from './pages/product/ProductUpdate';
 import ProductDetail from './pages/product/ProductDetail';
 import ContactTable from './pages/contact/ContactTable';
 import ContactDetail from './pages/contact/ContactDetail';
+import Protection from './pages/Protection';
 
 
 
@@ -64,13 +65,14 @@ function App() {
 
         <Routes>
 
+        
+          <Route path="/" element={<Login/>} />
+          
+          <Route element={<Protection />}>
+          <Route path="/dashborad" element={<Home />} />
           <Route path="*" element={<NotFound404 />} />
-
           <Route path="/404" element={<NotFound404 />} />
           <Route path="/400" element={<BadRequset400 />} />
-
-          <Route path="/dashborad" element={<Home />} />
-          <Route path="/" element={<Home />} />
 
           <Route path="/banner" element={<BannerTable />} />
           <Route path="/banner/detail/:id" element={<BannerDetail />} />
@@ -117,11 +119,13 @@ function App() {
           <Route path="/benefit/detail/:id" element={<BenefitDetail />} />
           <Route path="/benefitCreate" element={<BenefitCreate />} />
           <Route path="/benefitUpdate/:id" element={<BenefitUpdate />} />
-          <Route path="/adminLogin" element={<Login/>} />
+         
           <Route path="/contact" element={<Contact/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/employee" element={<Employees/>} />
           <Route path="/employee/detail/:id" element={<EmployeeDetail/>} />
+
+          </Route>
         </Routes>
       </div>
 

@@ -210,8 +210,8 @@ function Shop() {
       <section id="product-area">
         <div className="container">
           <div className="row">
-            <div className="header">
-              <h3>All PRODUCTS :</h3>
+            <div className="header mt-5">
+              <h5>All PRODUCTS :</h5>
             </div>
 
             <div className="col-lg-3 col-md-3 col-sm-12">
@@ -219,17 +219,18 @@ function Shop() {
                 <div className="col-lg-12 col-sm-12">
                   <div className="brand">
                     <div className="header">
-                      <h1>Filter</h1>
+                      <h3>Filter</h3>
                     </div>
                     <div className="content">
                       <input
-                        placeholder="search Product"
+                        placeholder="search product"
                         type="text"
                         id="message"
                         name="message"
                         onChange={(e) => setValue(e.target.value)}
                         value={value}
                         className="search-Product"
+                        style={{outline:"none" }}
                       />
                       <div>
                         <div className='category-br'></div>

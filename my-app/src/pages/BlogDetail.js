@@ -107,7 +107,20 @@ function BlogDetail() {
                 {blog.description}
 
                  </p>
+                 <h3>What Ever The Nature Of Your Halloween.
+</h3>
+<p>It wouldn’t be Halloween without a toffee apple. These sticky, gooey, delicious sticks of joy by Indy from The Little Green Spoon are made from coconut sugar, cashew butter and coconut milk. If you’ve got kids then this one is perfect for getting them involved. Set up a decorating station with all your favourite toppings and be prepared for a little bit of mess. Indy suggests: roasted nuts, cacao nibs, and desiccated coconut to decorate.
 
+A Global Web Index survey of internet users aged 16 to 64 found that the average amount of time spent using the web per day is now six hours and 42 minutes. This is a 1.7% decrease year-on-year, down from six hours and forty-nine minutes in January 2020.</p>
+
+
+<h3>UK Marketers Using Influencers</h3>
+
+<p>It wouldn’t be Halloween without a toffee apple. These sticky, gooey, delicious sticks of joy by Indy from The Little Green Spoon are made from coconut sugar, cashew butter and coconut milk. If you’ve got kids then this one is perfect for getting them involved. Set up a decorating station with all your favourite toppings and be prepared for a little bit of mess. Indy suggests: roasted nuts, cacao nibs, and desiccated coconut to decorate.
+
+A Global Web Index survey of internet users aged 16 to 64 found that the average amount of time spent using the web per day is now six hours and 42 minutes. This is a 1.7% decrease year-on-year, down from six hours and forty-nine minutes in January 2020.
+
+</p>
               </div>
 
             </section>

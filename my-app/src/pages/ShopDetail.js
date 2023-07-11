@@ -7,6 +7,8 @@ import Advertising from '../component/advertising/Advertising';
 import Product from '../component/shop/Products';
 import Category from '../component/category/Category';
 import Navbar from "../component/layouts/Navbar";
+import FiltredProduct from "../component/shop/FiltredProduct";
+import TheBestProductFiltred from "../component/shop/TheBestProductFiltred";
 
 function ShopDetail() {
 
@@ -93,19 +95,20 @@ function ShopDetail() {
                 </div>
 
 
-                <h2 className='text-center mt-5'>You Might Also Like</h2>
+                <h2 className='text-center mt-5'>New Products</h2>
                 <div className='col-12'>
 
-                    <Product setbasketcount={setbasketcount} />
+                <FiltredProduct setbasketcount={setbasketcount} />
                 </div>
 
-                <h2 className='text-center mt-5'>16 Other Products In The Same Category:</h2>
+                <h2 className='text-center mt-5'>The Best Products</h2>
                 <div className='col-12'>
 
-                    <Product setbasketcount={setbasketcount} />
+                   <TheBestProductFiltred setbasketcount={setbasketcount} />
+
                 </div>
 
-                <h2 className='text-center mt-5'>Shop By Categories:</h2>
+                <h2 className='text-center mt-5'>Categories:</h2>
                 <div className='col-12'>
 
                     <Category />

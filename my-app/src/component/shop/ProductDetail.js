@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Tab from 'react-bootstrap/Tab';
@@ -7,10 +7,10 @@ import payment from '../../assets/img/payment.png'
 import Icon from '@mdi/react';
 import { mdiStarOutline, mdiPlus, mdiMinus, mdiDelete } from '@mdi/js';
 import { useNavigate } from "react-router";
-
+import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import '../../assets/css/product.css';
 
 // import ReactPaginate from "react-paginate";
 // import { Carousel } from "react-carousel-minimal";
@@ -34,7 +34,7 @@ function ProductDetail(props) {
 
     const [token, setToken] = React.useState();
 
-    const [config, setConfig] = React.useState([]);
+    const [config, setConfig] = React.useState(null);
 
     const [baskets, setBaskets] = useState([]);
 
@@ -46,6 +46,7 @@ function ProductDetail(props) {
 
     const [commentCount, setCommentCount] = useState(0);
 
+    const [index, setIndex] = useState(0);
 
 
     const [basketItemCount, setBasketItemCount] = useState(0);
@@ -147,6 +148,7 @@ function ProductDetail(props) {
                 // Reset the input field after creating the comment
                 // Reset the input field after creating the comment
                 e.target.reset();
+                getById(props.id)
 
             })
             .catch((err) => {
@@ -181,27 +183,28 @@ function ProductDetail(props) {
     const totalStars = 5;
     const rates = props?.product?.rates || 0;
     const remainingStars = totalStars - rates;
-
     useEffect(() => {
-
-        setToken(JSON.parse(localStorage.getItem("token")));
-
+  
+        const token = JSON.parse(localStorage.getItem("token"));
+        setToken(token);
         if (token) {
-            const config = {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-            setConfig(config);
+          const config = {
+            headers: { Authorization: `Bearer ${token}` },
+          };
+          setConfig(config);
+        } else {
+          const config = null;
+          setConfig(config);
         }
-        else {
-            const config = null;
-            setConfig(config);
-        }
-        getById(id)
-        getBasketItemCount(id);
+      
+        getBasketItemCount(props.id);
+            getById(props.id);
+          
+      
         // AddBasket(id);
-    }, [token, config, id]);
-
-
+      }, [token]);
+      
+ 
 
 
 
@@ -253,6 +256,8 @@ function ProductDetail(props) {
                     axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
                         props.setbasketcount(res.data);
                     });
+        getBasketItemCount(props.id);
+
                 }
             } catch (error) {
                 console.error("Hata:", error);
@@ -310,6 +315,7 @@ function ProductDetail(props) {
                     .then((res) => {
                         props.setbasketcount(res.data);
                     });
+
             })
             .catch(function (error) {
                 Swal.fire({
@@ -320,6 +326,8 @@ function ProductDetail(props) {
                 });
                 console.log(error);
             });
+        getBasketItemCount(props.id);
+
 
 
     };
@@ -344,7 +352,8 @@ function ProductDetail(props) {
             );
             Swal.fire("", "Deleted Comment", "success");
             console.log(response);
-            getById(id);
+            console.log(id);
+            getById(props.id);
         } catch (error) {
             Swal.fire({
                 icon: "error",
@@ -400,48 +409,38 @@ function ProductDetail(props) {
     // }
 
 
-
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
+    };
 
     return (
         <div>
 
 
             <div className='d-flex mt-5'>
-                <div className='col-6'>
-                    <div className="App">
-                        {/* <div style={{ textAlign: "center" }}>
+                <div className='col-6 slider-detail'>
 
-                            <div style={{
-                                padding: "0 20px"
-                            }}>
-                                <Carousel
-                                    data={data}
-                                    time={2000}
-                                    width="850px"
-                                    height="500px"
-                                    captionStyle={captionStyle}
-                                    radius="10px"
-                                    slideNumber={true}
-                                    slideNumberStyle={slideNumberStyle}
-                                    captionPosition="bottom"
-                                    automatic={true}
-                                    dots={true}
-                                    pauseIconColor="white"
-                                    pauseIconSize="40px"
-                                    slideBackgroundColor="darkgrey"
-                                    slideImageFit="cover"
-                                    thumbnails={true}
-                                    thumbnailWidth="100px"
-                                    style={{
-                                        textAlign: "center",
-                                        maxWidth: "850px",
-                                        maxHeight: "500px",
-                                        margin: "40px auto",
-                                    }}
-                                />
-                            </div>
-                        </div> */}
-                    </div>
+
+                    <Carousel activeIndex={index} onSelect={handleSelect}>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src={`data:image/jpg;base64,${props?.product.image}`}
+                                alt="First slide"
+                            />
+                            <Carousel.Caption></Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src={`data:image/jpg;base64,${props?.product.hoverImage}`}
+                                alt="Second slide"
+                            />
+                            <Carousel.Caption ></Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
+
+
 
                 </div>
 
@@ -465,13 +464,7 @@ function ProductDetail(props) {
                         </div>
 
 
-                        <div className="sale-text mt-3">
-
-                            <div className="sale"><span >$160.00</span> </div>
-
-                            <div className="sale-info"><span>50% Off</span></div>
-
-                        </div>
+                       
 
 
 
@@ -572,7 +565,7 @@ function ProductDetail(props) {
                                     <div class="headings d-flex justify-content-between align-items-center mb-3">
                                         <h5>Unread comments({commentCount})</h5>
 
-                                       
+
 
                                     </div>
 
@@ -582,10 +575,10 @@ function ProductDetail(props) {
                                         comment.map((comment, index) => (
 
 
-                                           
-                                            
+
+
                                             <div key={index} class="card comment p-3 mt-3">
-                                                 
+
                                                 <div class="d-flex justify-content-between align-items-center">
 
                                                     <div class="user d-flex flex-row align-items-center">
@@ -660,7 +653,7 @@ function ProductDetail(props) {
                                         <Button variant="outline-primary" type="submit">
                                             Send
                                         </Button>
-                
+
                                     </Form>
 
 

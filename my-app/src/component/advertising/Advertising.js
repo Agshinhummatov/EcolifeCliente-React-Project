@@ -76,7 +76,7 @@ function Advertising() {
 
                             ))
                             }
-                            <div className='col-lg-3 col-md-6 col-sm-12 info-bar-free'>
+                            {/* <div className='col-lg-3 col-md-6 col-sm-12 info-bar-free'>
 
 
                                 <div className='info-bar-free'>
@@ -186,7 +186,7 @@ function Advertising() {
 
 
 
-                            </div>
+                            </div> */}
 
 
                         </div>
