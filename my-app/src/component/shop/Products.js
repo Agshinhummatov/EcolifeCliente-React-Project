@@ -13,11 +13,6 @@ import '../../assets/css/product.css'
 
 
 
-
-
-
-
-
 function Product(props) {
 
   let productsItem = props.Products;
@@ -109,9 +104,36 @@ function Product(props) {
   }, []);
 
 
+  //Add products to wishlist method
+  async function AddWishlist(id) {
+    try {
+      if (config != null) {
+        await axios.post(`${url}/api/Wishlist/AddWishlist?id=${id}`, null, config)
+          .then((res) => {
+            if (res.data.status === "success" || res.status === 200) {
+              Success.fire({
+                icon: "success",
+                title: "Wishlist successfully added",
+              });
+              // axios.get(`${url}/api/Wishlist/Getwishlistcount`, config).then((res) => {
+              //     props.setwishlistcount(res.data);
+              // });
+            }
+          });
+      } else {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  //Add products to basket method
-  async function AddBasket(id) {
+
+
+
+ //Add products to basket method
+ async function AddBasket(id) {
+  try {
     if (config != null) {
       await axios
         .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
@@ -125,14 +147,17 @@ function Product(props) {
               props.setbasketcount(res.data);
             });
           }
-        })
-
-    } else { navigate("/login"); }
-
-
+        });
+    } else {
+      navigate("/login");
+    }
 
     ref.current?.scrollIntoView();
+  } catch (error) {
+    console.error(error);
   }
+}
+
 
   return (
 
@@ -158,7 +183,8 @@ function Product(props) {
                       alt=""  />
 
                     <ul className="icon-shop">
-                      <li>
+
+                    <li onClick={() => AddWishlist(product.id)}>
                         <Icon path={mdiHeartOutline} size={1} />
                         <span>Add to WishList</span>
                       </li>
@@ -179,8 +205,9 @@ function Product(props) {
                   </div>
 
                   <div className="productName">
-                    <h4>{product.categoryName} </h4>
-                    <Link href="">{product.name}</Link>
+                    <Link style={{ fontSize: "15px", color: "#999999" }} href="">{product.categoryName}</Link>
+                    <h4 style={{ fontSize: "20px" }} className="mt-1">{product.name} </h4>
+
                   </div>
 
 
@@ -199,7 +226,7 @@ function Product(props) {
 
                   <div className="price text-center mt-3">
                     <span>{product.price}$</span>
-                    <span><del>35$</del></span>
+                   
                   </div>
 
                 </div>

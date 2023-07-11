@@ -169,7 +169,10 @@ function Shop() {
       );
       setFilteredProducts(filteredProducts);
     }
+    
   };
+
+
 
   return (
 

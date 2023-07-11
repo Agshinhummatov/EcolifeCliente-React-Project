@@ -70,6 +70,7 @@ function App() {
           <Route path="/400" element={<BadRequset400 />} />
 
           <Route path="/dashborad" element={<Home />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/banner" element={<BannerTable />} />
           <Route path="/banner/detail/:id" element={<BannerDetail />} />

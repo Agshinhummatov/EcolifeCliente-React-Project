@@ -13,7 +13,7 @@ function Home() {
 
         </div>
 
-        <div className='col-10'>
+        <div className='col-10 mt-3'>
 
           <h1 className='text-center mt-5'> Dashborad</h1>
         </div>
