@@ -620,3 +620,36 @@
 .basket a{
     text-decoration: none;
 }
+
+
+.search-ul-li{
+    width: 99%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: white;
+    border-radius: 5px;
+}
+    
+.search-ul-li a{
+    color: black;
+    text-decoration: none;
+}
+
+.search-ul-li a:hover{
+    
+    color: rgb(7, 146, 81);
+}
+
+.search-ul-li li{
+    margin-left: 8px;
+    padding: 2px;
+    border-bottom: 1px solid rgb(243, 238, 238);
+}
+.search-input{
+    position: relative;
+}

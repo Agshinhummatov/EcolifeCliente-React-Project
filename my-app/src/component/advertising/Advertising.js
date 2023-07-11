@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-
-
 import advertisingLogo2 from '../../assets/img/adver2.png'
 import advertisingLogo3 from '../../assets/img/adver3.png'
 import advertisingLogo4 from '../../assets/img/adver4.png'

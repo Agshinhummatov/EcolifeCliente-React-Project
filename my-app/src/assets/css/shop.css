@@ -359,3 +359,24 @@
 .comment-contex{
     font-size: large;
 }
+
+.thumb-value{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+    color: #01574A;
+    border-radius: solid 5px #000000;
+}
+
+.thumb-value:hover{
+    color: #01574A;
+    cursor: pointer;
+}
+
+.thumb{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+    color: #01574A;
+    border-radius: solid 5px #000000!important;
+}

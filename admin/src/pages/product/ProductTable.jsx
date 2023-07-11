@@ -83,39 +83,57 @@ function ProductTable() {
 
 
     //Delete Product
+    // const DeleteProduct = async (id) => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!",
+    //     })
+    //         .then((result) => {
+    //             GetProducts();
+    //             if (result.isConfirmed) {
+    //                 GetProducts();
+    //                 axios
+    //                     .delete(`${url}/api/Product/Delete/${id}`,config,)
+    //                     .then(function (response) {
+    //                         Swal.fire("", "Deleted", "success");
+    //                     });
+    //                 GetProducts();
+    //             }
+    //         })
+    //         .catch(function (error) {
+    //             Swal.fire({
+    //                 icon: "error",
+    //                 title: "Oops...",
+    //                 text: "Something went wrong!",
+    //                 footer: '<a href="">Why do I have this issue?</a>',
+    //             });
+    //             console.log(error);
+    //         });
+    // };
+
+
+    //Deletes an Product from the API.
     const DeleteProduct = async (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        })
-            .then((result) => {
+        await axios.delete(`${url}/api/Product/Delete/${id}`, config,)
+            .then((res) => {
+                Swal.fire("", "Deleted Product", "success");
+                console.log(res);
                 GetProducts();
-                if (result.isConfirmed) {
-                    GetProducts();
-                    axios
-                        .delete(`${url}/api/Product/Delete/${id}`,config,)
-                        .then(function (response) {
-                            Swal.fire("", "Deleted", "success");
-                        });
-                    GetProducts();
-                }
             })
-            .catch(function (error) {
+            .catch((err) => {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
                     text: "Something went wrong!",
-                    footer: '<a href="">Why do I have this issue?</a>',
                 });
-                console.log(error);
+                console.log(err);
             });
     };
-
 
 
 
@@ -151,7 +169,7 @@ function ProductTable() {
                                     <tr style={{ textAlign: "center" }}>
                                         <th>#</th>
                                         <th>Image</th>
-                                        <th>Title</th>
+                                        <th>Name</th>
                                         <th>Create date</th>
                                         <th>Update date</th>
                                         <th>Settings</th>

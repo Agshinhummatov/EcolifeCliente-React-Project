@@ -297,7 +297,7 @@ function ProductUpdate() {
                             <Button variant="outline-primary" type="submit">
                                 Update
                             </Button>
-                            <Link to="/Product">
+                            <Link to="/productTable">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>

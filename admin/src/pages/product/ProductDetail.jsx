@@ -73,7 +73,7 @@ function ProductDetail() {
 
                 <div className='col-10  mt-5'>
 
-                    <h2 className='text-center mt-5'>product Detail</h2>
+                    <h2 className='text-center mt-5'>Product Detail</h2>
 
                     <div className='mt-5'>
                         <h4>Image</h4>
@@ -89,10 +89,10 @@ function ProductDetail() {
 
                     <div>
 
-                        <h5 className='mt-3'>Title</h5>
+                        <h5 className='mt-3'>Name</h5>
                         <input class="form-control"
                             type="text"
-                            defaultValue={product.title}
+                            defaultValue={product.name}
                             disabled
                         />
 

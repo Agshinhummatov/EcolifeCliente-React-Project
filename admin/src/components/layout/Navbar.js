@@ -121,26 +121,11 @@ function Navbar() {
                                         {currentToken ? currentUser : ""}
                                     </div> */}
 
-                                    {currentToken != null ? (
-
-                                        <a onClick={handleLogout} href="#">
-                                            Logout
-                                        </a>
-
-                                    ) : (
-
-                                        <Link to="/login">Login</Link>
-
-                                    )}
-
-
-                                    {currentToken != null ? (
-                                        ""
-                                    ) : (
-
-                                        <Link to="/register">Register</Link>
-
-                                    )}
+{currentToken !== null ? (
+  <a onClick={handleLogout} href="#">
+    Logout
+  </a>
+) : null}
 
 
 

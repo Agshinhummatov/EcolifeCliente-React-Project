@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import logo from '../../assets/img/logo.jpg'
 import '../../assets/css/layout.css'
 import Icon from '@mdi/react';
-import { mdiAccount, mdiHeartOutline, mdiBasketOutline, mdiMagnify, mdiMenu } from '@mdi/js';
+import { mdiAccount, mdiHeartOutline, mdiBasketOutline, mdiMenu } from '@mdi/js';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -20,7 +20,9 @@ function Navbar(props) {
 
     const navigate = useNavigate();
 
-  
+    const [searchText, setSearchText] = useState('');
+    const [products, setProducts] = useState([]);
+
 
     //Get currents users name from token
     let currentToken = localStorage.getItem("token");
@@ -65,6 +67,29 @@ function Navbar(props) {
     }
 
 
+
+    const handleSearch = () => {
+        axios.get(`https://localhost:7012/api/Product/Search?searchText=${searchText}`)
+            .then(response => {
+                setProducts(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+
+
+    const handleKeyUp = (event) => {
+        setSearchText(event.target.value);
+        if (event.target.value === '') {
+            setProducts([]);
+        } else {
+            handleSearch();
+        }
+    };
+
+
+    const showProducts = products.slice(0, 8);
     return (
         <>
             <header>
@@ -81,8 +106,15 @@ function Navbar(props) {
                             </Offcanvas.Header>
                             <Offcanvas.Body>
                                 <ul id="navbar-hamburger" >
-                                    <input type="text" placeholder='search' className='search-input' />
-                                    <Icon path={mdiMagnify} size={1.3} color="red" />
+
+                                <input type="text" placeholder="search" onKeyUp={handleKeyUp} />
+                                    {showProducts.map(product => (
+
+                                        <li key={product.id}>
+                                            <Link to={`/productDetail/${product.id}`}>{product.name}</Link>
+                                        </li>
+                                    ))}
+
                                     <li className='mt-3'><Link to="/" class="active" >Home</Link></li>
                                     <li><Link to="/shop" >Shop</Link></li>
                                     <li><Link to="/blog">Blog</Link></li>
@@ -95,16 +127,28 @@ function Navbar(props) {
                     </div>
 
 
-
                     <div className='col-1  logo-eco'>
 
 
                         <Link to="/"><img className='logo-img' src={logo} class="logo" alt="" /></Link>
                     </div>
                     <div className='col-2  d-flex search-input'>
-                        <input type="text" placeholder='search' />
-                        <Icon path={mdiMagnify} size={1.5} color="white" className="serach-icon" />
+
+                        <input type="text" placeholder="search" onKeyUp={handleKeyUp} />
+
+
+                        <ul className="search-ul-li">
+                            {showProducts.map(product => (
+
+                                <li key={product.id}>
+                                    <Link to={`/productDetail/${product.id}`}>{product.name}</Link>
+                                </li>
+                            ))}
+                        </ul>
+
+
                     </div>
+
                     <div className='col-8'>
 
                         <ul id="navbar">
@@ -145,15 +189,15 @@ function Navbar(props) {
                             <div className="dropdown">
                                 <a href="">
                                     <div className="dropbtn">
-                                    <Icon path={mdiAccount} size={1} className='icon' color="white" />
+                                        <Icon path={mdiAccount} size={1} className='icon' color="white" />
                                     </div>
                                 </a>
                                 <div className="dropdown-content drop-content">
                                     <div className="user-name">
-                                    {" "}
-                                    {currentToken ? currentUser : ""} 
+                                        {" "}
+                                        {currentToken ? currentUser : ""}
                                     </div>
-                                   
+
                                     {currentToken != null ? (
 
                                         <a onClick={handleLogout} href="#">
@@ -181,18 +225,18 @@ function Navbar(props) {
                                 </div>
                             </div>
                             <div className="basket">
-                                <Link to={"/basket"}>
+                                <Link to={"/basketDetail"}>
                                     <Icon path={mdiBasketOutline} size={1} className='icon icon2' color="white" />
                                     <sup className="icon-design">{props.basketcount}</sup>
 
                                 </Link>
                             </div>
                             <div className="heart">
-                                <a href="heart.html">
+                                   <Link to={"/wishlistDetail"}>
                                     <Icon path={mdiHeartOutline} size={1} className='icon icon2' color="white" />
-                                    <sup className='icon-design'>0</sup>
+                                    {/* <sup className='icon-design'>0</sup> */}
 
-                                </a>
+                                    </Link>
                             </div>
                         </ul>
 

@@ -10,7 +10,7 @@ import Icon from '@mdi/react';
 import { mdiStarOutline, mdiShoppingOutline, mdiHeartOutline, mdiEyeOutline } from '@mdi/js';
 import '../../assets/css/product.css'
 
-import product2 from '../../assets/img/product2.jpg'
+
 
 
 
@@ -19,6 +19,8 @@ import product2 from '../../assets/img/product2.jpg'
 
 
 function Product(props) {
+
+  let productsItem = props.Products;
 
   const url = "https://localhost:7012";
 
@@ -41,13 +43,13 @@ function Product(props) {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
-  const itemsPerPage = 4;
+  const itemsPerPage = 6;
 
   useEffect(() => {
     setToken(JSON.parse(localStorage.getItem("token")));
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(products.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(products.length / itemsPerPage));
+    setCurrentItems(productsItem?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(productsItem?.length / itemsPerPage));
     if (token) {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
@@ -59,10 +61,10 @@ function Product(props) {
       setConfig(config);
     }
 
-  }, [itemOffset, itemsPerPage, products]);
+  }, [itemOffset, itemsPerPage, productsItem]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % products.length;
+    const newOffset = (event.selected * itemsPerPage) % productsItem.length;
     setItemOffset(newOffset);
   };
   //paginate items end

@@ -106,7 +106,7 @@ function ProductCreate() {
                     timer: 1500
                 });
                 console.log(res);
-                navigate('/Product');
+                navigate('/productTable');
             })
             .catch((err) => {
                 Swal.fire({
@@ -287,7 +287,7 @@ function ProductCreate() {
                             <Button variant="outline-primary" type="submit">
                                 Create
                             </Button>
-                            <Link to="/Product">
+                            <Link to="/productTable">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>

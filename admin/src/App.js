@@ -57,6 +57,7 @@ function App() {
 
   
     <Router>
+      
       <Navbar />
       <div className='app'>
        

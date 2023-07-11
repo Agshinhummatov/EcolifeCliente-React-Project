@@ -44,6 +44,8 @@ function ProductDetail(props) {
 
     const [userName, setUsername] = useState('');
 
+    const [commentCount, setCommentCount] = useState(0);
+
 
 
     const [basketItemCount, setBasketItemCount] = useState(0);
@@ -82,6 +84,7 @@ function ProductDetail(props) {
         try {
             const response = await axios.get(`${url}/api/ProdcutComment/GetById/${id}`);
             setComment(response.data);
+            setCommentCount(response.data.length);
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 404) {
@@ -556,7 +559,7 @@ function ProductDetail(props) {
 
 
                     </Tab>
-                    <Tab eventKey="longer-tab" title="Loooonger Tab">
+                    <Tab eventKey="longer-tab" title="Product Comment">
 
 
 
@@ -567,19 +570,9 @@ function ProductDetail(props) {
                                 <div class="col-md-8">
 
                                     <div class="headings d-flex justify-content-between align-items-center mb-3">
-                                        <h5>Unread comments(6)</h5>
+                                        <h5>Unread comments({commentCount})</h5>
 
-                                        <div class="buttons">
-
-                                            <span class="badge bg-white d-flex flex-row align-items-center">
-                                                <span class="text-primary">Comments "ON"</span>
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
-
-                                                </div>
-                                            </span>
-
-                                        </div>
+                                       
 
                                     </div>
 
@@ -587,8 +580,12 @@ function ProductDetail(props) {
 
                                     {
                                         comment.map((comment, index) => (
-                                            <div key={index} class="card comment p-3 mt-3">
 
+
+                                           
+                                            
+                                            <div key={index} class="card comment p-3 mt-3">
+                                                 
                                                 <div class="d-flex justify-content-between align-items-center">
 
                                                     <div class="user d-flex flex-row align-items-center">

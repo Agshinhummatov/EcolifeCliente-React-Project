@@ -107,7 +107,7 @@ function Login() {
               <div className="main">
                 <div className="box">
                   <div className="form">
-                    <h2>Login</h2>
+                    <h2> Admin Login</h2>
                     <form onSubmit={(e) => login(e)}>
                       <div className="inputBox">
                         <input
