@@ -10,7 +10,7 @@ import Navbar from "../component/layouts/Navbar";
 
 import Icon from '@mdi/react';
 
-import { mdiAccount, mdiClockTimeEight, mdiCalendarCheckOutline } from '@mdi/js';
+import {mdiClockTimeEight, mdiCalendarCheckOutline } from '@mdi/js';
 
 function BlogDetail() {
 
@@ -78,7 +78,7 @@ function BlogDetail() {
 
     <>
       <Navbar basketcount={basketcount} />
-      <div className='backgroundBlog'>
+      <div className='backgroundBlog' style={{marginTop:"92px"}}>
         <img src={backgroundPage} alt="" />
         <h2>Blog</h2>
         <h6><Link to="/">Home </Link> / Blog Detail</h6>
@@ -98,7 +98,7 @@ function BlogDetail() {
 
                 <h2 className='mt-5'>{blog.title}</h2>
 
-                <p> <span> Posted by <Icon path={mdiAccount} size={0.8} /> : Demo Posthemes  </span> <span> <Icon path={mdiClockTimeEight} size={0.8} />{new Date(blog.createdAt).toLocaleString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span> <span><Icon path={mdiCalendarCheckOutline} size={0.8} /> </span>  </p>
+                <p>  <span> <Icon path={mdiClockTimeEight} size={0.8} />{new Date(blog.createdAt).toLocaleString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span> <span><Icon path={mdiCalendarCheckOutline} size={0.8} /> </span>  </p>
 
                 <img className='blog-detail-img'  src={`data:image/jpg;base64,${blog.image}`} alt="" />
 

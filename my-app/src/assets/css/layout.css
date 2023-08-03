@@ -1,12 +1,12 @@
 /* Header Start */
 
 #header {
-    /* position: fixed; */
+    position: fixed;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 80px;
+    padding: 20px 40px;
     background-color: #01574A;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
@@ -26,7 +26,7 @@
     } */
 
     #header input {
-        width: 150px !important;
+        width: 270px !important;
         outline: none;
         border-radius: 6px;
         padding: 3px 20px;
@@ -58,7 +58,7 @@
     }
 
     #header #navbar .icon {
-        margin-top: 20px;
+        margin-top: 3px;
     }
 
     #navbar-hamburger {
@@ -133,7 +133,7 @@
     }
 
     #header input {
-        width: 150px !important;
+        width: 270px !important;
         outline: none;
         border-radius: 6px;
         padding: 3px 20px;
@@ -159,7 +159,7 @@
     }
 
     .logo-eco {
-        width: 200px;
+        width: 100px;
         padding-left: 100px;
     }
 
@@ -168,7 +168,7 @@
     }
 
     #header #navbar .icon {
-        margin-top: 20px;
+        margin-top: 3px;
     }
 
     #navbar-hamburger {
@@ -235,7 +235,7 @@
     }
 
     #header input {
-        width: 150px !important;
+        width: 270px !important;
         outline: none;
         border-radius: 6px;
         padding: 3px 20px;
@@ -270,7 +270,7 @@
     }
 
     #header #navbar .icon {
-        margin-top: 20px;
+        margin-top: 3px;
     }
 
     #navbar-hamburger {
@@ -357,7 +357,7 @@
 }
 
 #header input {
-    width: 146px;
+    width: 270px;
     outline: none;
     border-radius: 6px;
     padding: 3px 20px;
@@ -622,8 +622,12 @@
 }
 
 
+
+
+
+
 .search-ul-li{
-    width: 99%;
+    width: 270px;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -646,10 +650,19 @@
 }
 
 .search-ul-li li{
-    margin-left: 8px;
+    margin-top: 12px;
     padding: 2px;
-    border-bottom: 1px solid rgb(243, 238, 238);
-}
+    border-bottom: 1px solid #f3c095;}
 .search-input{
     position: relative;
+    margin-left: 50px;
+}
+
+.name{
+    margin-top: 6px;
+}
+
+.price{
+    margin-top: -15px;
+    
 }

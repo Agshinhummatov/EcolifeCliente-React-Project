@@ -20,7 +20,8 @@ function Slider() {
 
 
   return (
-    <>
+    <> 
+       <div style={{marginTop:"92px"}}>
       <Carousel >
        
      { sliders.map((item,i) => (
@@ -44,8 +45,8 @@ function Slider() {
       }
       </Carousel>
 
-
-
+     
+      </div>
     </>
   )
 }

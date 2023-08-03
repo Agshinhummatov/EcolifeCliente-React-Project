@@ -130,32 +130,32 @@ function Product(props) {
 
 
 
- //Add products to basket method
- async function AddBasket(id) {
-  try {
-    if (config != null) {
-      await axios
-        .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
-        .then((res) => {
-          if (res.data.status === "success" || res.status === 200) {
-            Success.fire({
-              icon: "success",
-              title: "Product successfully added",
-            });
-            axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
-              props.setbasketcount(res.data);
-            });
-          }
-        });
-    } else {
-      navigate("/login");
-    }
+  //Add products to basket method
+  async function AddBasket(id) {
+    try {
+      if (config != null) {
+        await axios
+          .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
+          .then((res) => {
+            if (res.data.status === "success" || res.status === 200) {
+              Success.fire({
+                icon: "success",
+                title: "Product successfully added",
+              });
+              axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+                props.setbasketcount(res.data);
+              });
+            }
+          });
+      } else {
+        navigate("/login");
+      }
 
-    ref.current?.scrollIntoView();
-  } catch (error) {
-    console.error(error);
+      ref.current?.scrollIntoView();
+    } catch (error) {
+      console.error(error);
+    }
   }
-}
 
 
   return (
@@ -178,12 +178,12 @@ function Product(props) {
                     />
 
 
-                    <img className='rear-img'  src={`data:image/jpeg;base64,${product.hoverImage}`}
-                      alt=""  />
+                    <img className='rear-img' src={`data:image/jpeg;base64,${product.hoverImage}`}
+                      alt="" />
 
                     <ul className="icon-shop">
 
-                    <li onClick={() => AddWishlist(product.id)}>
+                      <li onClick={() => AddWishlist(product.id)}>
                         <Icon path={mdiHeartOutline} size={1} />
                         <span>Add to WishList</span>
                       </li>
@@ -204,14 +204,14 @@ function Product(props) {
                   </div>
 
                   <div className="productName">
-                    <Link style={{ fontSize: "15px", color: "#999999" }} href="">{product.categoryName}</Link>
-                    <h4 style={{ fontSize: "20px" }} className="mt-1">{product.name} </h4>
+                    <Link style={{ fontSize: "14px", color: "#999999" }} href="">{product.categoryName}</Link>
+                    <h4 style={{ fontSize: "17px" }} className="mt-1">{product.name} </h4>
 
                   </div>
 
 
                   <div className="star text-center mt-3" >
-                    
+
                     {Array(product.rates).fill().map((_, i) => (
                       <Icon key={i} path={mdiStarOutline} size={1} color="gold" />
                     ))}
@@ -225,7 +225,7 @@ function Product(props) {
 
                   <div className="price text-center mt-3">
                     <span>{product.price}$</span>
-                   
+
                   </div>
 
                 </div>

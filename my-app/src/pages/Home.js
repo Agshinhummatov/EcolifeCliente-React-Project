@@ -44,7 +44,7 @@ function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpinner(false);
-    }, 1000); // 5 saniye sonra spinner'ı gizle (zamanı istediğiniz gibi ayarlayabilirsiniz)
+    }, 1800); // 5 saniye sonra spinner'ı gizle (zamanı istediğiniz gibi ayarlayabilirsiniz)
 
     return () => {
       clearTimeout(timer); // bileşenin unmount olduğunda zamanlayıcıyı temizle
@@ -66,7 +66,7 @@ function Home() {
           right: 0,
           left: 0,
           bottom: 0,
-          background: '#000000f2', // Aqua renginde, %50 opaklık
+          background: 'black', // Aqua renginde, %50 opaklık
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

@@ -10,6 +10,8 @@ import Navbar from "../component/layouts/Navbar";
 import FiltredProduct from "../component/shop/FiltredProduct";
 import TheBestProductFiltred from "../component/shop/TheBestProductFiltred";
 
+
+
 function ShopDetail() {
 
     const { id } = useParams();
@@ -20,8 +22,7 @@ function ShopDetail() {
 
     const [basketcount, setbasketcount] = useState(0);
 
-  
-
+   
     let token = JSON.parse(localStorage.getItem("token"));
 
     
@@ -66,7 +67,7 @@ function ShopDetail() {
 
         <>
             <Navbar basketcount={basketcount} />
-            <div className='backgroundBlog'>
+            <div className='backgroundBlog' style={{marginTop:"92px"}}>
                 <img src={backgroundPage} alt="" />
 
                 <h2>Shop Detail</h2>

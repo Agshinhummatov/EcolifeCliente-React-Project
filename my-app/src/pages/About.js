@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import AboutInfo from '../component/about/AboutInfo';
 import Advertising from '../component/advertising/Advertising';
-import ClipBoard from '../component/contact/ClipBoard';
 import Navbar from "../component/layouts/Navbar";
 
 function About() {
@@ -53,7 +52,7 @@ function About() {
   return (
     <>
   <Navbar basketcount={basketcount} />
-      <div className='backgroundBlog'>
+      <div className='backgroundBlog' style={{marginTop:"92px"}}>
         <img src={backgroundPage} alt="" />
         <h2>About</h2>
         <h6><Link to="/">Home </Link> / Blog</h6>
@@ -62,7 +61,7 @@ function About() {
 
        <AboutInfo/>
        <Advertising/>
-       <ClipBoard/>
+       {/* <ClipBoard/> */}
 
     </>
   )

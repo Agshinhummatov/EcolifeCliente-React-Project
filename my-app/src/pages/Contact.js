@@ -50,7 +50,7 @@ function Contact() {
   return (
     <>
     <Navbar basketcount={basketcount} />
-      <div className='backgroundBlog'>
+      <div className='backgroundBlog' style={{marginTop:"92px"}}>
         <img src={backgroundPage} alt="" />
         <h2>Contact</h2>
         <h6><Link to='/' href="">Home </Link> / Contact</h6>

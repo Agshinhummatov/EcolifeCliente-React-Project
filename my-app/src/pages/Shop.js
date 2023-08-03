@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Brand from '../component/shop/Brand'
 import Products from '../component/shop/Products'
 import Navbar from "../component/layouts/Navbar";
 import '../assets/css/shop.css'
-import Weight from '../component/shop/Weight'
-import Color from '../component/shop/Color'
 import backgroundPage from '../assets/img/backgroundPage.jpg'
 import { Link } from 'react-router-dom';
-import ShopCategory from '../component/shop/ShopCategory'
 import Icon from '@mdi/react';
 import { mdiStarOutline } from '@mdi/js';
 import "swiper/css";
 import "swiper/css/navigation";
-import { MDBRange } from 'mdb-react-ui-kit';
+
 
 function Shop() {
 
@@ -30,8 +26,10 @@ function Shop() {
   const [categorys, setCategorys] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const [priceRange, setPriceRange] = useState(0);
 
+  const [priceRange, setPriceRange] = useState(50); // Initial price range value
+  const [thumb1Value, setThumb1Value] = useState(25); // Initial thumb1 value
+  const [thumb2Value, setThumb2Value] = useState(75);
 
   let result = [];
 
@@ -146,16 +144,30 @@ function Shop() {
 
   const [selectedRating, setSelectedRating] = useState(null);
 
-  const handlePriceRangeChange = (event) => {
-    const rangeValue = parseInt(event.target.value);
-    setPriceRange(rangeValue);
-  
+  useEffect(() => {
+    // When the priceRange value changes, filter the products accordingly
     const filteredProducts = items.filter(
-      (item) => item.price <= rangeValue && (selectedRating === null || item.rates === selectedRating)
+      (item) => item.price <= priceRange && (selectedRating === null || item.rates === selectedRating)
     );
     setFilteredProducts(filteredProducts);
+  }, [priceRange, selectedRating]); // Listen for changes in priceRange and selectedRating
+
+  const handlePriceRangeChange = () => {
+    // Use thumb1Value and thumb2Value to calculate the priceRange
+    const newPriceRange = thumb2Value - thumb1Value;
+    setPriceRange(newPriceRange);
   };
-  
+
+  const handleThumb1Change = (e) => {
+    setThumb1Value(parseInt(e.target.value));
+    handlePriceRangeChange(); // Update the price range when thumb1Value changes
+  };
+
+  const handleThumb2Change = (e) => {
+    setThumb2Value(parseInt(e.target.value));
+    handlePriceRangeChange(); // Update the price range when thumb2Value changes
+  };
+
   const handleRatingFilter = (rating) => {
     if (rating === selectedRating) {
       // İki kez tıklanırsa seçimi sıfırla
@@ -169,7 +181,7 @@ function Shop() {
       );
       setFilteredProducts(filteredProducts);
     }
-    
+
   };
 
 
@@ -179,7 +191,7 @@ function Shop() {
     <>
 
       <Navbar basketcount={basketcount} />
-      <div className='backgroundBlog'>
+      <div className='backgroundBlog' style={{ marginTop: "92px" }}>
         <img src={backgroundPage} alt="" />
         <h2>Shop</h2>
         <h6><Link to="/" >Home </Link> / Shop</h6>
@@ -210,40 +222,50 @@ function Shop() {
       <section id="product-area">
         <div className="container">
           <div className="row">
-            <div className="header mt-5">
-              <h5>All PRODUCTS :</h5>
-            </div>
+
 
             <div className="col-lg-3 col-md-3 col-sm-12">
               <div className="row">
-                <div className="col-lg-12 col-sm-12">
+                <div className="col-lg-12 col-sm-12 mt-5">
                   <div className="brand">
-                    <div className="header">
-                      <h3>Filter</h3>
-                    </div>
+
                     <div className="content">
                       <input
-                        placeholder="search product"
+                        placeholder="Search"
                         type="text"
                         id="message"
                         name="message"
                         onChange={(e) => setValue(e.target.value)}
                         value={value}
                         className="search-Product"
-                        style={{outline:"none" }}
+                        style={{ outline: "none", paddingLeft: "10px" }}
                       />
                       <div>
                         <div className='category-br'></div>
+                        <div className="range-slider-container">
+                          <input
+                            type="range"
+                            min="0"
+                            max="50"
+                            value={thumb1Value}
+                            onChange={handleThumb1Change}
+                            className="range-slider"
+                          />
+                          <input
+                            type="range"
+                            min="50"
+                            max="500"
+                            value={thumb2Value}
+                            onChange={handleThumb2Change}
+                            className="range-slider"
+                          />
 
-
-                        <MDBRange
-                          min="0"
-                          max="500"
-                          onChange={handlePriceRangeChange}
-                          defaultValue={priceRange}
-                          id='customRange'
-                          label='Price range'
-                        />
+                        </div>
+                        <div className="thumb-values">
+                          <span>Min $:{thumb1Value} </span>
+                          <span>Max $:{thumb2Value} </span>
+                        </div>
+                       
 
                         <div className='category-br'></div>
                         <h4 className="mt-2">Rating</h4>
@@ -260,34 +282,34 @@ function Shop() {
                         ))}
 
 
-
+                        <div className='category-br'></div>
                       </div>
 
 
-                      <div className='col-3 mt-3 brand-body'>
+                      <div style={{ width: "100%" }} className='col-3 mt-3 brand-body'>
+
+                        <div style={{ width: "100%" }}>
+                          <h3 >Category</h3>
+                          <div className='category-br'></div>
+
+                          <ul className='category-name'>
+
+                            <li className={`filter-button ${activeCategory === "All" ? "active" : ""
+                              }`} ><button onClick={() => handleClick("All")} className='brand-link'>All</button></li>
+
+                            {categorys?.map((category, index) => {
+                              return (
+                                <li key={index}
+                                  className={`filter-button ${activeCategory === category.name ? "active" : ""
+                                    }`} > <button onClick={() => handleClick(category.name)} className='brand-link'>{category.name}</button></li>
+
+                              );
+                            })}
 
 
-                        <h2 className='text-center'>Category</h2>
-                        <div className='category-br'></div>
+                          </ul>
 
-                        <ul className='category-name'>
-
-                          <li className={`filter-button ${activeCategory === "All" ? "active" : ""
-                            }`} ><button onClick={() => handleClick("All")} className='brand-link'>All<span>(1)</span></button></li>
-
-                          {categorys?.map((category, index) => {
-                            return (
-                              <li key={index}
-                                className={`filter-button ${activeCategory === category.name ? "active" : ""
-                                  }`} > <button onClick={() => handleClick(category.name)} className='brand-link'> {category.name}<span>(1)</span></button></li>
-
-                            );
-                          })}
-                          <li ><button className='brand-link'>100g<span>(1)</span></button></li>
-
-                        </ul>
-
-
+                        </div>
 
                       </div>
 
@@ -328,7 +350,7 @@ function Shop() {
             </div>
             <div className="col-lg-9 col-md-9 col-sm-12 product-shop">
               {result.length == 0 ? (
-                <h1>"There is no product for your search"</h1>
+                <h2 className="mt-5 text-center">"There is no product for your search"</h2>
               ) : (
                 <Products setbasketcount={setbasketcount} Products={result} />
               )}

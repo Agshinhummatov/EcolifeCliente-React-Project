@@ -184,8 +184,9 @@
     text-align: center;
 }
 .card-pr .productName h4 {
-    font-size: 18px;
+  
     color: #01574A;
+    font-size: 18px;;
 }
 .card-pr .productName a {
     text-decoration: none;
@@ -241,6 +242,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 40px;
 }
 .pagination li a {
     display: block;
@@ -257,8 +259,8 @@
 }
 .pagination li.selected a, .pagination li a:hover {
     color: #c2c2c2;
-    border-color: #393e4c;
-    background: #393e4c;
+    border-color: #01574A;
+    background: #01574A;
 }
 
 .slider-detail .carousel-control-prev-icon{
@@ -271,3 +273,4 @@
     background-color: #00000096!important;
    
 }
+

@@ -51,34 +51,30 @@ function BlogCart() {
                 <div className='container'>
                     <div className='row'>
                     {blog.map((item, i) => (
-                        <div className='col-lg-4 col-md-6 col-sm-6 mt-2' fade key = {i}>
-                            <div className="blog-item">
-                                <div className="blog-content">
-                                <NavLink className="detail" to={`/blogDetail/${item.id}`}>
+  <div className='col-lg-4 col-md-6 col-sm-6 mt-2' fade key={i}>
+    <div className="blog-item">
+      <div className="blog-content">
+        <NavLink className="detail" to={`/blogDetail/${item.id}`}>
+          <div className='blog-img'>
+            <img src={`data:image/jpg;base64,${item.image}`} alt="" />
+          </div>
+        </NavLink>
+        <h2 className="blog-title">
+          <a href="blog.html">{item.title}</a>
+        </h2>
+        <div className="blog-meta">
+          <p>{new Date(item.createdAt).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</p>
+        </div>
+        <p className="blog-desc">
+          {item.description.length > 50
+            ? item.description.slice(0, 50) + "..."
+            : item.description}
+        </p>
+      </div>
+    </div>
+  </div>
+))}
 
-                              
-                                    <div className='blog-img'>
-
-                                        <img src={`data:image/jpg;base64,${item.image}`} alt="" />
-
-                                    </div>
-                                    </NavLink>
-                                    <h2 className="blog-title">
-                                        <a href="blog.html">{item.title}</a>
-                                    </h2>
-                                    <div className="blog-meta">
-                                        <p>{new Date(item.createdAt).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</p>
-                                    </div>
-                                    <p className="blog-desc ">
-                                        {item.description}
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </div>
- ))
-}
 
 <ReactPaginate
                                 breakLabel="..."

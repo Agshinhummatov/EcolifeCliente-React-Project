@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import Navbar from "../component/layouts/Navbar";
 import "../assets/css/Login/login.css";
+import backgroundPage from '../assets/img/backgroundPage.jpg'
 
 function Login() {
+
+
+
 
   const navigate = useNavigate();
 
@@ -14,6 +18,45 @@ function Login() {
   //Prop for Api End
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
+
+
+
+  //Basket count 
+  const [basketcount, setbasketcount] = useState(0);
+
+  let token = JSON.parse(localStorage.getItem("token"));
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  // async function getbasketcount() {
+  //   if (token) {
+  //     await axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
+  //       setbasketcount(res.data);
+  //     });
+  //   }
+  // }
+
+  async function getbasketcount() {
+    if (token) {
+      try {
+        const response = await axios.get(`${url}/api/Basket/Getbasketcount`, config);
+        setbasketcount(response.data);
+      } catch (error) {
+        console.error("Error retrieving basket count:", error);
+        // Handle the error, e.g., display an error message or take necessary actions
+      }
+    }
+  }
+
+
+
+
+  useEffect(() => {
+    getbasketcount();
+  }, []);
+
 
   async function login(e) {
     e.preventDefault();
@@ -28,7 +71,7 @@ function Login() {
         // { "Content-Type": "multipart/form-data" }
       )
       .then(function (response) {
-        if (response.data.status === "success" || response.status === 200 ) {
+        if (response.data.status === "success" || response.status === 200) {
           localStorage.setItem("token", JSON.stringify(response.data));
           Swal.fire({
             position: "top-center",
@@ -56,6 +99,13 @@ function Login() {
   return (
     <>
 
+      <Navbar basketcount={basketcount} />
+
+      <div className='backgroundBlog' style={{ marginTop: "92px" }}>
+        <img src={backgroundPage} alt="" />
+        <h2>Login</h2>
+        <h6><Link to="/">Home </Link> / Login</h6>
+      </div>
       <section
         id="login-area"
       // style={{ backgroundImage: "url(/images/login-image.jpg)" }}

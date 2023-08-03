@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link,useNavigate } from 'react-router-dom';
+import backgroundPage from '../assets/img/backgroundPage.jpg'
 import Swal from "sweetalert2";
-
+import Navbar from "../component/layouts/Navbar";
 import "../assets/css/register.css";
 
 function Register() {
+
 
   const url = "https://localhost:7012";
 
@@ -16,6 +18,37 @@ function Register() {
   const [username, setUsername] = useState();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
+
+
+  const [basketcount, setbasketcount] = useState(0);
+
+  let token = JSON.parse(localStorage.getItem("token"));
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+ 
+
+  async function getbasketcount() {
+    if (token) {
+      try {
+        const response = await axios.get(`${url}/api/Basket/Getbasketcount`, config);
+        setbasketcount(response.data);
+      } catch (error) {
+        console.error("Error retrieving basket count:", error);
+        // Handle the error, e.g., display an error message or take necessary actions
+      }
+    }
+  }
+
+  
+
+
+  useEffect(() => {
+    getbasketcount();
+  }, []);
+
 
   async function register(e) {
     e.preventDefault();
@@ -68,6 +101,13 @@ function Register() {
 
   return (
     <>
+
+<Navbar basketcount={basketcount} />
+      <div className='backgroundBlog' style={{marginTop:"92px"}}>
+        <img src={backgroundPage} alt="" />
+        <h2>Register</h2>
+        <h6><Link to="/">Home </Link> / Register</h6>
+      </div>
        <section
         id="register-area"
         style={{

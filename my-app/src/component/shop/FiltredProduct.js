@@ -85,53 +85,57 @@ function FiltredProduct(props) {
 
 
     async function AddBasket(id) {
-        if (config != null) {
-            await axios
-                .post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
-                .then((res) => {
-                    if (res.data.status === "success" || res.status === 200) {
-                        Success.fire({
-                            icon: "success",
-                            title: "Product successfully added",
-                        });
-                        axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
-                            props.setbasketcount(res.data);
-                        });
-                    }
-                })
-
-        } else { navigate("/login"); }
-
-
-
-
-    }
-
-
-
-
-    async function AddWishlsit(id) {
-        if (config != null) {
-            await axios
-                .post(`${url}/api/Wishlist/AddWishlist?id=${id}`, null, config)
-                .then((res) => {
-                    if (res.data.status === "success" || res.status === 200) {
-                        Success.fire({
-                            icon: "success",
-                            title: "Wishlsit successfully added",
-                        });
-                        // axios.get(`${url}/api/Wishlist/Getwishlistcount`, config).then((res) => {
-                        //     props.setwishlistcount(res.data);
-                        // });
-                    }
-                })
-
-        } else { navigate("/login"); }
+        try {
+          if (config != null) {
+            await axios.post(`${url}/api/Basket/AddBasket?id=${id}`, null, config)
+              .then((res) => {
+                if (res.data.status === "success" || res.status === 200) {
+                  Success.fire({
+                    icon: "success",
+                    title: "Product successfully added",
+                  });
+                  axios.get(`${url}/api/Basket/Getbasketcount`, config)
+                    .then((res) => {
+                      props.setbasketcount(res.data);
+                    });
+                }
+              });
+          } else {
+            navigate("/login");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      
 
 
 
-
-    }
+      async function AddWishlist(id) {
+        try {
+          if (config != null) {
+            await axios.post(`${url}/api/Wishlist/AddWishlist?id=${id}`, null, config)
+              .then((res) => {
+                if (res.data.status === "success" || res.status === 200) {
+                  Success.fire({
+                    icon: "success",
+                    title: "Wishlist successfully added",
+                  });
+                  // axios.get(`${url}/api/Wishlist/Getwishlistcount`, config)
+                  //   .then((res) => {
+                  //     props.setwishlistcount(res.data);
+                  // });
+                }
+              });
+          } else {
+            navigate("/login");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      
+      
 
     return (
         <div>
@@ -156,7 +160,7 @@ function FiltredProduct(props) {
                                             alt="" />
 
                                         <ul className="icon-shop">
-                                            <li onClick={() => AddWishlsit(product.id)}> 
+                                            <li onClick={() => AddWishlist(product.id)}> 
                                                 <Icon path={mdiHeartOutline} size={1} />
                                                 <span>Add to WishList</span>
                                             </li>
@@ -177,9 +181,8 @@ function FiltredProduct(props) {
                                     </div>
                                     
                                     <div className="productName">
-                    <Link style={{ fontSize: "15px", color: "#999999" }} href="">{product.categoryName}</Link>
-                    <h4 style={{ fontSize: "20px" }} className="mt-1">{product.name} </h4>
-
+                                    <Link style={{ fontSize: "15px", color: "#999999" }} href="">{product.categoryName}</Link>
+                    <h4 style={{ fontSize: "18px" }} className="mt-1">{product.name} </h4>
                   </div>
 
 
@@ -198,7 +201,7 @@ function FiltredProduct(props) {
 
                                     <div className="price text-center mt-3">
                                         <span>{product.price}$</span>
-                                        <span><del>35$</del></span>
+                                     
                                     </div>
 
                                 </div>

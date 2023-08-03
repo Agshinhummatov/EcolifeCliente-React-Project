@@ -184,7 +184,7 @@ function TheBestProductFiltred(props) {
 
                                         <div className="productName">
                                             <Link style={{ fontSize: "15px", color: "#999999" }} href="">{product.categoryName}</Link>
-                                            <h4 style={{ fontSize: "20px" }} className="mt-1">{product.name} </h4>
+                                            <h4 style={{ fontSize: "18px" }} className="mt-1">{product.name} </h4>
 
                                         </div>
 

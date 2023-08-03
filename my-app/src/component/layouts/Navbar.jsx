@@ -89,7 +89,7 @@ function Navbar(props) {
     };
 
 
-    const showProducts = products.slice(0, 8);
+    const showProducts = products.slice(0, 5);
     return (
         <>
             <header>
@@ -107,12 +107,15 @@ function Navbar(props) {
                             <Offcanvas.Body>
                                 <ul id="navbar-hamburger" >
 
-                                <input type="text" placeholder="search" onKeyUp={handleKeyUp} />
+                                    <input type="text" placeholder="search" onKeyUp={handleKeyUp} />
                                     {showProducts.map(product => (
 
                                         <li key={product.id}>
-                                            <Link to={`/productDetail/${product.id}`}>{product.name}</Link>
+                                            <Link to={`/productDetail/${product.id}`}>{product.name} </Link>
+
                                         </li>
+
+
                                     ))}
 
                                     <li className='mt-3'><Link to="/" class="active" >Home</Link></li>
@@ -132,24 +135,46 @@ function Navbar(props) {
 
                         <Link to="/"><img className='logo-img' src={logo} class="logo" alt="" /></Link>
                     </div>
-                    <div className='col-2  d-flex search-input'>
+                    <div className='col-lg-3 col-md-2   d-flex search-input'>
 
                         <input type="text" placeholder="search" onKeyUp={handleKeyUp} />
 
 
                         <ul className="search-ul-li">
-                            {showProducts.map(product => (
+                            {showProducts.map(product => {
+                                const truncatedName = product.name.length > 20
+                                    ? product.name.slice(0, 20) + "..."
+                                    : product.name;
 
-                                <li key={product.id}>
-                                    <Link to={`/productDetail/${product.id}`}>{product.name}</Link>
-                                </li>
-                            ))}
+                                return (
+                                    <li key={product.id}>
+                                        <Link to={`/productDetail/${product.id}`}>
+                                          <div className="d-flex">
+                                            
+                                            <div ><img style={{ width: '80px', height: '80px' }}
+                                                src={`data:image/jpeg;base64,${product.image}`}
+                                                alt=""
+                                            />
+                                            </div>
+
+                                            <div>
+                                            <p className="name"> {truncatedName}</p>
+                                            <p className="price">{product.price}$</p>
+                                           
+                                            </div>
+                                           
+                                          </div>
+                                       
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
 
 
                     </div>
 
-                    <div className='col-8'>
+                    <div className='col-lg-7 col-md-8'>
 
                         <ul id="navbar">
                             <li><Link to="/"  >Home</Link></li>
@@ -232,11 +257,11 @@ function Navbar(props) {
                                 </Link>
                             </div>
                             <div className="heart">
-                                   <Link to={"/wishlistDetail"}>
+                                <Link to={"/wishlistDetail"}>
                                     <Icon path={mdiHeartOutline} size={1} className='icon icon2' color="white" />
                                     {/* <sup className='icon-design'>0</sup> */}
 
-                                    </Link>
+                                </Link>
                             </div>
                         </ul>
 

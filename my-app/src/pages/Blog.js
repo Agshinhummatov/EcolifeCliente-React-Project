@@ -48,7 +48,7 @@ function Blog() {
     <>
 
       <Navbar basketcount={basketcount} />
-      <div className='backgroundBlog'>
+      <div className='backgroundBlog' style={{marginTop:"92px"}}>
         <img src={backgroundPage} alt="" />
         <h2>Blog</h2>
         <h6><Link to="/">Home </Link> / Blog</h6>

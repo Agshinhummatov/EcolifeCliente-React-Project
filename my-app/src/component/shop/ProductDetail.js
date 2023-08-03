@@ -125,6 +125,11 @@ function ProductDetail(props) {
         //     setIsDescriptionEmpty(true);
         //     return;
         // }
+        if (!config || !config.headers || !config.headers.Authorization) {
+            // Token is missing, navigate to the login page
+            navigate("/login");
+            return;
+        }
 
         const formData = new FormData();
         for (const [key, value] of Object.entries(newComment)) {
@@ -184,27 +189,27 @@ function ProductDetail(props) {
     const rates = props?.product?.rates || 0;
     const remainingStars = totalStars - rates;
     useEffect(() => {
-  
+
         const token = JSON.parse(localStorage.getItem("token"));
         setToken(token);
         if (token) {
-          const config = {
-            headers: { Authorization: `Bearer ${token}` },
-          };
-          setConfig(config);
+            const config = {
+                headers: { Authorization: `Bearer ${token}` },
+            };
+            setConfig(config);
         } else {
-          const config = null;
-          setConfig(config);
+            const config = null;
+            setConfig(config);
         }
-      
+
         getBasketItemCount(props.id);
-            getById(props.id);
-          
-      
+        getById(props.id);
+
+
         // AddBasket(id);
-      }, [token]);
-      
- 
+    }, [token]);
+
+
 
 
 
@@ -256,7 +261,7 @@ function ProductDetail(props) {
                     axios.get(`${url}/api/Basket/Getbasketcount`, config).then((res) => {
                         props.setbasketcount(res.data);
                     });
-        getBasketItemCount(props.id);
+                    getBasketItemCount(props.id);
 
                 }
             } catch (error) {
@@ -464,7 +469,7 @@ function ProductDetail(props) {
                         </div>
 
 
-                       
+
 
 
 
@@ -496,9 +501,9 @@ function ProductDetail(props) {
 
                         <div className="button-buy gap">
 
-                            <button type="button" className="btn ">ADD TO CARD</button>
+                            <button type="button" onClick={() => handleAddBasket(props.id)} className="btn  ">ADD TO CARD</button>
 
-                            <button type="button" className="btn   buy-now" onClick={() => handleAddBasket(props.id)}>BUY NOW</button>
+                            <button type="button" className="btn   buy-now">BUY NOW</button>
 
 
                         </div>
@@ -523,35 +528,10 @@ function ProductDetail(props) {
                 >
                     <Tab className='tab-desc' eventKey="Description" title="Description">
 
-                        <p> Stock up on the perfect afternoon snack, lunchtime side or baking choice with a Three-Pound Bag of Honeycrisp Apples from Good & Gather™. Boasting the perfect blend of sweet and crisp flavors, these delicious Honeycrisp apples promise to hit the spot when you’re craving something fresh and tasty, and the crisp, juicy texture is sure to satisfy.
-                            Every product that carrie</p>
-
-                        <h2>Item Specifics</h2>
-
-                        <ul className='mt-5'>
-
-                            <li>
-                                <h4></h4>: Thailand
-                            </li>
-                            <li>
-                                Packing: 400g pack
-                            </li>
-                            <li>
-                                Packing: 400g pack
-                            </li>
-                            <li>
-                                Origin: Thailand
-                            </li>
-                            <li>
-                                Origin: Thailand
-                            </li>
-                        </ul>
+                        {props?.product.description}
 
                     </Tab>
-                    <Tab eventKey="PRODUCT DETAILS" title="PRODUCT DETAILS">
 
-
-                    </Tab>
                     <Tab eventKey="longer-tab" title="Product Comment">
 
 
@@ -609,7 +589,15 @@ function ProductDetail(props) {
                                                     <div class="icons align-items-center">
 
 
-                                                        <Icon path={mdiDelete} size={1} style={{ cursor: "pointer" }} color="red" onClick={() => DeleteComment(comment.productCommentId)} />
+                                                    {comment.userName === currentUser && ( // Show delete button only for the current user's comments
+                                                            <Icon
+                                                                path={mdiDelete}
+                                                                size={1}
+                                                                style={{ cursor: "pointer" }}
+                                                                color="red"
+                                                                onClick={() => DeleteComment(comment.productCommentId)}
+                                                            />
+                                                        )}
 
                                                     </div>
 
